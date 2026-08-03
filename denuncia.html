@@ -19,7 +19,7 @@
                 <button id="btn-contrast" title="Alto Contraste"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
             </div>
         </div>
-    </div> 
+    </div>
 
     <header class="main-header">
         <div class="header-top">
@@ -74,6 +74,21 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="serie-vitima"><i class="fa-solid fa-graduation-cap"></i> Sua Série / Ano:</label>
+                    <select id="serie-vitima">
+                        <option value="Anonimo">Prefiro não informar (Anônimo)</option>
+                        <option value="6º Ano EF">6º Ano - Ensino Fundamental</option>
+                        <option value="7º Ano EF">7º Ano - Ensino Fundamental</option>
+                        <option value="8º Ano EF">8º Ano - Ensino Fundamental</option>
+                        <option value="9º Ano EF">9º Ano - Ensino Fundamental</option>
+                        <option value="1º Ano EM">1º Ano - Ensino Médio</option>
+                        <option value="2º Ano EM">2º Ano - Ensino Médio</option>
+                        <option value="3º Ano EM">3º Ano - Ensino Médio</option>
+                        <option value="Outro">Outro / EJA / Técnico</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="tipo"><i class="fa-solid fa-triangle-exclamation"></i> Tipo de Agressão:</label>
                     <select id="tipo" required>
                         <option value="">-- Selecione o Tipo --</option>
@@ -86,6 +101,26 @@
                     </select>
                 </div>
 
+                <div class="form-group">
+                    <label for="serie-autor"><i class="fa-solid fa-user-graduate"></i> Série do Envolvido / Autor:</label>
+                    <select id="serie-autor">
+                        <option value="NaoSei">Não sei informar</option>
+                        <option value="6º Ano EF">6º Ano - Ensino Fundamental</option>
+                        <option value="7º Ano EF">7º Ano - Ensino Fundamental</option>
+                        <option value="8º Ano EF">8º Ano - Ensino Fundamental</option>
+                        <option value="9º Ano EF">9º Ano - Ensino Fundamental</option>
+                        <option value="1º Ano EM">1º Ano - Ensino Médio</option>
+                        <option value="2º Ano EM">2º Ano - Ensino Médio</option>
+                        <option value="3º Ano EM">3º Ano - Ensino Médio</option>
+                        <option value="Outro">Outro / Desconhecido</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="nome-autor"><i class="fa-solid fa-user-ninja"></i> Nome ou Apelido da pessoa envolvida (Opcional):</label>
+                <input type="text" id="nome-autor" placeholder="Ex: Nome, apelido ou características físicas...">
             </div>
 
             <div class="form-group">

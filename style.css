@@ -3,9 +3,6 @@
    Arquivo de Estilos Principal (style.css)
    ========================================================= */
 
-/* ---------------------------------------------------------
-   1. CONFIGURAÇÕES GLOBAIS & RESET
-   --------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +11,6 @@
     transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Variáveis do Tema Claro (Padrão) */
 :root {
     --bg-body: #F4F8FA;
     --bg-card: #FFFFFF;
@@ -29,16 +25,8 @@
     --hover-shadow: 0 10px 25px rgba(38, 115, 199, 0.12);
 }
 
-/* ---------------------------------------------------------
-   2. TEMAS E ACESSIBILIDADE (Ativados via JS no <html>)
-   --------------------------------------------------------- */
+html.font-lg { font-size: 116% !important; }
 
-/* Aumento Proporcional Global de Fonte */
-html.font-lg {
-    font-size: 116% !important;
-}
-
-/* MODO ESCURO */
 html.dark-mode {
     --bg-body: #0F172A;
     --bg-card: #1E293B;
@@ -53,7 +41,6 @@ html.dark-mode {
     --hover-shadow: 0 8px 25px rgba(56, 189, 248, 0.15);
 }
 
-/* ALTO CONTRASTE */
 html.high-contrast {
     --bg-body: #000000;
     --bg-card: #000000;
@@ -77,9 +64,6 @@ body {
     flex-direction: column;
 }
 
-/* ---------------------------------------------------------
-   3. BARRA SUPERIOR DE ACESSIBILIDADE (Fixo no Topo)
-   --------------------------------------------------------- */
 .top-accessibility-bar {
     background-color: #1E293B;
     color: #FFFFFF;
@@ -131,9 +115,6 @@ body {
     color: #FFFFFF;
 }
 
-/* ---------------------------------------------------------
-   4. HEADER E NAVEGAÇÃO PRINCIPAL
-   --------------------------------------------------------- */
 .main-header {
     background-color: var(--bg-card);
     border-bottom: 2px solid var(--sky);
@@ -203,15 +184,11 @@ body {
     color: #FFFFFF !important;
 }
 
-/* Ajustes de alto contraste na navegação */
 html.high-contrast .nav-menu a:hover,
 html.high-contrast .nav-menu a.active {
     color: #000000 !important;
 }
 
-/* ---------------------------------------------------------
-   5. ESTRUTURA E CONTAINERS
-   --------------------------------------------------------- */
 .portal-container, 
 .page-container {
     max-width: 1000px;
@@ -241,101 +218,7 @@ html.high-contrast .nav-menu a.active {
     font-size: 1.05rem;
 }
 
-/* ---------------------------------------------------------
-   6. HERO BANNER (Degradê Animado)
-   --------------------------------------------------------- */
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.hero-banner-animated {
-    position: relative;
-    background: linear-gradient(-45deg, #1d4ed8, #2673C7, #26A6C7, #26C7B5);
-    background-size: 400% 400%;
-    animation: gradientAnimation 10s ease infinite;
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 35px;
-    box-shadow: 0 10px 25px rgba(38, 115, 199, 0.25);
-}
-
-.hero-overlay {
-    padding: 50px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.28);
-    color: #FFFFFF;
-}
-
-.hero-minimalist-img {
-    max-width: 180px;
-    max-height: 120px;
-    object-fit: contain;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-}
-
-.hero-text-content h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.hero-objective {
-    font-size: 1.15rem;
-    max-width: 750px;
-    margin: 0 auto 25px auto;
-    font-weight: 300;
-    line-height: 1.5;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.hero-btn-group {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.btn-transparent {
-    background: rgba(255, 255, 255, 0.15);
-    color: #FFFFFF !important;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(6px);
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-}
-
-.btn-transparent:hover {
-    background: rgba(255, 255, 255, 0.35);
-    border-color: #FFFFFF;
-    transform: translateY(-2px);
-}
-
-/* ---------------------------------------------------------
-   7. GRADE DO PORTAL DE SERVIÇOS & CARDS
-   --------------------------------------------------------- */
-.portal-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.portal-card, 
-.bg-card, 
-.tip-card, 
-.ref-card {
+.bg-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -344,54 +227,10 @@ html.high-contrast .nav-menu a.active {
     box-shadow: var(--card-shadow);
 }
 
-.portal-card {
-    border-top: 5px solid var(--royal-blue);
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.portal-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--hover-shadow);
-}
-
-.card-icon {
-    font-size: 2.2rem;
-    color: var(--sky);
-    margin-bottom: 12px;
-}
-
-.portal-card h2 {
-    font-size: 1.25rem;
-    margin-bottom: 8px;
-    color: var(--royal-blue);
-}
-
-.portal-card p {
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    margin-bottom: 18px;
-}
-
-.card-btn {
-    font-weight: bold;
-    color: var(--royal-blue);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-}
-
-/* ---------------------------------------------------------
-   8. FORMULÁRIOS & BOTÕES DE AÇÃO
-   --------------------------------------------------------- */
 .form-style {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    margin-top: 10px;
 }
 
 .form-grid {
@@ -448,7 +287,6 @@ html.high-contrast .nav-menu a.active {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-submit:hover, 
@@ -462,9 +300,6 @@ html.high-contrast .btn-primary {
     color: #000000 !important;
 }
 
-/* ---------------------------------------------------------
-   9. TELA DE FEEDBACK DE DENÚNCIA (Confirmação)
-   --------------------------------------------------------- */
 .feedback-box {
     text-align: center;
     padding: 40px 20px;
@@ -536,9 +371,6 @@ html.high-contrast .btn-primary {
     color: var(--royal-blue);
 }
 
-/* ---------------------------------------------------------
-   10. TESTE DE CONSCIENTIZAÇÃO (Quiz)
-   --------------------------------------------------------- */
 .quiz-progress {
     font-weight: 700;
     color: var(--sky);
@@ -570,7 +402,6 @@ html.high-contrast .btn-primary {
     font-weight: 600;
     font-size: 0.98rem;
     line-height: 1.4;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .quiz-opt-btn:hover {
@@ -595,93 +426,6 @@ html.high-contrast .quiz-opt-btn:hover {
     margin-bottom: 12px;
 }
 
-/* ---------------------------------------------------------
-   11. DICAS DE CONSCIENTIZAÇÃO
-   --------------------------------------------------------- */
-.tips-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.tip-card {
-    position: relative;
-}
-
-.tip-number {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--sky);
-    background: var(--input-bg);
-    border: 1px solid var(--border-color);
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-}
-
-.tip-card h3 {
-    color: var(--royal-blue);
-    font-size: 1.15rem;
-    margin-bottom: 8px;
-}
-
-.tip-card p {
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-}
-
-/* ---------------------------------------------------------
-   12. CANAIS DE CONTATO & REFERÊNCIAS
-   --------------------------------------------------------- */
-.margin-bottom {
-    margin-bottom: 25px;
-}
-
-.ref-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 15px;
-}
-
-.ref-card {
-    text-decoration: none;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.ref-card:hover {
-    border-color: var(--sky);
-    transform: translateY(-3px);
-}
-
-.icon-ref {
-    font-size: 2rem;
-    color: var(--royal-blue);
-    margin-bottom: 10px;
-}
-
-.ref-card h3 {
-    font-size: 1.05rem;
-    color: var(--royal-blue);
-    margin-bottom: 4px;
-}
-
-.ref-card p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-/* ---------------------------------------------------------
-   13. RODAPÉ (Footer)
-   --------------------------------------------------------- */
 footer {
     text-align: center;
     padding: 22px 20px;
@@ -692,24 +436,8 @@ footer {
     font-size: 0.9rem;
 }
 
-/* ---------------------------------------------------------
-   14. UTILITÁRIOS E RESPONSIVIDADE
-   --------------------------------------------------------- */
 .hidden {
     display: none !important;
-}
-
-@media (max-width: 768px) {
-    .acc-bar-content {
-        justify-content: center;
-        text-align: center;
-    }
-    .hero-text-content h1 {
-        font-size: 2.2rem;
-    }
-    .hero-objective {
-        font-size: 1rem;
-    }
 }
 
 @media (max-width: 600px) {
@@ -719,8 +447,5 @@ footer {
     .header-top {
         flex-direction: column;
         gap: 8px;
-    }
-    .page-header h1 {
-        font-size: 1.75rem;
     }
 }
