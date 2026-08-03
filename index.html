@@ -10,6 +10,17 @@
 </head>
 <body>
 
+    <div class="top-accessibility-bar">
+        <div class="acc-bar-content">
+            <span class="acc-title"><i class="fa-solid fa-universal-access"></i> Acessibilidade</span>
+            <div class="acc-buttons">
+                <button id="btn-font" title="Alternar Tamanho da Fonte"><i class="fa-solid fa-text-height"></i> Fonte A+</button>
+                <button id="btn-dark" title="Modo Escuro"><i class="fa-solid fa-moon"></i> Modo Escuro</button>
+                <button id="btn-contrast" title="Alto Contraste"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
+            </div>
+        </div>
+    </div>
+
     <header class="main-header">
         <div class="header-top">
             <div class="logo">
@@ -21,7 +32,7 @@
             <ul>
                 <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Início</a></li>
                 <li><a href="denuncia.html"><i class="fa-solid fa-shield-halved"></i> Denúncia</a></li>
-                <li><a href="quiz.html"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
+                <li><a href="teste.html"><i class="fa-solid fa-square-check"></i> Teste</a></li>
                 <li><a href="dicas.html"><i class="fa-solid fa-lightbulb"></i> Dicas</a></li>
                 <li><a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a></li>
             </ul>
@@ -41,8 +52,8 @@
                         <a href="denuncia.html" class="btn-transparent">
                             <i class="fa-solid fa-paper-plane"></i> Fazer Denúncia
                         </a>
-                        <a href="quiz.html" class="btn-transparent">
-                            <i class="fa-solid fa-brain"></i> Testar Conhecimento
+                        <a href="teste.html" class="btn-transparent">
+                            <i class="fa-solid fa-square-check"></i> Fazer o Teste
                         </a>
                     </div>
                 </div>
@@ -54,25 +65,25 @@
                 <div class="card-icon"><i class="fa-solid fa-user-secret"></i></div>
                 <div class="card-info">
                     <h2>Denúncia Anônima</h2>
-                    <p>Relate casos de bullying de forma 100% segura e confidencial com tempo de proteção contra spam.</p>
+                    <p>Relate casos de bullying de forma 100% segura e confidencial.</p>
                     <span class="card-btn">Acessar Canal <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
 
-            <a href="quiz.html" class="portal-card">
-                <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+            <a href="teste.html" class="portal-card">
+                <div class="card-icon"><i class="fa-solid fa-square-check"></i></div>
                 <div class="card-info">
-                    <h2>Quiz Interativo</h2>
-                    <p>Responda perguntas sorteadas sobre respeito, atitudes na escola e empatia.</p>
-                    <span class="card-btn">Iniciar Quiz <i class="fa-solid fa-arrow-right"></i></span>
+                    <h2>Teste de Conscientização</h2>
+                    <p>Responda 5 perguntas sorteadas e avalie suas atitudes e respeito na escola.</p>
+                    <span class="card-btn">Iniciar Teste <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
 
             <a href="dicas.html" class="portal-card">
                 <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
                 <div class="card-info">
-                    <h2>Dicas de Conscientização</h2>
-                    <p>Aprenda a identificar o bullying e saiba como agir para se proteger e ajudar um amigo.</p>
+                    <h2>Dicas de Orientação</h2>
+                    <p>Aprenda a identificar o bullying e saiba como agir para se proteger e ajudar.</p>
                     <span class="card-btn">Ver Dicas <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -81,7 +92,7 @@
                 <div class="card-icon"><i class="fa-solid fa-phone-volume"></i></div>
                 <div class="card-info">
                     <h2>Canais de Contato</h2>
-                    <p>Encontre linhas diretas de apoio emocional e órgãos oficiais de Guarapuava e Paraná.</p>
+                    <p>Encontre linhas diretas de apoio emocional e órgãos oficiais de Guarapuava.</p>
                     <span class="card-btn">Ver Contatos <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </a>
@@ -91,16 +102,6 @@
     <footer>
         <p>&copy; 2026 Portal Acolher Guarapuava - Todos os direitos reservados.</p>
     </footer>
-
-    <div class="acc-container">
-        <button id="acc-main-btn" title="Menu de Acessibilidade">♿</button>
-        <div id="acc-overlay-menu" class="acc-menu">
-            <h4>Acessibilidade</h4>
-            <button id="btn-font"><i class="fa-solid fa-text-height"></i> Fonte Grande</button>
-            <button id="btn-dark"><i class="fa-solid fa-moon"></i> Modo Escuro</button>
-            <button id="btn-contrast"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
