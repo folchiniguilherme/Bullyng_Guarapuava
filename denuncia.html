@@ -40,31 +40,57 @@
     <main class="page-container">
         <div class="page-header">
             <h1><i class="fa-solid fa-shield-halved"></i> Denúncia Anônima</h1>
-            <p>Seu relato é confidencial. Ajude a transformar a escola em um lugar mais seguro.</p>
+            <p>Seu relato é 100% confidencial. Selecione sua escola e ajude a combater o bullying.</p>
         </div>
 
         <form id="form-denuncia" class="bg-card form-style">
             <div class="form-grid">
+                
                 <div class="form-group">
-                    <label for="escola"><i class="fa-solid fa-school"></i> Nome da Escola:</label>
-                    <input type="text" id="escola" placeholder="Ex: Colégio Estadual..." required>
-                </div>
-                <div class="form-group">
-                    <label for="tipo"><i class="fa-solid fa-list-check"></i> Tipo de Ocorrência:</label>
-                    <select id="tipo" required>
-                        <option value="">Selecione o tipo...</option>
-                        <option value="verbal">Bullying Verbal / Ofensas</option>
-                        <option value="fisico">Agressão Física</option>
-                        <option value="cyber">Cyberbullying / Redes Sociais</option>
-                        <option value="exclusao">Exclusão / Isolamento Social</option>
-                        <option value="outro">Outro tipo de ocorrência</option>
+                    <label for="escola"><i class="fa-solid fa-school"></i> Selecione a Escola:</label>
+                    <select id="escola" required>
+                        <option value="">-- Escolha o Colégio --</option>
+                        <option value="C.E. Alba Keinert">C.E. Alba Keinert</option>
+                        <option value="C.E. Amarilio">C.E. Amarilio</option>
+                        <option value="C.E. Ana Vanda Bassara">C.E. Ana Vanda Bassara</option>
+                        <option value="C.E. Antonio Tupy Pinheiro">C.E. Antonio Tupy Pinheiro</option>
+                        <option value="C.E. Benedito de Paula Louro">C.E. Benedito de Paula Louro</option>
+                        <option value="C.E. Bibiana Bitencourt">C.E. Bibiana Bitencourt</option>
+                        <option value="C.E. Cesar Stange">C.E. Cesar Stange</option>
+                        <option value="C.E. Cristo Rei">C.E. Cristo Rei</option>
+                        <option value="C.E. Dulce Maschio">C.E. Dulce Maschio</option>
+                        <option value="C.E. Francisco Carneiro Martins">C.E. Francisco Carneiro Martins</option>
+                        <option value="C.E. Liane Marta da Costa">C.E. Liane Marta da Costa</option>
+                        <option value="C.E. Mahatma Gandhi">C.E. Mahatma Gandhi</option>
+                        <option value="C.E. Manoel Ribas">C.E. Manoel Ribas</option>
+                        <option value="C.E. Newton Felipe Albach">C.E. Newton Felipe Albach</option>
+                        <option value="C.E. Padre Chagas">C.E. Padre Chagas</option>
+                        <option value="C.E. Pedro Carli">C.E. Pedro Carli</option>
+                        <option value="C.E. Rubem Fleury da Rocha">C.E. Rubem Fleury da Rocha</option>
+                        <option value="C.E. Rui Barbosa">C.E. Rui Barbosa</option>
+                        <option value="C.E. Visconde de Guarapuava">C.E. Visconde de Guarapuava</option>
+                        <option value="Outra Escola">Outra Instituição / Não listada</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="tipo"><i class="fa-solid fa-triangle-exclamation"></i> Tipo de Agressão:</label>
+                    <select id="tipo" required>
+                        <option value="">-- Selecione o Tipo --</option>
+                        <option value="Verbal">Agressão Verbal (Insultos / Piadas / Apelidos)</option>
+                        <option value="Fisica">Agressão Física (Empurrões / Agressões)</option>
+                        <option value="Cyberbullying">Cyberbullying (Redes Sociais / WhatsApp)</option>
+                        <option value="Exclusao">Exclusão Social / Isolamento Forçado</option>
+                        <option value="Psicologica">Agressão Psicológica / Ameaças</option>
+                        <option value="Outro">Outro Tipo de Ocorrência</option>
+                    </select>
+                </div>
+
             </div>
 
             <div class="form-group">
-                <label for="descricao"><i class="fa-solid fa-align-left"></i> Descrição do Relato:</label>
-                <textarea id="descricao" rows="5" placeholder="Descreva o que aconteceu de forma detalhada..." required></textarea>
+                <label for="descricao"><i class="fa-solid fa-align-left"></i> Detalhes do Relato:</label>
+                <textarea id="descricao" rows="5" placeholder="Descreva o que aconteceu (locais, horários ou detalhes que ajudem a identificar a situação sem expor você)..." required></textarea>
             </div>
 
             <button type="submit" class="btn-submit">
@@ -75,7 +101,7 @@
         <div id="feedback-denuncia" class="bg-card feedback-box hidden">
             <div class="feedback-icon"><i class="fa-solid fa-circle-check"></i></div>
             <h2>Relato Enviado com Sucesso!</h2>
-            <p>Sua denúncia foi registrada de forma 100% anônima e será analisada com total sigilo pela equipe responsável.</p>
+            <p>Sua denúncia foi registrada de forma 100% anônima e será analisada com total sigilo pela equipe pedagógica.</p>
             
             <div class="protocolo-card">
                 <span>Número do Protocolo:</span>
