@@ -242,7 +242,7 @@ html.high-contrast .nav-menu a.active {
 }
 
 /* ---------------------------------------------------------
-   6. THUMBNAIL COM DEGRADÊ ANIMADO (Hero Banner)
+   6. HERO BANNER (Degradê Animado)
    --------------------------------------------------------- */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
@@ -302,7 +302,6 @@ html.high-contrast .nav-menu a.active {
     flex-wrap: wrap;
 }
 
-/* BOTÕES TRANSPARENTES (Glassmorphism) */
 .btn-transparent {
     background: rgba(255, 255, 255, 0.15);
     color: #FFFFFF !important;
@@ -432,6 +431,7 @@ html.high-contrast .nav-menu a.active {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--royal-blue);
+    box-shadow: 0 0 0 3px rgba(38, 115, 199, 0.15);
 }
 
 .btn-submit, 
@@ -448,12 +448,13 @@ html.high-contrast .nav-menu a.active {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-submit:hover, 
 .btn-primary:hover {
     opacity: 0.9;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
 html.high-contrast .btn-submit,
@@ -552,11 +553,13 @@ html.high-contrast .btn-primary {
 }
 
 .options-grid {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
 }
 
 .quiz-opt-btn {
+    width: 100%;
     padding: 15px 18px;
     border: 1px solid var(--border-color);
     background: var(--input-bg);
@@ -567,12 +570,14 @@ html.high-contrast .btn-primary {
     font-weight: 600;
     font-size: 0.98rem;
     line-height: 1.4;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .quiz-opt-btn:hover {
     background: var(--royal-blue);
     color: #FFFFFF !important;
     border-color: var(--royal-blue);
+    transform: translateX(4px);
 }
 
 html.high-contrast .quiz-opt-btn:hover {
