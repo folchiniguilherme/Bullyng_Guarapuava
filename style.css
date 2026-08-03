@@ -487,4 +487,13 @@ footer {
 @media (max-width: 768px) {
     .hero-section { grid-template-columns: 1fr; text-align: center; }
     .form-grid { grid-template-columns: 1fr; }
+}/* ... todo o seu CSS antigo ... */
+
+/* COLE AQUI NO FINAL DO ARQUIVO: */
+.acc-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999 !important;
 }
+/* ... restante das regras de .acc-menu, body.dark-mode, etc ... */
