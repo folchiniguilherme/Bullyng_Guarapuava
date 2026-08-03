@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Acolher | Dicas</title>
+    <title>Portal Acolher | Dicas de Orientação</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="top-accessibility-bar">
+        <div class="acc-bar-content">
+            <span class="acc-title"><i class="fa-solid fa-universal-access"></i> Acessibilidade</span>
+            <div class="acc-buttons">
+                <button id="btn-font" title="Alternar Tamanho da Fonte"><i class="fa-solid fa-text-height"></i> Fonte A+</button>
+                <button id="btn-dark" title="Modo Escuro"><i class="fa-solid fa-moon"></i> Modo Escuro</button>
+                <button id="btn-contrast" title="Alto Contraste"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
+            </div>
+        </div>
+    </div>
 
     <header class="main-header">
         <div class="header-top">
@@ -20,7 +30,7 @@
             <ul>
                 <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
                 <li><a href="denuncia.html"><i class="fa-solid fa-shield-halved"></i> Denúncia</a></li>
-                <li><a href="quiz.html"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
+                <li><a href="teste.html"><i class="fa-solid fa-square-check"></i> Teste</a></li>
                 <li><a href="dicas.html" class="active"><i class="fa-solid fa-lightbulb"></i> Dicas</a></li>
                 <li><a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a></li>
             </ul>
@@ -29,33 +39,33 @@
 
     <main class="page-container">
         <div class="page-header">
-            <h1><i class="fa-solid fa-lightbulb"></i> Dicas de Combate ao Bullying</h1>
-            <p>Orientações práticas para estudantes, colegas e comunidade escolar.</p>
+            <h1><i class="fa-solid fa-lightbulb"></i> Dicas de Orientação</h1>
+            <p>Guia prático para identificar, combater e reagir em situações de bullying.</p>
         </div>
 
         <section class="tips-grid">
             <div class="tip-card">
-                <div class="tip-number">1</div>
-                <h3>Não Seja um Espectador Passivo</h3>
-                <p>Se você vir alguém sendo intimidado, não ria e nem compartilhe. Demonstre apoio ao colega afetado e avise um adulto da escola.</p>
+                <div class="tip-number">01</div>
+                <h3>Não Se Cale</h3>
+                <p>Guardar o sofrimento só fortalece o agressor. Converse com professores, pedagogos ou parentes de confiança.</p>
             </div>
 
             <div class="tip-card">
-                <div class="tip-number">2</div>
-                <h3>Guarde Provas do Cyberbullying</h3>
-                <p>Em caso de ofensas na internet, tire prints com data e horário e evite responder aos agressores. Procure ajuda da coordenação escolar.</p>
+                <div class="tip-number">02</div>
+                <h3>Guarde Evidências</h3>
+                <p>Em casos de Cyberbullying, tire prints das mensagens, comentários ou fotos. Elas servem como comprovação.</p>
             </div>
 
             <div class="tip-card">
-                <div class="tip-number">3</div>
-                <h3>Pratique a Empatia Diária</h3>
-                <p>Pense antes de fazer piadas com a aparência ou costumes alheios. O que parece engraçado para você pode causar dor em outra pessoa.</p>
+                <div class="tip-number">03</div>
+                <h3>Seja Empático</h3>
+                <p>Se vir alguém sendo isolado ou diminuído, apoie essa pessoa. Uma simples palavra amiga faz toda a diferença.</p>
             </div>
 
             <div class="tip-card">
-                <div class="tip-number">4</div>
-                <h3>Use o Canal de Denúncia Sigiloso</h3>
-                <p>Você pode reportar situações com total sigilo pelo nosso portal. Falar a verdade protege a você e aos seus amigos.</p>
+                <div class="tip-number">04</div>
+                <h3>Não Repasse Hate</h3>
+                <p>Não compartilhe fotos, memes ou vídeos que humilhem colegas em grupos de mensagens ou redes sociais.</p>
             </div>
         </section>
     </main>
@@ -63,16 +73,6 @@
     <footer>
         <p>&copy; 2026 Portal Acolher Guarapuava - Todos os direitos reservados.</p>
     </footer>
-
-    <div class="acc-container">
-        <button id="acc-main-btn" title="Menu de Acessibilidade">♿</button>
-        <div id="acc-overlay-menu" class="acc-menu">
-            <h4>Acessibilidade</h4>
-            <button id="btn-font"><i class="fa-solid fa-text-height"></i> Fonte Grande</button>
-            <button id="btn-dark"><i class="fa-solid fa-moon"></i> Modo Escuro</button>
-            <button id="btn-contrast"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>
