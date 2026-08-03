@@ -234,7 +234,7 @@ body {
 
 .btn-submit:hover { background-color: var(--sky); }
 
-/* Estado Desativado por Cooldown */
+/* Estado de Cooldown */
 .btn-submit:disabled,
 .btn-disabled {
     background-color: #94A3B8 !important;
@@ -295,7 +295,7 @@ footer {
     margin-top: 40px;
 }
 
-/* --- OVERLAY DE ACESSIBILIDADE --- */
+/* OVERLAY DE ACESSIBILIDADE */
 .acc-container {
     position: fixed;
     bottom: 25px;
@@ -365,7 +365,7 @@ footer {
     color: #FFF;
 }
 
-/* --- REGRAS DE ACESSIBILIDADE APLICADAS --- */
+/* ACESSIBILIDADE - ESTILOS ALTERNATIVOS */
 
 /* 1. Fonte Grande */
 body.font-big, 

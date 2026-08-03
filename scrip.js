@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Helper para evitar erros de elementos inexistentes
+    // Função de clique seguro (evita travar se algo não existir)
     function ligarClique(id, acao) {
         const el = document.getElementById(id);
         if (el) {
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 1. Acessibilidade Menu Overlay ---
+    // --- 1. Menu Flutuante de Acessibilidade ---
     ligarClique('acc-main-btn', () => {
         const menu = document.getElementById('acc-overlay-menu');
         if (menu) menu.classList.toggle('show');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 2. Formulário de Denúncia com Cooldown de 2 Minutos ---
+    // --- 2. Envio de Denúncia com Cooldown de 2 minutos (120 seg) ---
     const formDenuncia = document.getElementById('form-denuncia');
     const feedbackDenuncia = document.getElementById('feedback-denuncia');
     const btnSubmit = document.getElementById('btn-submit-denuncia');
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formDenuncia.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Exibir mensagem de sucesso
+            // Exibe aviso de sucesso
             if (feedbackDenuncia) {
                 feedbackDenuncia.classList.remove('hidden');
                 feedbackDenuncia.innerHTML = `<i class="fa-solid fa-circle-check"></i> Sua denúncia foi enviada anonimamente com sucesso!`;
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             formDenuncia.reset();
 
-            // Iniciar Cooldown de 2 minutos (120 segundos)
+            // Ativa o Cooldown de 2 Minutos
             let tempoRestante = 120;
             btnSubmit.disabled = true;
             btnSubmit.classList.add('btn-disabled');
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 1000);
 
-            // Ocultar mensagem de sucesso após 6 segundos
+            // Esconde aviso após 6 segundos
             setTimeout(() => {
                 if (feedbackDenuncia) feedbackDenuncia.classList.add('hidden');
             }, 6000);
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 3. Google Login Simulado ---
+    // --- 3. Login do Google ---
     const googleModal = document.getElementById('google-modal');
     const userProfile = document.getElementById('user-profile');
     const userName = document.getElementById('user-name');
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 4. Carrossel de Imagens ---
+    // --- 4. Carrossel ---
     const slides = document.querySelectorAll('.carousel-slide');
     let slideIndex = 0;
 
