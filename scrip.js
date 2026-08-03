@@ -1,115 +1,107 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* =========================================================
+       1. ACESSIBILIDADE SIMPLIFICADA (COM MEMÓRIA LOCAL)
+       ========================================================= */
+    const htmlEl = document.documentElement;
+
+    // Recupera escolhas salvas
+    if (localStorage.getItem('theme') === 'dark') htmlEl.classList.add('dark-mode');
+    if (localStorage.getItem('theme') === 'contrast') htmlEl.classList.add('high-contrast');
+    if (localStorage.getItem('fontSize') === 'large') htmlEl.classList.add('font-lg');
+
+    // Função de alternar clique
     function ligarClique(id, acao) {
         const el = document.getElementById(id);
         if (el) el.addEventListener('click', acao);
     }
 
-    // --- 1. Menu de Acessibilidade (Modo Escuro Corrigido) ---
-    ligarClique('acc-main-btn', () => {
-        const menu = document.getElementById('acc-overlay-menu');
-        if (menu) menu.classList.toggle('show');
-    });
-
-    ligarClique('btn-font', () => document.body.classList.toggle('font-big'));
-    
+    // Botão Modo Escuro
     ligarClique('btn-dark', () => {
-        document.body.classList.toggle('dark-mode');
-        document.body.classList.remove('high-contrast');
+        htmlEl.classList.remove('high-contrast');
+        htmlEl.classList.toggle('dark-mode');
+        
+        const temaAtual = htmlEl.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('theme', temaAtual);
     });
 
+    // Botão Alto Contraste
     ligarClique('btn-contrast', () => {
-        document.body.classList.toggle('high-contrast');
-        document.body.classList.remove('dark-mode');
+        htmlEl.classList.remove('dark-mode');
+        htmlEl.classList.toggle('high-contrast');
+        
+        const temaAtual = htmlEl.classList.contains('high-contrast') ? 'contrast' : 'light';
+        localStorage.setItem('theme', temaAtual);
     });
 
-    // --- 2. Denúncia Anônima com Cooldown de 2 Minutos (120 seg) ---
-    const formDenuncia = document.getElementById('form-denuncia');
-    const feedbackDenuncia = document.getElementById('feedback-denuncia');
-    const btnSubmit = document.getElementById('btn-submit-denuncia');
+    // Botão Aumentar Fonte
+    ligarClique('btn-font', () => {
+        htmlEl.classList.toggle('font-lg');
+        const fonteAtual = htmlEl.classList.contains('font-lg') ? 'large' : 'normal';
+        localStorage.setItem('fontSize', fonteAtual);
+    });
 
-    if (formDenuncia && btnSubmit) {
+
+    /* =========================================================
+       2. DENÚNCIA: TELA DE FEEDBACK E COOLDOWN
+       ========================================================= */
+    const formDenuncia = document.getElementById('form-denuncia');
+    const feedbackCard = document.getElementById('feedback-denuncia');
+    const protocoloEl = document.getElementById('protocolo-num');
+
+    if (formDenuncia) {
         formDenuncia.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            if (feedbackDenuncia) {
-                feedbackDenuncia.classList.remove('hidden');
-                feedbackDenuncia.innerHTML = `<i class="fa-solid fa-circle-check"></i> Sua denúncia foi enviada anonimamente com sucesso!`;
-            }
+            // Gera um número de protocolo aleatório para 2026
+            const protocolo = 'ACO-2026-' + Math.floor(1000 + Math.random() * 9000);
+            if (protocoloEl) protocoloEl.textContent = protocolo;
+
+            // Esconde o formulário e exibe o card de feedback
+            formDenuncia.classList.add('hidden');
+            if (feedbackCard) feedbackCard.classList.remove('hidden');
 
             formDenuncia.reset();
-
-            // Ativa contagem regressiva de 2 Minutos (120s)
-            let tempo = 120;
-            btnSubmit.disabled = true;
-            btnSubmit.classList.add('btn-disabled');
-
-            const timer = setInterval(() => {
-                tempo--;
-                btnSubmit.innerHTML = `<i class="fa-solid fa-clock"></i> Aguarde ${tempo}s para novo envio...`;
-
-                if (tempo <= 0) {
-                    clearInterval(timer);
-                    btnSubmit.disabled = false;
-                    btnSubmit.classList.remove('btn-disabled');
-                    btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Enviar Relato Anônimo`;
-                }
-            }, 1000);
-
-            setTimeout(() => {
-                if (feedbackDenuncia) feedbackDenuncia.classList.add('hidden');
-            }, 6000);
         });
     }
 
-    // --- 3. Quiz Interativo com Sorteio de Perguntas ---
+    // Botão para fazer outro relato dentro da tela de feedback
+    ligarClique('btn-novo-relato', () => {
+        if (feedbackCard) feedbackCard.classList.add('hidden');
+        if (formDenuncia) formDenuncia.classList.remove('hidden');
+    });
+
+
+    /* =========================================================
+       3. TESTE DE CONSCIENTIZAÇÃO (15 PERGUNTAS / 5 SORTEADAS)
+       ========================================================= */
     const bancoPerguntas = [
-        {
-            pergunta: "O que caracteriza o Cyberbullying?",
-            opcoes: [
-                "Intimidações, ofensas e espalhar boatos em redes sociais e mensagens.",
-                "Perder uma partida num jogo online de forma respeitosa.",
-                "Discordar educadamente de um comentário na internet."
-            ],
-            correta: 0
-        },
-        {
-            pergunta: "Se você nota que um colega está sempre isolado, qual atitude demonstra empatia?",
-            opcoes: [
-                "Ignorar para não se expor.",
-                "Convidá-lo para se juntar ao seu grupo no intervalo.",
-                "Zombar da situação com outros alunos."
-            ],
-            correta: 1
-        },
-        {
-            pergunta: "Qual a diferença entre brincadeira e bullying?",
-            opcoes: [
-                "No bullying todos se divertem.",
-                "O bullying é intencional, repetitivo e gera sofrimento a uma das partes.",
-                "Não existe diferença alguma."
-            ],
-            correta: 1
-        },
-        {
-            pergunta: "O que fazer ao ver um ato de agressão na escola?",
-            opcoes: [
-                "Gravar com o celular para publicar nas redes.",
-                "Avisar imediatamente a coordenação, professores ou funcionários.",
-                "Ficar assistindo e incentivar."
-            ],
-            correta: 1
-        }
+        { pergunta: "O que é considerado Cyberbullying?", opcoes: ["Intimidações e ofensas repetidas em redes sociais/grupos.", "Perder uma partida num jogo online sem ofensas.", "Discordar com educação de uma opinião na internet."], correta: 0 },
+        { pergunta: "Qual atitude demonstra empatia com um colega isolado?", opcoes: ["Ignorar para não ficar mal falado.", "Aproximar-se e convidá-lo para se juntar ao grupo.", "Rir da situação com os outros."], correta: 1 },
+        { pergunta: "Qual a principal diferença entre brincadeira e bullying?", opcoes: ["No bullying, todos se divertem igualmente.", "O bullying é intencional, repetitivo e causa sofrimento.", "Não há diferença."], correta: 1 },
+        { pergunta: "Ao presenciar agressões nos corredores da escola, o certo é:", opcoes: ["Gravar com o celular para postar nas redes.", "Avisar imediatamente a direção, professores ou funcionários.", "Incentivar a briga."], correta: 1 },
+        { pergunta: "Por que denunciar o bullying de forma anônima é seguro?", opcoes: ["Protege o relator de retaliações e ajuda a escola a intervir.", "Serve apenas para inventar fofocas.", "Não possui eficácia real."], correta: 0 },
+        { pergunta: "Criar figurinhas constrangedoras de um colega sem autorização é:", opcoes: ["Apenas uma brincadeira inofensiva.", "Uma forma de cyberbullying que violenta a imagem da pessoa.", "Algo normal em grupos de sala."], correta: 1 },
+        { pergunta: "Se você sofreu bullying, qual deve ser o primeiro passo?", opcoes: ["Guardar segredo e sofrer em silêncio.", "Buscar apoio de um adulto de confiança, escola ou responsável.", "Tentar se vingar da mesma forma."], correta: 1 },
+        { pergunta: "O que significa ter 'empatia' no ambiente escolar?", opcoes: ["Concordar com tudo o que os outros dizem.", "Tentar compreender os sentimentos do outro e respeitá-lo.", "Emprestar materiais apenas para amigos íntimos."], correta: 1 },
+        { pergunta: "Excluir propositalmente um aluno de trabalhos e grupos é:", opcoes: ["Bullying social/psicológico.", "Uma escolha sem impactos emocionais.", "Organização normal da turma."], correta: 0 },
+        { pergunta: "Amoedam e piadas com características físicas de alguém são:", opcoes: ["Humor aceitável.", "Formas de agressão verbal que impactam a autoimagem.", "Apenas elogios diferentões."], correta: 1 },
+        { pergunta: "O que fazer se enviarem fotos íntimas de alguém em um grupo?", opcoes: ["Repassar para outros amigos.", "Não repassar, apagar e avisar um responsável ou a escola.", "Salvar no celular."], correta: 1 },
+        { pergunta: "A responsabilidade de parar o bullying na escola é de quem?", opcoes: ["Apenas da vítima.", "De toda a comunidade escolar: alunos, professores e funcionários.", "Apenas da polícia."], correta: 1 },
+        { pergunta: "O bullying afeta o desempenho escolar dos alunos?", opcoes: ["Sim, pode causar ansiedade, queda nas notas e isolamento.", "Não, não altera em nada o aprendizado.", "Melhora o foco dos estudantes."], correta: 0 },
+        { pergunta: "O que é o Disque 100?", opcoes: ["Linha para pedir comida.", "Canal público para denúncia de violações de Direitos Humanos.", "Número da coordenação da escola."], correta: 1 },
+        { pergunta: "Se você percebeu que praticou bullying com alguém, o correto é:", opcoes: ["Fingir que nada aconteceu.", "Reconhecer o erro, pedir desculpas e mudar de atitude.", "Continuar fazendo."], correta: 1 }
     ];
 
     let quizSorteado = [];
     let idxAtual = 0;
     let pontuacao = 0;
 
-    function iniciarNovoQuiz() {
+    function iniciarNovoTeste() {
         if (!document.getElementById('quiz-question')) return;
 
-        quizSorteado = [...bancoPerguntas].sort(() => 0.5 - Math.random()).slice(0, 3);
+        // Sorteia exatamente 5 perguntas das 15 disponíveis sem repetir
+        quizSorteado = [...bancoPerguntas].sort(() => 0.5 - Math.random()).slice(0, 5);
         idxAtual = 0;
         pontuacao = 0;
 
@@ -161,11 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (rArea) rArea.classList.remove('hidden');
 
             if (scoreText) {
-                scoreText.textContent = `Você acertou ${pontuacao} de ${quizSorteado.length} perguntas sorteadas! Juntos construímos uma escola mais acolhedora.`;
+                scoreText.textContent = `Você acertou ${pontuacao} de ${quizSorteado.length} perguntas sorteadas!`;
             }
         }
     }
 
-    ligarClique('btn-restart-quiz', iniciarNovoQuiz);
-    iniciarNovoQuiz();
+    ligarClique('btn-restart-quiz', iniciarNovoTeste);
+    iniciarNovoTeste();
 });

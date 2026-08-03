@@ -311,3 +311,76 @@ body.high-contrast .card-btn {
     .form-grid { grid-template-columns: 1fr; }
     .hero-text-content h1 { font-size: 2rem; }
 }
+/* =========================================================
+   REGRAS DE ACESSIBILIDADE E TEMAS
+   ========================================================= */
+
+/* Aumento proporcional de fonte na página inteira */
+html.font-lg { font-size: 118% !important; }
+
+/* MODO ESCURO SIMPLIFICADO */
+html.dark-mode {
+    --bg-body: #0F172A;
+    --bg-card: #1E293B;
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --border-color: #334155;
+    --input-bg: #0F172A;
+    --royal-blue: #38BDF8;
+}
+
+/* ALTO CONTRASTE SIMPLIFICADO */
+html.high-contrast {
+    --bg-body: #000000;
+    --bg-card: #000000;
+    --text-primary: #FFFF00;
+    --text-secondary: #FFFF00;
+    --border-color: #FFFF00;
+    --input-bg: #000000;
+    --royal-blue: #FFFF00;
+}
+
+/* ESTILO DO CARD DE FEEDBACK DA DENÚNCIA */
+.feedback-box {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.feedback-icon {
+    font-size: 3.5rem;
+    color: var(--emerald, #26C77D);
+    margin-bottom: 15px;
+}
+
+.protocolo-card {
+    background: var(--input-bg);
+    border: 1px dashed var(--border-color);
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.protocolo-card strong {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--royal-blue);
+}
+
+.feedback-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.btn-transparent-dark {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
