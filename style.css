@@ -449,3 +449,128 @@ footer {
         gap: 8px;
     }
 }
+/* =========================================================
+   ESTILOS COMPLEMENTARES - DESABAFO, RANQUEAMENTO E CRÉDITOS
+   ========================================================= */
+
+/* --- RANQUEAMENTO DO QUIZ --- */
+.rank-badge {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.rank-gold {
+    background-color: rgba(38, 199, 125, 0.15);
+    color: var(--emerald);
+    border: 1px solid var(--emerald);
+}
+
+.rank-silver {
+    background-color: rgba(38, 115, 199, 0.15);
+    color: var(--royal-blue);
+    border: 1px solid var(--royal-blue);
+}
+
+.rank-warning {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #F59E0B;
+    border: 1px solid #F59E0B;
+}
+
+/* --- FRASES MOTIVACIONAIS E ORIENTAÇÕES DE APOIO --- */
+.motivational-box h2 {
+    color: var(--royal-blue);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    border-left: 4px solid var(--sky);
+    padding-left: 15px;
+    margin: 10px 0 20px 0;
+}
+
+.guidance-banner {
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.guidance-banner h3 {
+    font-size: 1.1rem;
+    color: var(--royal-blue);
+    margin-bottom: 8px;
+}
+
+.guidance-list {
+    list-style: none;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.guidance-list li {
+    background: var(--bg-card);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- RODAPÉ E CRÉDITOS --- */
+.footer-credits {
+    font-size: 0.85rem;
+    margin-top: 6px;
+    color: var(--text-secondary);
+}
+
+.footer-credits a {
+    color: var(--royal-blue);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-credits a:hover {
+    text-decoration: underline;
+}
+
+/* --- BOTÃO VOLTAR AO TOPO --- */
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: var(--royal-blue);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    z-index: 999;
+}
+
+#btn-back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#btn-back-to-top:hover {
+    transform: translateY(-3px);
+}

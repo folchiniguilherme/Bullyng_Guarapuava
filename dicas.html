@@ -39,6 +39,48 @@
 
     <main class="page-container">
         <div class="page-header">
+            <section class="bg-card motivational-box margin-bottom">
+    <h2><i class="fa-solid fa-quote-left"></i> Frase do Dia</h2>
+    <blockquote class="quote-text">
+        "O respeito é a linguagem universal que constrói pontes e elimina barreiras nas nossas escolas."
+    </blockquote>
+    <div class="guidance-banner">
+        <h3><i class="fa-solid fa-hands-holding-child"></i> Precisa de Ajuda? Não Guarde para Você!</h3>
+        <p>Se você estiver passando por momentos difíceis, bullying ou isolamento, procure imediatamente:</p>
+        <ul class="guidance-list">
+            <li><i class="fa-solid fa-chalkboard-user"></i> <strong>Um Professor de sua confiança</strong></li>
+            <li><i class="fa-solid fa-user-graduate"></i> <strong>A Equipe Pedagógica ou Orientação Educacional</strong></li>
+            <li><i class="fa-solid fa-school-flag"></i> <strong>A Direção da Escola</strong></li>
+            <li><i class="fa-solid fa-people-roof"></i> <strong>Seus Pais, Responsáveis ou Familiares</strong></li>
+        </ul>
+    </div>
+</section>
+
+<section class="bg-card margin-bottom">
+    <div class="page-header" style="margin-bottom: 15px; text-align: left;">
+        <h2><i class="fa-solid fa-comment-dots"></i> Espaço de Desabafo (Simulado)</h2>
+        <p>Precisa colocar algo para fora? Escreva abaixo o seu desabafo. É um ambiente seguro de treino e reflexão.</p>
+    </div>
+
+    <form id="form-desabafo" class="form-style">
+        <div class="form-group">
+            <label for="texto-desabafo"><i class="fa-solid fa-pen-to-square"></i> Seu Desabafo:</label>
+            <textarea id="texto-desabafo" rows="4" placeholder="Escreva aqui o que está sentindo ou pensando..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-heart"></i> Enviar Desabafo
+        </button>
+    </form>
+
+    <div id="feedback-desabafo" class="feedback-box hidden" style="padding: 20px 10px;">
+        <div class="feedback-icon" style="color: var(--royal-blue);"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3>Mensagem de Acolhimento</h3>
+        <p id="mensagem-acolhimento-texto" style="font-size: 1.05rem; font-weight: 600; margin: 12px 0; color: var(--royal-blue);"></p>
+        <button id="btn-novo-desabafo" class="btn-transparent-dark" style="margin-top: 10px;">
+            <i class="fa-solid fa-rotate-left"></i> Escrever Novo Desabafo
+        </button>
+    </div>
+</section>
             <h1><i class="fa-solid fa-lightbulb"></i> Dicas de Orientação</h1>
             <p>Guia prático para identificar, combater e reagir em situações de bullying.</p>
         </div>
