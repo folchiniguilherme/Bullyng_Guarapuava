@@ -1,23 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Função de clique seguro (evita travar se algo não existir)
     function ligarClique(id, acao) {
         const el = document.getElementById(id);
-        if (el) {
-            el.addEventListener('click', acao);
-        }
+        if (el) el.addEventListener('click', acao);
     }
 
-    // --- 1. Menu Flutuante de Acessibilidade ---
+    // --- 1. Menu de Acessibilidade (Modo Escuro Corrigido) ---
     ligarClique('acc-main-btn', () => {
         const menu = document.getElementById('acc-overlay-menu');
         if (menu) menu.classList.toggle('show');
     });
 
-    ligarClique('btn-font', () => {
-        document.body.classList.toggle('font-big');
-    });
-
+    ligarClique('btn-font', () => document.body.classList.toggle('font-big'));
+    
     ligarClique('btn-dark', () => {
         document.body.classList.toggle('dark-mode');
         document.body.classList.remove('high-contrast');
@@ -28,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.remove('dark-mode');
     });
 
-
-    // --- 2. Envio de Denúncia com Cooldown de 2 minutos (120 seg) ---
+    // --- 2. Denúncia Anônima com Cooldown de 2 Minutos (120 seg) ---
     const formDenuncia = document.getElementById('form-denuncia');
     const feedbackDenuncia = document.getElementById('feedback-denuncia');
     const btnSubmit = document.getElementById('btn-submit-denuncia');
@@ -38,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         formDenuncia.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            // Exibe aviso de sucesso
             if (feedbackDenuncia) {
                 feedbackDenuncia.classList.remove('hidden');
                 feedbackDenuncia.innerHTML = `<i class="fa-solid fa-circle-check"></i> Sua denúncia foi enviada anonimamente com sucesso!`;
@@ -46,165 +39,133 @@ document.addEventListener('DOMContentLoaded', () => {
 
             formDenuncia.reset();
 
-            // Ativa o Cooldown de 2 Minutos
-            let tempoRestante = 120;
+            // Ativa contagem regressiva de 2 Minutos (120s)
+            let tempo = 120;
             btnSubmit.disabled = true;
             btnSubmit.classList.add('btn-disabled');
 
-            const timerCooldown = setInterval(() => {
-                tempoRestante--;
-                btnSubmit.innerHTML = `<i class="fa-solid fa-clock"></i> Aguarde ${tempoRestante}s para novo envio...`;
+            const timer = setInterval(() => {
+                tempo--;
+                btnSubmit.innerHTML = `<i class="fa-solid fa-clock"></i> Aguarde ${tempo}s para novo envio...`;
 
-                if (tempoRestante <= 0) {
-                    clearInterval(timerCooldown);
+                if (tempo <= 0) {
+                    clearInterval(timer);
                     btnSubmit.disabled = false;
                     btnSubmit.classList.remove('btn-disabled');
                     btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Enviar Relato Anônimo`;
                 }
             }, 1000);
 
-            // Esconde aviso após 6 segundos
             setTimeout(() => {
                 if (feedbackDenuncia) feedbackDenuncia.classList.add('hidden');
             }, 6000);
         });
     }
 
+    // --- 3. Quiz Interativo com Sorteio de Perguntas ---
+    const bancoPerguntas = [
+        {
+            pergunta: "O que caracteriza o Cyberbullying?",
+            opcoes: [
+                "Intimidações, ofensas e espalhar boatos em redes sociais e mensagens.",
+                "Perder uma partida num jogo online de forma respeitosa.",
+                "Discordar educadamente de um comentário na internet."
+            ],
+            correta: 0
+        },
+        {
+            pergunta: "Se você nota que um colega está sempre isolado, qual atitude demonstra empatia?",
+            opcoes: [
+                "Ignorar para não se expor.",
+                "Convidá-lo para se juntar ao seu grupo no intervalo.",
+                "Zombar da situação com outros alunos."
+            ],
+            correta: 1
+        },
+        {
+            pergunta: "Qual a diferença entre brincadeira e bullying?",
+            opcoes: [
+                "No bullying todos se divertem.",
+                "O bullying é intencional, repetitivo e gera sofrimento a uma das partes.",
+                "Não existe diferença alguma."
+            ],
+            correta: 1
+        },
+        {
+            pergunta: "O que fazer ao ver um ato de agressão na escola?",
+            opcoes: [
+                "Gravar com o celular para publicar nas redes.",
+                "Avisar imediatamente a coordenação, professores ou funcionários.",
+                "Ficar assistindo e incentivar."
+            ],
+            correta: 1
+        }
+    ];
 
-    // --- 3. Login do Google ---
-    const googleModal = document.getElementById('google-modal');
-    const userProfile = document.getElementById('user-profile');
-    const userName = document.getElementById('user-name');
-    const btnGoogleLogin = document.getElementById('btn-google-login');
+    let quizSorteado = [];
+    let idxAtual = 0;
+    let pontuacao = 0;
 
-    ligarClique('btn-google-login', () => {
-        if (googleModal) googleModal.classList.remove('hidden');
-    });
+    function iniciarNovoQuiz() {
+        if (!document.getElementById('quiz-question')) return;
 
-    ligarClique('modal-close', () => {
-        if (googleModal) googleModal.classList.add('hidden');
-    });
+        quizSorteado = [...bancoPerguntas].sort(() => 0.5 - Math.random()).slice(0, 3);
+        idxAtual = 0;
+        pontuacao = 0;
 
-    ligarClique('account-item-default', () => {
-        fazerLoginSimulado('estudante.guarapuava@escola.pr.gov.br');
-    });
+        const qArea = document.getElementById('quiz-question-area');
+        const rArea = document.getElementById('quiz-result-area');
+        if (qArea) qArea.classList.remove('hidden');
+        if (rArea) rArea.classList.add('hidden');
 
-    const googleForm = document.getElementById('google-login-form');
-    if (googleForm) {
-        googleForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('google-email-input').value;
-            fazerLoginSimulado(email);
+        renderizarPergunta();
+    }
+
+    function renderizarPergunta() {
+        const qTitle = document.getElementById('quiz-question');
+        const qOptions = document.getElementById('quiz-options');
+        const qCounter = document.getElementById('quiz-counter');
+
+        if (!qTitle || !qOptions) return;
+
+        qOptions.innerHTML = '';
+        const item = quizSorteado[idxAtual];
+
+        if (qCounter) qCounter.textContent = `Pergunta ${idxAtual + 1} de ${quizSorteado.length}`;
+        qTitle.textContent = item.pergunta;
+
+        item.opcoes.forEach((opcao, idx) => {
+            const btn = document.createElement('button');
+            btn.classList.add('quiz-opt-btn');
+            btn.textContent = opcao;
+            btn.onclick = () => processarResposta(idx);
+            qOptions.appendChild(btn);
         });
     }
 
-    function fazerLoginSimulado(email) {
-        if (googleModal) googleModal.classList.add('hidden');
-        if (btnGoogleLogin) btnGoogleLogin.classList.add('hidden');
-        if (userProfile) userProfile.classList.remove('hidden');
-        if (userName) userName.textContent = email;
+    function processarResposta(idxEscolhido) {
+        if (idxEscolhido === quizSorteado[idxAtual].correta) {
+            pontuacao++;
+        }
+
+        idxAtual++;
+
+        if (idxAtual < quizSorteado.length) {
+            renderizarPergunta();
+        } else {
+            const qArea = document.getElementById('quiz-question-area');
+            const rArea = document.getElementById('quiz-result-area');
+            const scoreText = document.getElementById('quiz-score-text');
+
+            if (qArea) qArea.classList.add('hidden');
+            if (rArea) rArea.classList.remove('hidden');
+
+            if (scoreText) {
+                scoreText.textContent = `Você acertou ${pontuacao} de ${quizSorteado.length} perguntas sorteadas! Juntos construímos uma escola mais acolhedora.`;
+            }
+        }
     }
 
-    ligarClique('btn-logout', () => {
-        if (userProfile) userProfile.classList.add('hidden');
-        if (btnGoogleLogin) btnGoogleLogin.classList.remove('hidden');
-    });
-
-
-    // --- 4. Carrossel ---
-    const slides = document.querySelectorAll('.carousel-slide');
-    let slideIndex = 0;
-
-    function mostrarSlide(idx) {
-        slides.forEach(s => s.classList.remove('active'));
-        if (idx >= slides.length) slideIndex = 0;
-        if (idx < 0) slideIndex = slides.length - 1;
-        slides[slideIndex].classList.add('active');
-    }
-
-    if (slides.length > 0) {
-        ligarClique('nextBtn', () => { slideIndex++; mostrarSlide(slideIndex); });
-        ligarClique('prevBtn', () => { slideIndex--; mostrarSlide(slideIndex); });
-        setInterval(() => { slideIndex++; mostrarSlide(slideIndex); }, 5000);
-    }
-
-
-    // --- 5. Quiz Interativo ---
-    carregarQuiz();
+    ligarClique('btn-restart-quiz', iniciarNovoQuiz);
+    iniciarNovoQuiz();
 });
-
-const quizData = [
-    {
-        pergunta: "O que caracteriza a prática recorrente de bullying?",
-        opcoes: [
-            "Ações agressivas, intencionais e repetidas contra alguém.",
-            "Uma discordância comum entre dois alunos.",
-            "Uma brincadeira aprovada por todos os participantes."
-        ],
-        correta: 0
-    },
-    {
-        pergunta: "O que você deve fazer se presenciar um colega a ser intimidado?",
-        opcoes: [
-            "Filmar para publicar nas redes sociais.",
-            "Apoiar o colega e avisar um professor ou coordenação.",
-            "Ignorar para não se envolver."
-        ],
-        correta: 1
-    }
-];
-
-let quizIndex = 0;
-let quizScore = 0;
-
-function carregarQuiz() {
-    const qTitle = document.getElementById('quiz-question');
-    const qOptions = document.getElementById('quiz-options');
-
-    if (!qTitle || !qOptions) return;
-
-    qOptions.innerHTML = '';
-    const qAtual = quizData[quizIndex];
-    qTitle.textContent = qAtual.pergunta;
-
-    qAtual.opcoes.forEach((opcao, idx) => {
-        const btn = document.createElement('button');
-        btn.classList.add('quiz-opt-btn');
-        btn.textContent = opcao;
-        btn.onclick = () => checarResposta(idx);
-        qOptions.appendChild(btn);
-    });
-}
-
-function checarResposta(idx) {
-    if (idx === quizData[quizIndex].correta) {
-        quizScore++;
-    }
-
-    quizIndex++;
-
-    if (quizIndex < quizData.length) {
-        carregarQuiz();
-    } else {
-        const qArea = document.getElementById('quiz-question-area');
-        const rArea = document.getElementById('quiz-result-area');
-        const scoreText = document.getElementById('quiz-score-text');
-
-        if (qArea) qArea.classList.add('hidden');
-        if (rArea) rArea.classList.remove('hidden');
-        if (scoreText) scoreText.textContent = `Você acertou ${quizScore} de ${quizData.length} perguntas! Juntos fazemos uma escola melhor.`;
-    }
-}
-
-const btnRestart = document.getElementById('btn-restart-quiz');
-if (btnRestart) {
-    btnRestart.addEventListener('click', () => {
-        quizIndex = 0;
-        quizScore = 0;
-        const qArea = document.getElementById('quiz-question-area');
-        const rArea = document.getElementById('quiz-result-area');
-        if (rArea) rArea.classList.add('hidden');
-        if (qArea) qArea.classList.remove('hidden');
-        carregarQuiz();
-    });
-}

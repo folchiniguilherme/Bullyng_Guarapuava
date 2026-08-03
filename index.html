@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Acolher | Escuta e Respeito em Guarapuava</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Portal Acolher | Início</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,184 +15,76 @@
             <div class="logo">
                 <i class="fa-solid fa-hand-holding-heart"></i> Portal Acolher
             </div>
-            
-            <div class="user-area">
-                <button id="btn-google-login" class="btn-google">
-                    <i class="fa-brands fa-google"></i> Entrar com Google
-                </button>
-                <div id="user-profile" class="user-profile hidden">
-                    <i class="fa-solid fa-circle-user"></i>
-                    <span id="user-name">Aluno Conectado</span>
-                    <button id="btn-logout" title="Sair da Conta"><i class="fa-solid fa-power-off"></i></button>
-                </div>
-            </div>
+            <span class="badge-gov">Guarapuava - PR</span>
         </div>
-
         <nav class="nav-menu">
             <ul>
-                <li><a href="#inicio"><i class="fa-solid fa-house"></i> Início</a></li>
-                <li><a href="#acolhimento"><i class="fa-solid fa-heart"></i> Acolhimento</a></li>
-                <li><a href="#escuta"><i class="fa-solid fa-shield-halved"></i> Denúncia Anônima</a></li>
-                <li><a href="#quiz"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
-                <li><a href="#referencias"><i class="fa-solid fa-bookmark"></i> Referências</a></li>
+                <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> Início</a></li>
+                <li><a href="denuncia.html"><i class="fa-solid fa-shield-halved"></i> Denúncia</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
+                <li><a href="dicas.html"><i class="fa-solid fa-lightbulb"></i> Dicas</a></li>
+                <li><a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="inicio" class="hero-section">
-            <div class="hero-content">
-                <span class="badge">Guarapuava - PR</span>
-                <h1>Portal Acolher</h1>
-                <p>Um espaço seguro de escuta, acolhimento e conscientização contra o bullying nas escolas de Guarapuava.</p>
-                <a href="#escuta" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Fazer Denúncia Anônima</a>
-            </div>
-
-            <div class="carousel-container">
-                <div class="carousel-slide active">
-                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Estudantes unindo as mãos">
-                    <div class="caption">Respeito e empatia constroem um ambiente melhor</div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" alt="Sala de aula com estudantes">
-                    <div class="caption">Apoio escolar e inclusão para todos</div>
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80" alt="Jovens conversando na escola">
-                    <div class="caption">Sua voz importa. Não se cale.</div>
-                </div>
-
-                <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
-                <button class="carousel-btn next" id="nextBtn">&#10095;</button>
-            </div>
-        </section>
-
-        <section id="acolhimento" class="section-container">
-            <h2><i class="fa-solid fa-hands-holding-child"></i> Espaço de Acolhimento</h2>
-            <div class="welcome-box">
-                <i class="fa-solid fa-shield-heart welcome-icon"></i>
-                <div>
-                    <h3>Estamos aqui por você.</h3>
-                    <p>Se você está vivendo uma situação difícil na escola ou presenciou episódios de bullying, lembre-se: você não está sozinho. Este canal garante total sigilo e proteção.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="escuta" class="section-container bg-card">
-            <h2><i class="fa-solid fa-user-secret"></i> Portal de Escuta & Denúncia Anônima</h2>
-            <p class="subtitle">Seleção oficial para escolas de Guarapuava - PR. Envio 100% anônimo.</p>
-
-            <form id="form-denuncia" class="form-style">
-                <div class="form-group">
-                    <label for="escola"><i class="fa-solid fa-school"></i> Selecione a Escola de Guarapuava:</label>
-                    <select id="escola" required>
-                        <option value="">Clique para escolher a sua escola...</option>
-                        <option value="CE Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
-                        <option value="CE Manoel Ribas">Colégio Estadual Manoel Ribas</option>
-                        <option value="CE Professor César Stange">Colégio Estadual Professor César Stange</option>
-                        <option value="CE Professora Alba Keinert">Colégio Estadual Professora Alba Keinert</option>
-                        <option value="CE Professor Amarilio">Colégio Estadual Professor Amarilio</option>
-                        <option value="CE Professora Ana Vanda Bassara">Colégio Estadual Professora Ana Vanda Bassara</option>
-                        <option value="CE Antonio Tupy Pinheiro">Colégio Estadual Antonio Tupy Pinheiro</option>
-                        <option value="CE Bibiana Bitencourt">Colégio Estadual Bibiana Bitencourt</option>
-                        <option value="CE Cristo Rei">Colégio Estadual Cristo Rei</option>
-                        <option value="CE Padre Chagas">Colégio Estadual Padre Chagas</option>
-                        <option value="CE Professora Leni Marlene Jacob">Colégio Estadual Professora Leni Marlene Jacob</option>
-                        <option value="CE Professor Pedro Carli">Colégio Estadual Professor Pedro Carli</option>
-                        <option value="CE Rui Barbosa">Colégio Estadual Rui Barbosa</option>
-                        <option value="CE Francisco Pires Machado">Colégio Estadual Francisco Pires Machado</option>
-                        <option value="CE Dulce Mascarenhas">Colégio Estadual Dulce Mascarenhas</option>
-                        <option value="Outra Escola de Guarapuava">Outra Instituição de Guarapuava</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="nome-agressor"><i class="fa-solid fa-user-ninja"></i> Nome do Agressor / Envolvido (Opcional):</label>
-                    <input type="text" id="nome-agressor" placeholder="Nome ou apelido (deixe em branco se não souber)">
-                </div>
-
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="serie-autor"><i class="fa-solid fa-user"></i> Sua Série (Opcional):</label>
-                        <select id="serie-autor">
-                            <option value="Anônimo">Manter Anônimo</option>
-                            <option value="6º Ano EF">6º Ano EF</option>
-                            <option value="7º Ano EF">7º Ano EF</option>
-                            <option value="8º Ano EF">8º Ano EF</option>
-                            <option value="9º Ano EF">9º Ano EF</option>
-                            <option value="1º Ano EM">1º Ano EM</option>
-                            <option value="2º Ano EM">2º Ano EM</option>
-                            <option value="3º Ano EM">3º Ano EM</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="serie-envolvido"><i class="fa-solid fa-user-tag"></i> Série do Envolvido:</label>
-                        <select id="serie-envolvido" required>
-                            <option value="">Selecione a série...</option>
-                            <option value="Não Sei">Não sei informar</option>
-                            <option value="6º Ano EF">6º Ano EF</option>
-                            <option value="7º Ano EF">7º Ano EF</option>
-                            <option value="8º Ano EF">8º Ano EF</option>
-                            <option value="9º Ano EF">9º Ano EF</option>
-                            <option value="1º Ano EM">1º Ano EM</option>
-                            <option value="2º Ano EM">2º Ano EM</option>
-                            <option value="3º Ano EM">3º Ano EM</option>
-                        </select>
+    <main class="portal-container">
+        <section class="hero-banner-animated">
+            <div class="hero-overlay">
+                <img src="image_4a2c5c.jpg" alt="Portal Acolher Thumbnail" class="hero-minimalist-img" onerror="this.style.display='none'">
+                <div class="hero-text-content">
+                    <h1>Portal Acolher</h1>
+                    <p class="hero-objective">
+                        Um espaço seguro de escuta, acolhimento e conscientização contra o bullying nas escolas de Guarapuava.
+                    </p>
+                    <div class="hero-btn-group">
+                        <a href="denuncia.html" class="btn-transparent">
+                            <i class="fa-solid fa-paper-plane"></i> Fazer Denúncia
+                        </a>
+                        <a href="quiz.html" class="btn-transparent">
+                            <i class="fa-solid fa-brain"></i> Testar Conhecimento
+                        </a>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="relato"><i class="fa-solid fa-comment-dots"></i> Relato Detalhado:</label>
-                    <textarea id="relato" placeholder="Descreva o que aconteceu de forma clara (locais, horários, comportamento)..." required></textarea>
-                </div>
-
-                <button type="submit" id="btn-submit-denuncia" class="btn-submit">
-                    <i class="fa-solid fa-paper-plane"></i> Enviar Relato Anônimo
-                </button>
-            </form>
-            <div id="feedback-denuncia" class="feedback-msg hidden"></div>
-        </section>
-
-        <section id="quiz" class="section-container">
-            <h2><i class="fa-solid fa-brain"></i> Quiz Interativo: Conscientização</h2>
-            <div class="quiz-box">
-                <div id="quiz-question-area">
-                    <h3 id="quiz-question">Carregando pergunta...</h3>
-                    <div id="quiz-options" class="options-grid"></div>
-                </div>
-                <div id="quiz-result-area" class="hidden">
-                    <h3>Resultado</h3>
-                    <p id="quiz-score-text"></p>
-                    <button id="btn-restart-quiz" class="btn-primary"><i class="fa-solid fa-rotate-right"></i> Refazer Quiz</button>
-                </div>
             </div>
         </section>
 
-        <section id="referencias" class="section-container bg-card">
-            <h2><i class="fa-solid fa-phone-volume"></i> Canais Oficiais de Ajuda</h2>
-            <div class="ref-grid">
-                <a href="https://cvv.org.br/" target="_blank" class="ref-card">
-                    <i class="fa-solid fa-headset icon-ref"></i>
-                    <h3>CVV - LIGUE 188</h3>
-                    <p>Apoio emocional gratuito e confidencial 24 horas.</p>
-                </a>
-                <a href="https://new.safernet.org.br/" target="_blank" class="ref-card">
-                    <i class="fa-solid fa-shield-cat icon-ref"></i>
-                    <h3>SaferNet Brasil</h3>
-                    <p>Denúncias e ajuda contra cyberbullying na internet.</p>
-                </a>
-                <a href="https://www.gov.br/mdh/pt-br" target="_blank" class="ref-card">
-                    <i class="fa-solid fa-scale-balanced icon-ref"></i>
-                    <h3>Disque 100</h3>
-                    <p>Disque Direitos Humanos do Governo Federal.</p>
-                </a>
-                <a href="https://www.educacao.pr.gov.br/" target="_blank" class="ref-card">
-                    <i class="fa-solid fa-graduation-cap icon-ref"></i>
-                    <h3>SEED - Paraná</h3>
-                    <p>Secretaria de Estado da Educação do Paraná.</p>
-                </a>
-            </div>
+        <section class="portal-grid">
+            <a href="denuncia.html" class="portal-card">
+                <div class="card-icon"><i class="fa-solid fa-user-secret"></i></div>
+                <div class="card-info">
+                    <h2>Denúncia Anônima</h2>
+                    <p>Relate casos de bullying de forma 100% segura e confidencial com tempo de proteção contra spam.</p>
+                    <span class="card-btn">Acessar Canal <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="quiz.html" class="portal-card">
+                <div class="card-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="card-info">
+                    <h2>Quiz Interativo</h2>
+                    <p>Responda perguntas sorteadas sobre respeito, atitudes na escola e empatia.</p>
+                    <span class="card-btn">Iniciar Quiz <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="dicas.html" class="portal-card">
+                <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="card-info">
+                    <h2>Dicas de Conscientização</h2>
+                    <p>Aprenda a identificar o bullying e saiba como agir para se proteger e ajudar um amigo.</p>
+                    <span class="card-btn">Ver Dicas <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="contato.html" class="portal-card">
+                <div class="card-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="card-info">
+                    <h2>Canais de Contato</h2>
+                    <p>Encontre linhas diretas de apoio emocional e órgãos oficiais de Guarapuava e Paraná.</p>
+                    <span class="card-btn">Ver Contatos <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </a>
         </section>
     </main>
 
@@ -204,38 +94,11 @@
 
     <div class="acc-container">
         <button id="acc-main-btn" title="Menu de Acessibilidade">♿</button>
-        
         <div id="acc-overlay-menu" class="acc-menu">
             <h4>Acessibilidade</h4>
             <button id="btn-font"><i class="fa-solid fa-text-height"></i> Fonte Grande</button>
             <button id="btn-dark"><i class="fa-solid fa-moon"></i> Modo Escuro</button>
             <button id="btn-contrast"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
-        </div>
-    </div>
-
-    <div id="google-modal" class="modal-overlay hidden">
-        <div class="modal-card">
-            <button id="modal-close" class="modal-close-btn">&times;</button>
-            <div class="google-modal-body">
-                <i class="fa-brands fa-google google-logo-icon"></i>
-                <h2>Fazer login com o Google</h2>
-                <p>Escolha uma conta para se conectar ao Portal Acolher</p>
-
-                <div class="google-account-option" id="account-item-default">
-                    <i class="fa-solid fa-circle-user avatar-icon"></i>
-                    <div class="account-details">
-                        <strong>Estudante de Guarapuava</strong>
-                        <small>estudante.guarapuava@escola.pr.gov.br</small>
-                    </div>
-                </div>
-
-                <div class="modal-divider"><span>ou entre com outro e-mail</span></div>
-
-                <form id="google-login-form">
-                    <input type="email" id="google-email-input" placeholder="seu.email@exemplo.com" required>
-                    <button type="submit" class="btn-google-confirm">Continuar</button>
-                </form>
-            </div>
         </div>
     </div>
 

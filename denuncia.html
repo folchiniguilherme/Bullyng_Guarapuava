@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Acolher | Denúncia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-top">
+            <div class="logo"><i class="fa-solid fa-hand-holding-heart"></i> Portal Acolher</div>
+            <span class="badge-gov">Guarapuava - PR</span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+                <li><a href="denuncia.html" class="active"><i class="fa-solid fa-shield-halved"></i> Denúncia</a></li>
+                <li><a href="quiz.html"><i class="fa-solid fa-gamepad"></i> Quiz</a></li>
+                <li><a href="dicas.html"><i class="fa-solid fa-lightbulb"></i> Dicas</a></li>
+                <li><a href="contato.html"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="page-header">
+            <h1><i class="fa-solid fa-user-secret"></i> Portal de Escuta & Denúncia Anônima</h1>
+            <p>Seu relato é confidencial. Preencha os campos abaixo de forma segura.</p>
+        </div>
+
+        <section class="bg-card">
+            <form id="form-denuncia" class="form-style">
+                <div class="form-group">
+                    <label for="escola"><i class="fa-solid fa-school"></i> Escola de Guarapuava:</label>
+                    <select id="escola" required>
+                        <option value="">Selecione a sua instituição...</option>
+                        <option value="CE Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
+                        <option value="CE Manoel Ribas">Colégio Estadual Manoel Ribas</option>
+                        <option value="CE Professor César Stange">Colégio Estadual Professor César Stange</option>
+                        <option value="CE Professora Alba Keinert">Colégio Estadual Professora Alba Keinert</option>
+                        <option value="CE Professor Amarilio">Colégio Estadual Professor Amarilio</option>
+                        <option value="CE Professora Ana Vanda Bassara">Colégio Estadual Professora Ana Vanda Bassara</option>
+                        <option value="CE Antonio Tupy Pinheiro">Colégio Estadual Antonio Tupy Pinheiro</option>
+                        <option value="CE Bibiana Bitencourt">Colégio Estadual Bibiana Bitencourt</option>
+                        <option value="CE Cristo Rei">Colégio Estadual Cristo Rei</option>
+                        <option value="CE Padre Chagas">Colégio Estadual Padre Chagas</option>
+                        <option value="CE Professora Leni Marlene Jacob">Colégio Estadual Professora Leni Marlene Jacob</option>
+                        <option value="CE Professor Pedro Carli">Colégio Estadual Professor Pedro Carli</option>
+                        <option value="CE Rui Barbosa">Colégio Estadual Rui Barbosa</option>
+                        <option value="Outra">Outra Escola de Guarapuava</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nome-agressor"><i class="fa-solid fa-user-ninja"></i> Nome do Agressor / Envolvido (Opcional):</label>
+                    <input type="text" id="nome-agressor" placeholder="Nome ou apelido (deixe em branco se não souber)">
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="serie-autor"><i class="fa-solid fa-user"></i> Sua Série (Opcional):</label>
+                        <select id="serie-autor">
+                            <option value="Anônimo">Manter Anônimo</option>
+                            <option value="6º Ano EF">6º Ano EF</option>
+                            <option value="7º Ano EF">7º Ano EF</option>
+                            <option value="8º Ano EF">8º Ano EF</option>
+                            <option value="9º Ano EF">9º Ano EF</option>
+                            <option value="1º Ano EM">1º Ano EM</option>
+                            <option value="2º Ano EM">2º Ano EM</option>
+                            <option value="3º Ano EM">3º Ano EM</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serie-envolvido"><i class="fa-solid fa-user-tag"></i> Série do Envolvido:</label>
+                        <select id="serie-envolvido" required>
+                            <option value="">Selecione a série...</option>
+                            <option value="Não Sei">Não sei informar</option>
+                            <option value="6º Ano EF">6º Ano EF</option>
+                            <option value="7º Ano EF">7º Ano EF</option>
+                            <option value="8º Ano EF">8º Ano EF</option>
+                            <option value="9º Ano EF">9º Ano EF</option>
+                            <option value="1º Ano EM">1º Ano EM</option>
+                            <option value="2º Ano EM">2º Ano EM</option>
+                            <option value="3º Ano EM">3º Ano EM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="relato"><i class="fa-solid fa-comment-dots"></i> Relato Detalhado:</label>
+                    <textarea id="relato" rows="5" placeholder="Descreva os fatos de forma clara..." required></textarea>
+                </div>
+
+                <button type="submit" id="btn-submit-denuncia" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Relato Anônimo
+                </button>
+            </form>
+            <div id="feedback-denuncia" class="feedback-msg hidden"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Portal Acolher Guarapuava - Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="acc-container">
+        <button id="acc-main-btn" title="Menu de Acessibilidade">♿</button>
+        <div id="acc-overlay-menu" class="acc-menu">
+            <h4>Acessibilidade</h4>
+            <button id="btn-font"><i class="fa-solid fa-text-height"></i> Fonte Grande</button>
+            <button id="btn-dark"><i class="fa-solid fa-moon"></i> Modo Escuro</button>
+            <button id="btn-contrast"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
