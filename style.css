@@ -1,4 +1,11 @@
-/* Paleta de Cores do Projeto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.25s, color 0.25s;
+}
+
 :root {
     --teal: #26C7B5;
     --emerald: #26C77D;
@@ -10,104 +17,13 @@
     --bg-card: #FFFFFF;
     --text-color: #2C3E50;
     --border-color: #E2E8F0;
-    --font-size-base: 16px;
-}
-
-/* --- ANIMAÇÃO NEON RGB PARA O MODO ESCURO --- */
-@keyframes neonGlow {
-    0% { border-color: #26C7B5; box-shadow: 0 0 10px rgba(38, 199, 181, 0.5); }
-    25% { border-color: #26C77D; box-shadow: 0 0 10px rgba(38, 199, 125, 0.5); }
-    50% { border-color: #26A6C7; box-shadow: 0 0 10px rgba(38, 166, 199, 0.5); }
-    75% { border-color: #26C747; box-shadow: 0 0 10px rgba(38, 199, 71, 0.5); }
-    100% { border-color: #2673C7; box-shadow: 0 0 10px rgba(38, 115, 199, 0.5); }
-}
-
-/* --- MODO ESCURO --- */
-body.dark-mode {
-    --bg-body: #000000;
-    --bg-card: #0A0A0A;
-    --text-color: #FFFFFF;
-    --border-color: #26C7B5;
-}
-
-body.dark-mode .main-header,
-body.dark-mode .bg-card,
-body.dark-mode .welcome-box,
-body.dark-mode .quiz-box,
-body.dark-mode .ref-card,
-body.dark-mode .acc-menu {
-    background-color: #0A0A0A !important;
-    color: #FFFFFF !important;
-    border: 2px solid #26C7B5 !important;
-    animation: neonGlow 4s infinite alternate;
-}
-
-body.dark-mode input,
-body.dark-mode select,
-body.dark-mode textarea {
-    background-color: #121212 !important;
-    color: #FFFFFF !important;
-    border: 1px solid var(--sky) !important;
-}
-
-/* --- MODO ALTO CONTRASTE --- */
-body.high-contrast {
-    --bg-body: #000000;
-    --bg-card: #000000;
-    --text-color: #FFFF00;
-    --border-color: #FFFF00;
-}
-
-body.high-contrast * {
-    box-shadow: none !important;
-    animation: none !important;
-    text-shadow: none !important;
-}
-
-body.high-contrast .main-header,
-body.high-contrast .bg-card,
-body.high-contrast .welcome-box,
-body.high-contrast .quiz-box,
-body.high-contrast .ref-card,
-body.high-contrast input,
-body.high-contrast select,
-body.high-contrast textarea,
-body.high-contrast .acc-menu {
-    background-color: #000000 !important;
-    color: #FFFF00 !important;
-    border: 2px solid #FFFF00 !important;
-}
-
-body.high-contrast button,
-body.high-contrast .btn-primary,
-body.high-contrast .btn-submit,
-body.high-contrast .btn-google {
-    background-color: #FFFF00 !important;
-    color: #000000 !important;
-    font-weight: 900 !important;
-    border: 2px solid #FFFF00 !important;
-}
-
-/* --- AUMENTO DE FONTE --- */
-html.font-large {
-    --font-size-base: 20px;
-}
-
-/* Estilos Gerais */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: background 0.25s, color 0.25s;
 }
 
 html {
     scroll-behavior: smooth;
-    font-size: var(--font-size-base);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--bg-body);
     color: var(--text-color);
     line-height: 1.6;
@@ -318,6 +234,14 @@ body {
 
 .btn-submit:hover { background-color: var(--sky); }
 
+/* Estado Desativado por Cooldown */
+.btn-submit:disabled,
+.btn-disabled {
+    background-color: #94A3B8 !important;
+    cursor: not-allowed !important;
+    opacity: 0.7;
+}
+
 /* Quiz */
 .quiz-box {
     background-color: var(--bg-card);
@@ -371,68 +295,127 @@ footer {
     margin-top: 40px;
 }
 
-/* Widget Flutuante de Acessibilidade */
-.acc-widget {
+/* --- OVERLAY DE ACESSIBILIDADE --- */
+.acc-container {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    z-index: 999;
+    z-index: 999999 !important;
 }
 
-#acc-widget-btn {
-    width: 55px;
-    height: 55px;
+#acc-main-btn {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background-color: var(--royal-blue);
-    color: white;
-    border: 2px solid white;
-    font-size: 1.5rem;
+    background-color: #2673C7;
+    color: #FFFFFF;
+    border: 3px solid #FFFFFF;
+    font-size: 1.8rem;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-#acc-widget-btn:hover { transform: scale(1.08); background-color: var(--sky); }
+#acc-main-btn:hover {
+    transform: scale(1.1);
+}
 
 .acc-menu {
+    display: none;
     position: absolute;
-    bottom: 70px;
+    bottom: 75px;
     right: 0;
     width: 220px;
-    background: var(--bg-card);
-    border: 2px solid var(--sky);
-    border-radius: 10px;
+    background: #FFFFFF;
+    border: 2px solid #26A6C7;
+    border-radius: 12px;
     padding: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    display: flex;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     flex-direction: column;
     gap: 8px;
 }
 
-.acc-menu-header {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: var(--sky);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 5px;
-    text-transform: uppercase;
+.acc-menu.show {
+    display: flex !important;
+}
+
+.acc-menu h4 {
+    margin-bottom: 5px;
+    color: #2673C7;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #DDD;
+    padding-bottom: 4px;
 }
 
 .acc-menu button {
     padding: 10px;
-    border: 1px solid var(--border-color);
-    background: var(--bg-body);
-    color: var(--text-color);
+    border: 1px solid #DDD;
+    background: #F4F8FA;
+    color: #333;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
     text-align: left;
-    font-weight: 600;
-    font-size: 0.85rem;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.acc-menu button:hover { background-color: var(--teal); color: white; }
+.acc-menu button:hover {
+    background: #26C7B5;
+    color: #FFF;
+}
+
+/* --- REGRAS DE ACESSIBILIDADE APLICADAS --- */
+
+/* 1. Fonte Grande */
+body.font-big, 
+body.font-big * {
+    font-size: 1.08em !important;
+}
+
+/* 2. Modo Escuro */
+body.dark-mode {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+}
+
+body.dark-mode .main-header,
+body.dark-mode .bg-card,
+body.dark-mode .welcome-box,
+body.dark-mode .quiz-box,
+body.dark-mode .ref-card,
+body.dark-mode .acc-menu {
+    background-color: #0A0A0A !important;
+    color: #FFFFFF !important;
+    border: 1px solid #26A6C7 !important;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #121212 !important;
+    color: #FFFFFF !important;
+    border: 1px solid #26A6C7 !important;
+}
+
+/* 3. Alto Contraste */
+body.high-contrast,
+body.high-contrast * {
+    background-color: #000000 !important;
+    color: #FFFF00 !important;
+    border-color: #FFFF00 !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+body.high-contrast button,
+body.high-contrast .btn-primary,
+body.high-contrast .btn-submit,
+body.high-contrast .btn-google {
+    background-color: #FFFF00 !important;
+    color: #000000 !important;
+    font-weight: 900 !important;
+}
 
 /* Modal Google */
 .modal-overlay {
@@ -487,13 +470,4 @@ footer {
 @media (max-width: 768px) {
     .hero-section { grid-template-columns: 1fr; text-align: center; }
     .form-grid { grid-template-columns: 1fr; }
-}/* ... todo o seu CSS antigo ... */
-
-/* COLE AQUI NO FINAL DO ARQUIVO: */
-.acc-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999999 !important;
 }
-/* ... restante das regras de .acc-menu, body.dark-mode, etc ... */
