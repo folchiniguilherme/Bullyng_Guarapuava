@@ -11,7 +11,9 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <h1>🛡️ Portal Ajuda Guarapuava</h1>
+        <a href="index.html">
+          <img src="image_956a00.png" alt="Logo Portal Ajuda Guarapuava" class="site-logo">
+        </a>
       </div>
       <div class="accessibility-controls">
         <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
@@ -26,39 +28,50 @@
         <li><a href="index.html">Página Inicial</a></li>
         <li><a href="denuncia.html" class="active">Portal de Escuta</a></li>
         <li><a href="teste.html">Quiz Interativo</a></li>
+        <li><a href="contatos.html">Contatos & Ajuda</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
     <h2>🤝 Portal de Escuta e Acolhimento</h2>
-    <p class="subtitle">Este é um espaço seguro e anônimo para você desabafar ou relatar situações de bullying em escolas de Guarapuava.</p>
+    <p class="subtitle">Espaço seguro e anônimo para desabafar ou relatar ocorrências em escolas de Guarapuava.</p>
 
     <div class="escuta-grid">
       <section class="form-container">
         <h3>Formulário de Relato (Simulado)</h3>
-        <p class="small-text">ℹ️ Nenhuma informação digitada neste formulário será enviada ou salva em bancos de dados.</p>
+        <p class="small-text">ℹ️ Nenhuma informação digitada neste formulário será armazenada.</p>
         
         <form id="form-denuncia">
           <div class="form-group">
-            <label for="nome-aluno">Seu Nome (Opcional - Pode ser anônimo):</label>
+            <label for="nome-aluno">Seu Nome (Opcional):</label>
             <input type="text" id="nome-aluno" placeholder="Digite seu nome ou deixe em branco para anônimo">
           </div>
 
           <div class="form-group">
-            <label for="autor-bullying">Nome da Pessoa/Grupo Autor da Situação (Opcional):</label>
+            <label for="autor-bullying">Nome da Pessoa/Grupo Autor (Opcional):</label>
             <input type="text" id="autor-bullying" placeholder="Nome de quem praticou a atitude">
           </div>
 
           <div class="form-group">
-            <label for="escola-guarapuava">Escola onde aconteceu (Apenas Guarapuava - PR): *</label>
+            <label for="escola-guarapuava">Escola onde aconteceu (Guarapuava - PR): *</label>
             <select id="escola-guarapuava" required>
-              <option value="">-- Selecione uma escola de Guarapuava --</option>
-              <option value="Colegio Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
-              <option value="Colegio Arnaldo Busato">Colégio Estadual Arnaldo Busato</option>
-              <option value="Colegio Manoel Ribas">Colégio Estadual Manoel Ribas</option>
-              <option value="Colegio Campo Real">Colégio Campo Real</option>
-              <option value="Colegio Guairaca">Colégio Guairacá</option>
+              <option value="">-- Selecione a escola em Guarapuava --</option>
+              <option value="Colégio Estadual Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
+              <option value="Colégio Estadual Arnaldo Busato">Colégio Estadual Arnaldo Busato</option>
+              <option value="Colégio Estadual Manoel Ribas">Colégio Estadual Manoel Ribas</option>
+              <option value="Colégio Estadual Francisco Carneiro Martins">Colégio Estadual Francisco Carneiro Martins</option>
+              <option value="Colégio Estadual Antonio Tupy Pinheiro">Colégio Estadual Antonio Tupy Pinheiro</option>
+              <option value="Colégio Estadual Professor Pedro Carli">Colégio Estadual Professor Pedro Carli</option>
+              <option value="Colégio Estadual Leni Marlene Jacob">Colégio Estadual Leni Marlene Jacob</option>
+              <option value="Colégio Estadual Guairaca">Colégio Estadual Guairacá</option>
+              <option value="Colégio Estadual Padre Chagas">Colégio Estadual Padre Chagas</option>
+              <option value="Colégio Estadual Dulce Mascarenhas">Colégio Estadual Dulce Mascarenhas</option>
+              <option value="Colégio Estadual Hipólito da Costa">Colégio Estadual Hipólito da Costa</option>
+              <option value="Colégio Nossa Senhora de Belém">Colégio Nossa Senhora de Belém</option>
+              <option value="Colégio Imperatriz Dona Leopoldina">Colégio Imperatriz Dona Leopoldina</option>
+              <option value="Colégio Campo Real">Colégio Campo Real</option>
+              <option value="Colégio Aliança">Colégio Aliança</option>
               <option value="Outra Escola de Guarapuava">Outra Escola de Guarapuava</option>
             </select>
           </div>
@@ -76,7 +89,7 @@
           </div>
 
           <div class="form-group">
-            <label for="relato">Escreva aqui seu desabafo ou relato: *</label>
+            <label for="relato">Escreva seu relato: *</label>
             <textarea id="relato" rows="5" placeholder="Conte o que aconteceu..." required></textarea>
           </div>
 
@@ -88,21 +101,19 @@
 
       <aside class="sidebar-help">
         <div class="card-quote">
-          <h4>💡 Frase do Dia</h4>
-          <blockquote id="quote-display">
+          <h4>💡 Frase Motivacional</h4>
+          <blockquote>
             "A empatia é a capacidade de ver o mundo com os olhos do outro e ouvir com o coração do outro."
           </blockquote>
         </div>
 
         <div class="card-orientacao">
-          <h4>📌 O que fazer se você precisar de ajuda imediata?</h4>
-          <p>Você não precisa carregar essa dor sozinho(a). Procure apoio com:</p>
+          <h4>📌 Precisa de Ajuda?</h4>
+          <p>Não guarde a dor sozinho(a). Busque apoio com:</p>
           <ul>
-            <li>🏫 <strong>Pedagogo(a) ou Professor(a)</strong> da sua escola em Guarapuava.</li>
-            <li>👨‍👩‍👧 <strong>Pais ou Familiares</strong> de sua confiança.</li>
-            <li>👥 <strong>Direção Escolar</strong> para intervir no ambiente escolar.</li>
-            <li>📞 <strong>Disque 100 / Disque 181 (PR):</strong> Canais gratuitos e anônimos de denúncia de violação de direitos.</li>
-            <li>💚 <strong>CVV (Centro de Valorização da Vida):</strong> Ligue 188 para apoio emocional gratuito.</li>
+            <li>🏫 Pedagogo ou Direção da sua escola.</li>
+            <li>👨‍👩‍👧 Pais ou familiares de confiança.</li>
+            <li>📞 Disque 100 / Disque 181 (PR).</li>
           </ul>
         </div>
       </aside>
