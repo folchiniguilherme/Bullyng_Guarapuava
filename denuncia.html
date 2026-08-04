@@ -11,18 +11,45 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html">
-          <img src="image_956a00.png" alt="Logo Portal Ajuda Guarapuava" class="site-logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-emoji">👐</span>
+          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
-      <div class="accessibility-wrapper">
-        <button id="btn-toggle-accessibility" class="btn-acc-toggle">🚹 Acessibilidade ▾</button>
-        <div id="accessibility-menu" class="accessibility-dropdown hidden">
-          <button id="btn-font-increase" title="Aumentar Fonte">A+ Aumentar</button>
-          <button id="btn-font-decrease" title="Diminuir Fonte">A- Diminuir</button>
-          <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
-          <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+      <div class="top-bar-actions">
+        <div class="accessibility-wrapper">
+          <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
+          <div id="accessibility-menu" class="accessibility-dropdown hidden">
+            <button id="btn-font-increase">A+ Aumentar</button>
+            <button id="btn-font-decrease">A- Diminuir</button>
+            <button id="btn-dark-mode">🌙 Modo Escuro</button>
+            <button id="btn-high-contrast">👁️ Alto Contraste</button>
+          </div>
+        </div>
+
+        <div class="login-wrapper">
+          <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
+          <div id="login-dropdown" class="login-dropdown-menu hidden">
+            <h4>Acesso Seed PR</h4>
+            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+            <form id="form-login-seed">
+              <div class="role-selector">
+                <label class="role-option">
+                  <input type="radio" name="tipo_usuario" value="aluno" checked>
+                  <span class="role-box">🧑 Aluno</span>
+                </label>
+                <label class="role-option">
+                  <input type="radio" name="tipo_usuario" value="professor">
+                  <span class="role-box">👩‍🎓 Prof.</span>
+                </label>
+              </div>
+              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+              <input type="password" id="senha-seed" placeholder="••••••••" required>
+              <button type="submit" class="btn-login-submit">Entrar</button>
+            </form>
+            <div id="login-feedback" class="hidden"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -32,96 +59,43 @@
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html" class="active">Portal de Escuta</a></li>
         <li><a href="teste.html">Quiz Interativo</a></li>
-        <li><a href="contatos.html">Contatos & Ajuda</a></li>
-        <li><a href="login.html" class="nav-login">🔐 Login Seed</a></li>
+        <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
+        <li><a href="contatos.html">Contatos & Apoio</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <h2>🤝 Portal de Escuta e Acolhimento</h2>
-    <p class="subtitle">Espaço seguro e anônimo para desabafar ou relatar ocorrências em escolas de Guarapuava.</p>
+    <div class="form-container">
+      <h2>📬 Espaço de Escuta e Acolhimento</h2>
+      <p class="subtitle">Sinta-se seguro para relatar algo que presenciou ou está vivenciando. Sua identidade pode ser mantida em sigilo.</p>
 
-    <div class="escuta-grid">
-      <section class="form-container">
-        <h3>Formulário de Relato (Simulado)</h3>
-        <p class="small-text">ℹ️ Nenhuma informação digitada neste formulário será armazenada.</p>
-        
-        <form id="form-denuncia">
-          <div class="form-group">
-            <label for="nome-aluno">Seu Nome (Opcional):</label>
-            <input type="text" id="nome-aluno" placeholder="Digite seu nome ou deixe em branco para anônimo">
-          </div>
-
-          <div class="form-group">
-            <label for="autor-bullying">Nome da Pessoa/Grupo Autor (Opcional):</label>
-            <input type="text" id="autor-bullying" placeholder="Nome de quem praticou a atitude">
-          </div>
-
-          <div class="form-group">
-            <label for="escola-guarapuava">Escola onde aconteceu (Guarapuava - PR): *</label>
-            <select id="escola-guarapuava" required>
-              <option value="">-- Selecione a escola em Guarapuava --</option>
-              <option value="Colégio Estadual Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
-              <option value="Colégio Estadual Arnaldo Busato">Colégio Estadual Arnaldo Busato</option>
-              <option value="Colégio Estadual Manoel Ribas">Colégio Estadual Manoel Ribas</option>
-              <option value="Colégio Estadual Francisco Carneiro Martins">Colégio Estadual Francisco Carneiro Martins</option>
-              <option value="Colégio Estadual Antonio Tupy Pinheiro">Colégio Estadual Antonio Tupy Pinheiro</option>
-              <option value="Colégio Estadual Professor Pedro Carli">Colégio Estadual Professor Pedro Carli</option>
-              <option value="Colégio Estadual Leni Marlene Jacob">Colégio Estadual Leni Marlene Jacob</option>
-              <option value="Colégio Estadual Guairaca">Colégio Estadual Guairacá</option>
-              <option value="Colégio Estadual Padre Chagas">Colégio Estadual Padre Chagas</option>
-              <option value="Colégio Estadual Dulce Mascarenhas">Colégio Estadual Dulce Mascarenhas</option>
-              <option value="Colégio Estadual Hipólito da Costa">Colégio Estadual Hipólito da Costa</option>
-              <option value="Colégio Nossa Senhora de Belém">Colégio Nossa Senhora de Belém</option>
-              <option value="Colégio Imperatriz Dona Leopoldina">Colégio Imperatriz Dona Leopoldina</option>
-              <option value="Colégio Campo Real">Colégio Campo Real</option>
-              <option value="Colégio Aliança">Colégio Aliança</option>
-              <option value="Outra Escola de Guarapuava">Outra Escola de Guarapuava</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="tipo-ocorrencia">Tipo de Ocorrência: *</label>
-            <select id="tipo-ocorrencia" required>
-              <option value="">-- Selecione o tipo --</option>
-              <option value="Agressao Verbal">Agressão Verbal (Xingamentos/Apelidos)</option>
-              <option value="Agressao Fisica">Agressão Física ou Intimidação</option>
-              <option value="Cyberbullying">Cyberbullying (Redes Sociais)</option>
-              <option value="Exclusao Social">Exclusão / Isolamento Forçado</option>
-              <option value="Outro">Outro tipo de constrangimento</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="relato">Escreva seu relato: *</label>
-            <textarea id="relato" rows="5" placeholder="Conte o que aconteceu..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn-submit">Enviar Desabafo / Relato</button>
-        </form>
-
-        <div id="mensagem-acolhimento" class="hidden"></div>
-      </section>
-
-      <aside class="sidebar-help">
-        <div class="card-quote">
-          <h4>💡 Frase Motivacional</h4>
-          <blockquote>
-            "A empatia é a capacidade de ver o mundo com os olhos do outro e ouvir com o coração do outro."
-          </blockquote>
+      <form id="form-denuncia">
+        <div class="form-group">
+          <label for="nome-aluno">Seu Nome (Opcional):</label>
+          <input type="text" id="nome-aluno" placeholder="Deixe em branco para enviar de forma anônima">
         </div>
 
-        <div class="card-orientacao">
-          <h4>📌 Precisa de Ajuda?</h4>
-          <p>Não guarde a dor sozinho(a). Busque apoio com:</p>
-          <ul>
-            <li>🏫 Pedagogo ou Direção da sua escola.</li>
-            <li>👨‍👩‍👧 Pais ou familiares de confiança.</li>
-            <li>📞 Disque 100 / Disque 181 (PR).</li>
-          </ul>
+        <div class="form-group">
+          <label for="escola-guarapuava">Sua Escola em Guarapuava:</label>
+          <select id="escola-guarapuava" required>
+            <option value="">Selecione sua escola...</option>
+            <option value="Colégio Estadual Cívico-Militar Bento Munhoz">Colégio Cívico-Militar Bento Munhoz</option>
+            <option value="Colégio Estadual Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
+            <option value="Colégio Estadual Manoel Ribas">Colégio Estadual Manoel Ribas</option>
+            <option value="Outra">Outra Escola / Não listar</option>
+          </select>
         </div>
-      </aside>
+
+        <div class="form-group">
+          <label for="relato-texto">Conte o que aconteceu:</label>
+          <textarea id="relato-texto" rows="5" placeholder="Escreva aqui seu desabafo ou relato com o máximo de detalhes possível..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Enviar Relato</button>
+      </form>
+
+      <div id="mensagem-acolhimento" class="hidden"></div>
     </div>
   </main>
 

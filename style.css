@@ -1,13 +1,10 @@
 /* ===================================================
-   1. PALETAS DE CORES & VARIÁVEIS
+   1. PALETAS DE CORES & MODO ESCURO
    =================================================== */
-
-/* --- MODO CLARO (PADRÃO) --- */
 :root {
   --grad-1: #005CD6;
   --grad-2: #00A0D6;
   --grad-3: #00D6C9;
-  --grad-4: #00D67F;
   
   --bg-color: #f0f4f8;
   --card-bg: #ffffff;
@@ -19,8 +16,6 @@
   --footer-bg: linear-gradient(135deg, var(--grad-1), var(--grad-2));
 }
 
-/* --- MODO ESCURO (PALETA SOLICITADA) ---
-   (#0800D6, #2521A3, #2F2D70, #26253D, #292933) */
 body.dark-mode {
   --bg-color: #26253D;
   --card-bg: #292933;
@@ -31,7 +26,6 @@ body.dark-mode {
   --footer-bg: linear-gradient(135deg, #2521A3, #0800D6);
 }
 
-/* --- MODO ALTO CONTRASTE --- */
 body.high-contrast {
   --bg-color: #000000 !important;
   --card-bg: #000000 !important;
@@ -49,13 +43,6 @@ body.high-contrast .btn-login-toggle {
   border: 2px solid #ffff00 !important;
 }
 
-body.high-contrast .main-nav a:hover,
-body.high-contrast .main-nav a.active {
-  background-color: #ffff00 !important;
-  color: #000000 !important;
-}
-
-
 /* ===================================================
    2. RESET E ESTRUTURA BASE
    =================================================== */
@@ -64,7 +51,7 @@ body.high-contrast .main-nav a.active {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  transition: background 0.25s ease, color 0.25s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 html {
@@ -93,9 +80,8 @@ body {
   opacity: 0.85;
 }
 
-
 /* ===================================================
-   3. TOPO, HEADER E LOGO DE EMOJI 👐
+   3. HEADER, DROPDOWNS E NAVEGAÇÃO
    =================================================== */
 header {
   background: var(--header-bg);
@@ -119,48 +105,22 @@ header {
   color: #ffffff;
 }
 
-.logo-emoji {
-  font-size: 2.2rem;
-  line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-}
+.logo-emoji { font-size: 2.2rem; }
+.logo-text { font-size: 1.4rem; font-weight: 800; }
 
-.logo-text {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.top-bar-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
+.top-bar-actions { display: flex; gap: 12px; }
 
 .btn-acc-toggle, .btn-login-toggle {
   background: rgba(255, 255, 255, 0.95);
   color: #0800D6;
   border: none;
-  padding: 9px 16px;
+  padding: 8px 16px;
   border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
-  font-size: 0.9rem;
 }
 
-.btn-acc-toggle:hover, .btn-login-toggle:hover {
-  background: #ffffff;
-  transform: translateY(-1px);
-}
-
-
-/* ===================================================
-   4. MENUS SUSPENSOS (DROPDOWNS)
-   =================================================== */
-.accessibility-wrapper, .login-wrapper {
-  position: relative;
-}
+.accessibility-wrapper, .login-wrapper { position: relative; }
 
 .accessibility-dropdown, .login-dropdown-menu {
   position: absolute;
@@ -172,69 +132,30 @@ header {
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   z-index: 1000;
-  min-width: 260px;
-}
-
-.accessibility-dropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  min-width: 250px;
 }
 
 .accessibility-dropdown button {
+  width: 100%;
+  margin-bottom: 6px;
+  padding: 8px;
   background: var(--bg-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
-  padding: 8px 12px;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
   text-align: left;
 }
 
-.accessibility-dropdown button:hover {
-  background: var(--primary-color);
-  color: #ffffff;
-}
-
-/* Formulário do Login no Dropdown */
-.login-dropdown-menu h4 {
-  margin-bottom: 2px;
-}
-
-.login-subtext {
-  font-size: 0.8rem;
-  margin-bottom: 12px;
-  opacity: 0.8;
-}
-
-.role-selector {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
+.role-selector { display: flex; gap: 8px; margin-bottom: 10px; }
 .role-option { flex: 1; cursor: pointer; }
 .role-option input { display: none; }
-
-.role-box {
-  display: block;
-  text-align: center;
-  padding: 6px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: bold;
-}
-
-.role-option input:checked + .role-box {
-  border-color: #00D6C9;
-  background-color: rgba(0, 214, 201, 0.15);
-}
+.role-box { display: block; text-align: center; padding: 6px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.85rem; font-weight: bold; }
+.role-option input:checked + .role-box { border-color: #00D6C9; background-color: rgba(0, 214, 201, 0.15); }
 
 .login-dropdown-menu input {
   width: 100%;
-  padding: 8px 10px;
+  padding: 8px;
   margin-bottom: 8px;
   border: 1px solid var(--border-color);
   border-radius: 6px;
@@ -253,14 +174,6 @@ header {
   cursor: pointer;
 }
 
-.btn-login-submit:hover {
-  opacity: 0.9;
-}
-
-
-/* ===================================================
-   5. NAVEGAÇÃO
-   =================================================== */
 .main-nav ul {
   display: flex;
   list-style: none;
@@ -276,7 +189,6 @@ header {
   padding: 8px 16px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.2);
-  font-size: 0.95rem;
 }
 
 .main-nav a:hover, .main-nav a.active {
@@ -284,18 +196,16 @@ header {
   color: #0800D6;
 }
 
-
 /* ===================================================
-   6. CARDS, GRIDS E CONTEÚDO (INCLUINDO AJUDA.HTML)
+   4. CARDS E CONTEÚDOS
    =================================================== */
 .hero-section {
   display: flex;
   align-items: center;
   gap: 30px;
   background: var(--card-bg);
-  padding: 35px;
+  padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
   margin-bottom: 30px;
   flex-wrap: wrap;
   border-left: 8px solid var(--grad-3);
@@ -303,117 +213,66 @@ header {
 
 .hero-text { flex: 1; min-width: 280px; }
 .hero-image { flex: 1; min-width: 280px; }
+.hero-image img { width: 100%; border-radius: 12px; max-height: 250px; object-fit: cover; }
 
-.hero-image img {
-  width: 100%;
-  max-height: 300px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.info-card, .references-section, .form-container, .sidebar-help, #quiz-box, .contact-card {
+.info-card, .form-container, #quiz-box, .contact-card {
   background: var(--card-bg);
-  padding: 30px;
+  padding: 25px;
   border-radius: 16px;
-  margin-bottom: 25px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
   border: 1px solid var(--border-color);
 }
 
-.info-card h3 {
-  margin-bottom: 12px;
-  color: var(--text-color);
-}
-
-.info-card ul {
-  margin-left: 20px;
-  margin-top: 10px;
-}
-
-.info-card li {
-  margin-bottom: 8px;
-}
-
-/* Grid de cards para a página Ajuda & Bem-Estar */
-.help-cards-grid {
+.help-cards-grid, .contacts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-.highlight-card {
-  border-left: 6px solid #00D6C9;
-}
+.highlight-card { border-left: 6px solid #00D6C9; }
 
-.contacts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-
-/* ===================================================
-   7. FORMULÁRIOS & BOTÕES GERAIS
-   =================================================== */
 .btn-primary, .btn-submit {
   display: inline-block;
   background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
   color: #fff;
-  padding: 12px 28px;
+  padding: 10px 24px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 10px;
 }
 
-.btn-primary:hover, .btn-submit:hover {
-  opacity: 0.95;
-  transform: translateY(-1px);
-}
-
-.form-group { margin-bottom: 18px; }
-.form-group label { display: block; font-weight: bold; margin-bottom: 6px; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
 .form-group input, .form-group select, .form-group textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--bg-color);
   color: var(--text-color);
 }
 
-
-/* ===================================================
-   8. UTILITÁRIOS E RODAPÉ
-   =================================================== */
 .hidden { display: none !important; }
 
 #btn-back-to-top {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  background: linear-gradient(135deg, var(--grad-1), var(--grad-3));
+  background: var(--grad-1);
   color: #fff;
   border: none;
   padding: 12px 18px;
   border-radius: 50px;
   cursor: pointer;
   display: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  font-weight: bold;
 }
 
 footer {
   text-align: center;
-  padding: 25px;
+  padding: 20px;
   background: var(--footer-bg);
   color: #fff;
   margin-top: auto;
-}
-
-.powered-tag {
-  opacity: 0.8;
-  margin-top: 6px;
 }

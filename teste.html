@@ -11,18 +11,45 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html">
-          <img src="image_956a00.png" alt="Logo Portal Ajuda Guarapuava" class="site-logo">
+        <a href="index.html" class="logo-link">
+          <span class="logo-emoji">👐</span>
+          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
-      <div class="accessibility-wrapper">
-        <button id="btn-toggle-accessibility" class="btn-acc-toggle">🚹 Acessibilidade ▾</button>
-        <div id="accessibility-menu" class="accessibility-dropdown hidden">
-          <button id="btn-font-increase" title="Aumentar Fonte">A+ Aumentar</button>
-          <button id="btn-font-decrease" title="Diminuir Fonte">A- Diminuir</button>
-          <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
-          <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+      <div class="top-bar-actions">
+        <div class="accessibility-wrapper">
+          <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
+          <div id="accessibility-menu" class="accessibility-dropdown hidden">
+            <button id="btn-font-increase">A+ Aumentar</button>
+            <button id="btn-font-decrease">A- Diminuir</button>
+            <button id="btn-dark-mode">🌙 Modo Escuro</button>
+            <button id="btn-high-contrast">👁️ Alto Contraste</button>
+          </div>
+        </div>
+
+        <div class="login-wrapper">
+          <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
+          <div id="login-dropdown" class="login-dropdown-menu hidden">
+            <h4>Acesso Seed PR</h4>
+            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+            <form id="form-login-seed">
+              <div class="role-selector">
+                <label class="role-option">
+                  <input type="radio" name="tipo_usuario" value="aluno" checked>
+                  <span class="role-box">🧑 Aluno</span>
+                </label>
+                <label class="role-option">
+                  <input type="radio" name="tipo_usuario" value="professor">
+                  <span class="role-box">👩‍🎓 Prof.</span>
+                </label>
+              </div>
+              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+              <input type="password" id="senha-seed" placeholder="••••••••" required>
+              <button type="submit" class="btn-login-submit">Entrar</button>
+            </form>
+            <div id="login-feedback" class="hidden"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -32,28 +59,38 @@
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
         <li><a href="teste.html" class="active">Quiz Interativo</a></li>
-        <li><a href="contatos.html">Contatos & Ajuda</a></li>
-        <li><a href="login.html" class="nav-login">🔐 Login Seed</a></li>
+        <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
+        <li><a href="contatos.html">Contatos & Apoio</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <h2>🎯 Quiz de Convivência e Empatia</h2>
-    <p class="subtitle">Responda às 5 perguntas sorteadas para testar suas atitudes na escola!</p>
-
     <div id="quiz-box">
+      <h2>🧩 Quiz: Você sabe como reagir ao Bullying?</h2>
+      <p class="subtitle">Responda às perguntas abaixo para testar seus conhecimentos sobre respeito e empatia na escola.</p>
+
       <form id="quiz-form">
-        <div id="questions-container"></div>
-        <button type="submit" id="btn-finalizar-quiz" class="btn-primary">Ver Meu Resultado</button>
+        <div class="quiz-question">
+          <p><strong>1. Se você vir um colega sendo ridicularizado no pátio, qual é a atitude correta?</strong></p>
+          <label><input type="radio" name="q1" value="errada"> Rir junto para não virar o próximo alvo.</label><br>
+          <label><input type="radio" name="q1" value="correta"> Acolher o colega e avisar um professor/pedagogo.</label><br>
+          <label><input type="radio" name="q1" value="errada"> Gravar um vídeo e postar nas redes sociais.</label>
+        </div>
+
+        <br>
+
+        <div class="quiz-question">
+          <p><strong>2. Criar figurinhas zombando de fotos de um colega sem a permissão dele é:</strong></p>
+          <label><input type="radio" name="q2" value="correta"> Cyberbullying, pois causa constrangimento e humilhação.</label><br>
+          <label><input type="radio" name="q2" value="errada"> Apenas uma "brincadeira saudável".</label>
+        </div>
+
+        <br>
+        <button type="button" id="btn-calcular-quiz" class="btn-primary">Ver Resultado</button>
       </form>
 
-      <div id="quiz-result" class="hidden">
-        <h3>Resultado do Teste</h3>
-        <p id="result-score"></p>
-        <p id="result-message" class="result-box"></p>
-        <button id="btn-restart-quiz" class="btn-secondary">Refazer com Novas Perguntas</button>
-      </div>
+      <div id="quiz-resultado" class="hidden" style="margin-top:20px;"></div>
     </div>
   </main>
 

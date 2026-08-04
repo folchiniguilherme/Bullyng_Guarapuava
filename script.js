@@ -1,95 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ===================================================
-     1. CONTROLE DOS DROPDOWNS (ACESSIBILIDADE E LOGIN)
-     =================================================== */
-  const btnToggleAcc = document.getElementById('btn-toggle-accessibility');
+  // --- 1. MENUS DROPDOWN (LOGIN & ACESSIBILIDADE) ---
+  const btnAcc = document.getElementById('btn-toggle-accessibility');
   const accMenu = document.getElementById('accessibility-menu');
-  const btnToggleLogin = document.getElementById('btn-toggle-login');
-  const loginDropdown = document.getElementById('login-dropdown');
+  const btnLogin = document.getElementById('btn-toggle-login');
+  const loginMenu = document.getElementById('login-dropdown');
 
-  if (btnToggleAcc && accMenu) {
-    btnToggleAcc.addEventListener('click', (e) => {
+  if (btnAcc && accMenu) {
+    btnAcc.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (loginDropdown) loginDropdown.classList.add('hidden');
+      if (loginMenu) loginMenu.classList.add('hidden');
       accMenu.classList.toggle('hidden');
     });
   }
 
-  if (btnToggleLogin && loginDropdown) {
-    btnToggleLogin.addEventListener('click', (e) => {
+  if (btnLogin && loginMenu) {
+    btnLogin.addEventListener('click', (e) => {
       e.stopPropagation();
       if (accMenu) accMenu.classList.add('hidden');
-      loginDropdown.classList.toggle('hidden');
+      loginMenu.classList.toggle('hidden');
     });
   }
 
-  // Fechar menus ao clicar em qualquer lugar fora
   document.addEventListener('click', (e) => {
-    if (accMenu && !accMenu.contains(e.target) && e.target !== btnToggleAcc) {
-      accMenu.classList.add('hidden');
-    }
-    if (loginDropdown && !loginDropdown.contains(e.target) && e.target !== btnToggleLogin) {
-      loginDropdown.classList.add('hidden');
-    }
+    if (accMenu && !accMenu.contains(e.target)) accMenu.classList.add('hidden');
+    if (loginMenu && !loginMenu.contains(e.target)) loginMenu.classList.add('hidden');
   });
 
-
-  /* ===================================================
-     2. MODO ESCURO E AJUSTE DE FONTE
-     =================================================== */
+  // --- 2. TEMAS E ACESSIBILIDADE ---
   const savedTheme = localStorage.getItem('theme');
-  const savedFontSize = localStorage.getItem('fontSize');
-
   if (savedTheme === 'dark') document.body.classList.add('dark-mode');
   if (savedTheme === 'high-contrast') document.body.classList.add('high-contrast');
 
-  let fontSizePercent = savedFontSize ? parseInt(savedFontSize) : 100;
-  document.documentElement.style.fontSize = `${fontSizePercent}%`;
-
-  const btnDarkMode = document.getElementById('btn-dark-mode');
-  if (btnDarkMode) {
-    btnDarkMode.addEventListener('click', () => {
+  const btnDark = document.getElementById('btn-dark-mode');
+  if (btnDark) {
+    btnDark.addEventListener('click', () => {
       const isDark = document.body.classList.toggle('dark-mode');
       document.body.classList.remove('high-contrast');
       localStorage.setItem('theme', isDark ? 'dark' : 'default');
     });
   }
 
-  const btnHighContrast = document.getElementById('btn-high-contrast');
-  if (btnHighContrast) {
-    btnHighContrast.addEventListener('click', () => {
+  const btnContrast = document.getElementById('btn-high-contrast');
+  if (btnContrast) {
+    btnContrast.addEventListener('click', () => {
       const isContrast = document.body.classList.toggle('high-contrast');
       document.body.classList.remove('dark-mode');
       localStorage.setItem('theme', isContrast ? 'high-contrast' : 'default');
     });
   }
 
-  const btnFontIncrease = document.getElementById('btn-font-increase');
-  const btnFontDecrease = document.getElementById('btn-font-decrease');
+  let fontSize = parseInt(localStorage.getItem('fontSize')) || 100;
+  document.documentElement.style.fontSize = `${fontSize}%`;
 
-  if (btnFontIncrease && btnFontDecrease) {
-    btnFontIncrease.addEventListener('click', () => {
-      if (fontSizePercent < 140) {
-        fontSizePercent += 10;
-        document.documentElement.style.fontSize = `${fontSizePercent}%`;
-        localStorage.setItem('fontSize', fontSizePercent);
+  const btnInc = document.getElementById('btn-font-increase');
+  const btnDec = document.getElementById('btn-font-decrease');
+
+  if (btnInc && btnDec) {
+    btnInc.addEventListener('click', () => {
+      if (fontSize < 140) {
+        fontSize += 10;
+        document.documentElement.style.fontSize = `${fontSize}%`;
+        localStorage.setItem('fontSize', fontSize);
       }
     });
-
-    btnFontDecrease.addEventListener('click', () => {
-      if (fontSizePercent > 80) {
-        fontSizePercent -= 10;
-        document.documentElement.style.fontSize = `${fontSizePercent}%`;
-        localStorage.setItem('fontSize', fontSizePercent);
+    btnDec.addEventListener('click', () => {
+      if (fontSize > 80) {
+        fontSize -= 10;
+        document.documentElement.style.fontSize = `${fontSize}%`;
+        localStorage.setItem('fontSize', fontSize);
       }
     });
   }
 
-
-  /* ===================================================
-     3. LOGIN SEED DEMONSTRATIVO
-     =================================================== */
+  // --- 3. LOGIN SIMULADO SEED ---
   const formLogin = document.getElementById('form-login-seed');
   const loginFeedback = document.getElementById('login-feedback');
 
@@ -97,54 +81,62 @@ document.addEventListener('DOMContentLoaded', () => {
     formLogin.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('email-seed').value.trim();
-      
       if (!email.toLowerCase().endsWith('@escola.pr.gov.br')) {
-        loginFeedback.innerHTML = `<p style="color:#ff6b6b; font-size:0.85rem; margin-top:8px;">❌ Digite um e-mail @escola.pr.gov.br</p>`;
-        loginFeedback.classList.remove('hidden');
-        return;
+        loginFeedback.innerHTML = `<p style="color:#ff6b6b; font-size:0.8rem; margin-top:5px;">❌ Use seu e-mail @escola.pr.gov.br</p>`;
+      } else {
+        loginFeedback.innerHTML = `<p style="color:#51cf66; font-size:0.8rem; margin-top:5px;">✅ Login efetuado com sucesso!</p>`;
       }
-
-      loginFeedback.innerHTML = `<p style="color:#51cf66; font-size:0.85rem; margin-top:8px;">✅ Conectado com sucesso!</p>`;
       loginFeedback.classList.remove('hidden');
     });
   }
 
-
-  /* ===================================================
-     4. FORMULÁRIO DE ESCUTA (Apenas em denuncia.html)
-     =================================================== */
+  // --- 4. FORMULÁRIO DE ESCUTA ---
   const formDenuncia = document.getElementById('form-denuncia');
-  const msgAcolhimento = document.getElementById('mensagem-acolhimento');
+  const msgAcolhi = document.getElementById('mensagem-acolhimento');
 
-  if (formDenuncia && msgAcolhimento) {
+  if (formDenuncia && msgAcolhi) {
     formDenuncia.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nome = document.getElementById('nome-aluno')?.value.trim() || "Estudante";
-      const escola = document.getElementById('escola-guarapuava')?.value || "Escola de Guarapuava";
-
-      msgAcolhimento.innerHTML = `
-        <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-top: 15px;">
-          <h4>💙 Relato Recebido!</h4>
-          <p>Obrigado por compartilhar, <strong>${nome}</strong>. Lembre-se que você não está sozinho(a).</p>
-        </div>
-      `;
-      msgAcolhimento.classList.remove('hidden');
+      msgAcolhi.innerHTML = `<p style="color:#155724; background:#d4edda; padding:12px; border-radius:8px; margin-top:15px;">💙 Relato enviado com sucesso! Obrigado por confiar em nosso portal.</p>`;
+      msgAcolhi.classList.remove('hidden');
       formDenuncia.reset();
     });
   }
 
+  // --- 5. LÓGICA DO QUIZ ---
+  const btnQuiz = document.getElementById('btn-calcular-quiz');
+  const quizResult = document.getElementById('quiz-resultado');
 
-  /* ===================================================
-     5. BOTÃO VOLTAR AO TOPO
-     =================================================== */
-  const btnBackToTop = document.getElementById('btn-back-to-top');
-  if (btnBackToTop) {
+  if (btnQuiz && quizResult) {
+    btnQuiz.addEventListener('click', () => {
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+
+      if (!q1 || !q2) {
+        quizResult.innerHTML = `<p style="color:#ff6b6b;">⚠️ Por favor, responda todas as perguntas!</p>`;
+        quizResult.classList.remove('hidden');
+        return;
+      }
+
+      let pontos = 0;
+      if (q1.value === 'correta') pontos++;
+      if (q2.value === 'correta') pontos++;
+
+      quizResult.innerHTML = `<div style="padding:15px; background:rgba(0, 214, 201, 0.15); border-radius:8px;">
+        <h4>Você acertou ${pontos} de 2 perguntas! 🎉</h4>
+        <p>${pontos === 2 ? 'Parabéns! Você entende muito sobre respeito e acolhimento escolar.' : 'Ainda dá tempo de aprender mais! Dê uma olhada na aba Ajuda & Bem-Estar.'}</p>
+      </div>`;
+      quizResult.classList.remove('hidden');
+    });
+  }
+
+  // --- 6. BOTÃO VOLTAR AO TOPO ---
+  const btnTop = document.getElementById('btn-back-to-top');
+  if (btnTop) {
     window.addEventListener('scroll', () => {
-      btnBackToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      btnTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    btnBackToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    btnTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
 });
