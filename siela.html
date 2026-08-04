@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Início</title>
+  <title>Portal Ajuda Guarapuava - Sobre o Projeto</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,10 +21,10 @@
         <div class="accessibility-wrapper">
           <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
           <div id="accessibility-menu" class="accessibility-dropdown hidden">
-            <button id="btn-font-increase" title="Aumentar Fonte">A+ Aumentar</button>
-            <button id="btn-font-decrease" title="Diminuir Fonte">A- Diminuir</button>
-            <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
-            <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+            <button id="btn-font-increase">A+ Aumentar</button>
+            <button id="btn-font-decrease">A- Diminuir</button>
+            <button id="btn-dark-mode">🌙 Modo Escuro</button>
+            <button id="btn-high-contrast">👁️ Alto Contraste</button>
           </div>
         </div>
 
@@ -33,7 +33,6 @@
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <h4>Acesso Seed PR</h4>
             <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
-            
             <form id="form-login-seed">
               <div class="role-selector">
                 <label class="role-option">
@@ -45,7 +44,6 @@
                   <span class="role-box">👩‍🎓 Prof.</span>
                 </label>
               </div>
-
               <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
               <input type="password" id="senha-seed" placeholder="••••••••" required>
               <button type="submit" class="btn-login-submit">Entrar</button>
@@ -58,51 +56,37 @@
 
     <nav class="main-nav">
       <ul>
-        <li><a href="index.html" class="active">Início</a></li>
+        <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
         <li><a href="teste.html">Quiz Interativo</a></li>
         <li><a href="guias.html">Guias & Orientação</a></li>
-        <li><a href="sobre.html">Sobre o Projeto</a></li>
+        <li><a href="sobre.html" class="active">Sobre o Projeto</a></li>
         <li><a href="contatos.html">Contatos & Ajuda</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
-    <section class="hero-section">
-      <div class="hero-text">
-        <h2>Juntos por uma escola mais segura e acolhedora</h2>
-        <p class="welcome-message">
-          "Bem-vindo ao Portal de Apoio ao Estudante de Guarapuava. Um espaço seguro para encontrar informações, escuta e apoio."
-        </p>
-        <a href="denuncia.html" class="btn-primary">Precisa desabafar? Clique aqui</a>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Estudantes reunidos estudando juntos">
-      </div>
+    <section class="info-card">
+      <h2>💡 Sobre o Portal Ajuda Guarapuava</h2>
+      <p>
+        O <strong>Portal Ajuda Guarapuava</strong> é um projeto educacional criado com a missão de promover a cultura de paz, empatia e segurança nas instituições de ensino do município de Guarapuava - PR.
+      </p>
+      <br>
+      <h3>🎯 Nossos Objetivos</h3>
+      <ul>
+        <li>Fornecer um ambiente seguro e anônimo de desabafo para os estudantes.</li>
+        <li>Educar sobre os impactos do bullying e cyberbullying.</li>
+        <li>Conectar a comunidade escolar com órgãos de proteção (Conselho Tutelar, Disque 100, NRE).</li>
+        <li>Garantir acessibilidade digital para todos os perfis de usuários.</li>
+      </ul>
     </section>
 
     <section class="info-card">
-      <h3>O que é Bullying?</h3>
+      <h3>👨‍💻 Autoria e Desenvolvimento</h3>
       <p>
-        O bullying corresponde a atitudes agressivas, intencionais e repetitivas, que ocorrem sem motivação evidente, adotadas por um ou mais estudantes contra outro(s).
+        Este site foi idealizado, projetado e desenvolvido por <strong>Guilherme L. Folchini</strong> como uma iniciativa de tecnologia social aplicada à educação.
       </p>
-      <ul>
-        <li><strong>Agressão Verbal:</strong> Apelidos pejorativos, xingamentos e humilhações.</li>
-        <li><strong>Agressão Física:</strong> Empurrões, beliscões, agressões ou danos a pertences.</li>
-        <li><strong>Cyberbullying:</strong> Violência praticada no ambiente virtual (redes sociais, mensagens).</li>
-        <li><strong>Exclusão Social:</strong> Isolamento intencional da vítima das atividades do grupo.</li>
-      </ul>
-    </section>
-
-    <section class="references-section">
-      <h3>📚 Referências e Fontes Confiáveis</h3>
-      <ul class="ref-list">
-        <li><a href="https://www.gov.br/mdh/pt-br" target="_blank" rel="noopener">Ministério dos Direitos Humanos (Disque 100)</a></li>
-        <li><a href="http://www.crianca.mppr.mp.br/" target="_blank" rel="noopener">Promotorias da Criança e do Adolescente - MPPR</a></li>
-        <li><a href="https://www.saude.pr.gov.br/" target="_blank" rel="noopener">Secretaria de Estado da Saúde do Paraná (SESA-PR)</a></li>
-        <li><a href="https://www.unicef.org/brazil/comunicados-e-declaracoes/combate-ao-bullying-na-escola" target="_blank" rel="noopener">Cartilha de Prevenção ao Bullying - UNICEF Brasil</a></li>
-      </ul>
     </section>
   </main>
 

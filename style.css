@@ -16,8 +16,7 @@
   --footer-bg: linear-gradient(135deg, var(--grad-1), var(--grad-2));
 }
 
-/* --- PALETA MODO ESCURO SOLICITADA ---
-   (#0800D6, #2521A3, #2F2D70, #26253D, #292933) */
+/* --- MODO ESCURO SOLICITADO --- */
 body.dark-mode {
   --bg-color: #26253D;
   --card-bg: #292933;
@@ -28,7 +27,7 @@ body.dark-mode {
   --footer-bg: linear-gradient(135deg, #2521A3, #0800D6);
 }
 
-/* ALTO CONTRASTE CORRIGIDO */
+/* ALTO CONTRASTE */
 body.high-contrast {
   --bg-color: #000000 !important;
   --card-bg: #000000 !important;
@@ -38,16 +37,12 @@ body.high-contrast {
   --footer-bg: #000000 !important;
 }
 
-body.high-contrast .main-nav a {
+body.high-contrast .main-nav a,
+body.high-contrast .btn-acc-toggle,
+body.high-contrast .btn-login-toggle {
   background-color: #000000 !important;
   color: #ffff00 !important;
   border: 2px solid #ffff00 !important;
-}
-
-body.high-contrast .main-nav a:hover,
-body.high-contrast .main-nav a.active {
-  background-color: #ffff00 !important;
-  color: #000000 !important;
 }
 
 /* RESET E BASE */
@@ -76,7 +71,7 @@ body {
   padding: 0 20px;
 }
 
-/* HEADER & TOP BAR */
+/* HEADER E LOGO EMOJI */
 header {
   background: var(--header-bg);
   padding: 20px 30px;
@@ -87,69 +82,142 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.site-logo {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
 }
 
-/* ACCESSIBILITY DROPDOWN MENU */
-.accessibility-wrapper {
-  position: relative;
+.logo-emoji {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
 }
 
-.btn-acc-toggle {
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* AÇÕES DA TOP BAR (ACESSIBILIDADE E LOGIN DROPDOWNS) */
+.top-bar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-acc-toggle, .btn-login-toggle {
   background: rgba(255, 255, 255, 0.95);
   color: #0800D6;
   border: none;
-  padding: 10px 18px;
-  border-radius: 25px;
+  padding: 9px 16px;
+  border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
-.accessibility-dropdown {
+.accessibility-wrapper, .login-wrapper {
+  position: relative;
+}
+
+.accessibility-dropdown, .login-dropdown-menu {
   position: absolute;
   right: 0;
   top: 45px;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  padding: 12px;
+  padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  z-index: 100;
+  min-width: 250px;
+}
+
+.accessibility-dropdown {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  z-index: 100;
-  min-width: 180px;
 }
 
 .accessibility-dropdown button {
   background: var(--bg-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
-  padding: 8px 12px;
+  padding: 8px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   text-align: left;
 }
 
-.accessibility-dropdown button:hover {
-  background: var(--primary-color);
+/* STYLES DO LOGIN DROPDOWN */
+.login-dropdown-menu h4 {
+  margin-bottom: 2px;
+}
+
+.login-subtext {
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+  opacity: 0.8;
+}
+
+.role-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.role-option { flex: 1; cursor: pointer; }
+.role-option input { display: none; }
+.role-box {
+  display: block;
+  text-align: center;
+  padding: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.role-option input:checked + .role-box {
+  border-color: #00D6C9;
+  background-color: rgba(0, 214, 201, 0.15);
+}
+
+.login-dropdown-menu input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.btn-login-submit {
+  width: 100%;
+  background: var(--grad-1);
   color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* NAVEGAÇÃO */
 .main-nav ul {
   display: flex;
   list-style: none;
-  margin-top: 20px;
-  gap: 10px;
+  margin-top: 18px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
@@ -167,7 +235,7 @@ header {
   color: #0800D6;
 }
 
-/* HERO SECTION */
+/* CARDS E HERO */
 .hero-section {
   display: flex;
   align-items: center;
@@ -186,22 +254,12 @@ header {
 
 .hero-image img {
   width: 100%;
-  max-height: 320px;
+  max-height: 300px;
   border-radius: 12px;
   object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.welcome-message {
-  font-size: 1.1rem;
-  font-style: italic;
-  margin: 20px 0;
-  padding-left: 15px;
-  border-left: 4px solid var(--grad-4);
-}
-
-/* CARDS E GRID */
-.info-card, .references-section, .form-container, .sidebar-help, #quiz-box, .contact-card {
+.info-card, .references-section, .form-container, .sidebar-help, #quiz-box {
   background: var(--card-bg);
   padding: 30px;
   border-radius: 16px;
@@ -210,84 +268,7 @@ header {
   border: 1px solid var(--border-color);
 }
 
-.contacts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-/* LOGIN CARD */
-.login-container-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 60vh;
-}
-
-.login-card {
-  background: var(--card-bg);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  width: 100%;
-  max-width: 480px;
-  border: 1px solid var(--border-color);
-}
-
-.login-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.role-selector {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.role-option {
-  flex: 1;
-  cursor: pointer;
-}
-
-.role-option input { display: none; }
-
-.role-box {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  border: 2px solid var(--border-color);
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.role-option input:checked + .role-box {
-  border-color: #00D6C9;
-  background-color: rgba(0, 214, 201, 0.1);
-}
-
-.btn-google-login {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #ffffff;
-  color: #333;
-  border: 1px solid #ccc;
-  padding: 12px;
-  border-radius: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-.btn-google-login:hover { background: #f8f9fa; }
-.google-icon { width: 20px; height: 20px; }
-
-/* BOTÕES GERAIS */
-.btn-primary, .btn-submit, .btn-secondary {
+.btn-primary, .btn-submit {
   background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
   color: #fff;
   padding: 12px 28px;
@@ -295,25 +276,10 @@ header {
   border-radius: 30px;
   cursor: pointer;
   text-decoration: none;
-  font-size: 1rem;
   font-weight: bold;
 }
 
-.btn-primary:hover, .btn-submit:hover {
-  background: linear-gradient(90deg, var(--grad-3), var(--grad-4));
-  color: #000;
-}
-
-.form-group { margin-bottom: 18px; }
-.form-group label { display: block; font-weight: bold; margin-bottom: 6px; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  background: var(--bg-color);
-  color: var(--text-color);
-}
+.hidden { display: none; }
 
 #btn-back-to-top {
   position: fixed;
@@ -328,9 +294,6 @@ header {
   display: none;
 }
 
-.hidden { display: none; }
-
-/* FOOTER & CRÉDITOS */
 footer {
   text-align: center;
   padding: 25px;
@@ -339,8 +302,4 @@ footer {
   margin-top: 50px;
 }
 
-.powered-tag {
-  margin-top: 8px;
-  opacity: 0.8;
-  font-size: 0.85rem;
-}
+.powered-tag { opacity: 0.8; margin-top: 5px; }
