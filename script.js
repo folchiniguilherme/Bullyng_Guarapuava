@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===================================================
      1. CONTROLE DOS DROPDOWNS (ACESSIBILIDADE E LOGIN)
      =================================================== */
-
   const btnToggleAcc = document.getElementById('btn-toggle-accessibility');
   const accMenu = document.getElementById('accessibility-menu');
   const btnToggleLogin = document.getElementById('btn-toggle-login');
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Fechar menus ao clicar fora
+  // Fechar menus ao clicar em qualquer lugar fora
   document.addEventListener('click', (e) => {
     if (accMenu && !accMenu.contains(e.target) && e.target !== btnToggleAcc) {
       accMenu.classList.add('hidden');
@@ -35,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ===================================================
-     2. MODO ESCURO E ACESSIBILIDADE
-     =================================================== */
 
+  /* ===================================================
+     2. MODO ESCURO E AJUSTE DE FONTE
+     =================================================== */
   const savedTheme = localStorage.getItem('theme');
   const savedFontSize = localStorage.getItem('fontSize');
 
@@ -87,36 +86,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===================================================
-     3. LOGIN SIMULADO SEED PR
-     =================================================== */
 
+  /* ===================================================
+     3. LOGIN SEED DEMONSTRATIVO
+     =================================================== */
   const formLogin = document.getElementById('form-login-seed');
   const loginFeedback = document.getElementById('login-feedback');
 
-  if (formLogin) {
+  if (formLogin && loginFeedback) {
     formLogin.addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('email-seed').value.trim();
       
       if (!email.toLowerCase().endsWith('@escola.pr.gov.br')) {
-        loginFeedback.innerHTML = `<p style="color:#dc3545; font-size:0.8rem; margin-top:8px;">❌ Digite um e-mail @escola.pr.gov.br</p>`;
+        loginFeedback.innerHTML = `<p style="color:#ff6b6b; font-size:0.85rem; margin-top:8px;">❌ Digite um e-mail @escola.pr.gov.br</p>`;
         loginFeedback.classList.remove('hidden');
         return;
       }
 
-      loginFeedback.innerHTML = `<p style="color:#28a745; font-size:0.8rem; margin-top:8px;">✅ Conectado com sucesso!</p>`;
+      loginFeedback.innerHTML = `<p style="color:#51cf66; font-size:0.85rem; margin-top:8px;">✅ Conectado com sucesso!</p>`;
       loginFeedback.classList.remove('hidden');
     });
   }
 
-  // Voltar ao topo
+
+  /* ===================================================
+     4. FORMULÁRIO DE ESCUTA (Apenas em denuncia.html)
+     =================================================== */
+  const formDenuncia = document.getElementById('form-denuncia');
+  const msgAcolhimento = document.getElementById('mensagem-acolhimento');
+
+  if (formDenuncia && msgAcolhimento) {
+    formDenuncia.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('nome-aluno')?.value.trim() || "Estudante";
+      const escola = document.getElementById('escola-guarapuava')?.value || "Escola de Guarapuava";
+
+      msgAcolhimento.innerHTML = `
+        <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-top: 15px;">
+          <h4>💙 Relato Recebido!</h4>
+          <p>Obrigado por compartilhar, <strong>${nome}</strong>. Lembre-se que você não está sozinho(a).</p>
+        </div>
+      `;
+      msgAcolhimento.classList.remove('hidden');
+      formDenuncia.reset();
+    });
+  }
+
+
+  /* ===================================================
+     5. BOTÃO VOLTAR AO TOPO
+     =================================================== */
   const btnBackToTop = document.getElementById('btn-back-to-top');
   if (btnBackToTop) {
     window.addEventListener('scroll', () => {
       btnBackToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    btnBackToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    btnBackToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
 });
