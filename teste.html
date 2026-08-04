@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Ajuda Guarapuava - Quiz Interativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <h1>🛡️ Portal Ajuda Guarapuava</h1>
+      </div>
+      <div class="accessibility-controls">
+        <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
+        <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
+        <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
+        <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="denuncia.html">Portal de Escuta</a></li>
+        <li><a href="teste.html" class="active">Quiz Interativo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>🎯 Quiz de Convivência e Empatia</h2>
+    <p class="subtitle">A cada tentativa, 5 perguntas serão sorteadas aleatoriamente do nosso banco de 15 questões. Responda com sinceridade!</p>
+
+    <div id="quiz-box">
+      <form id="quiz-form">
+        <div id="questions-container"></div>
+        <button type="submit" id="btn-finalizar-quiz" class="btn-primary">Ver Meu Resultado</button>
+      </form>
+
+      <div id="quiz-result" class="hidden">
+        <h3>Resultado do Teste</h3>
+        <p id="result-score"></p>
+        <p id="result-message" class="result-box"></p>
+        <button id="btn-restart-quiz" class="btn-secondary">Refazer o Quiz com Novas Perguntas</button>
+      </div>
+    </div>
+  </main>
+
+  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
+
+  <footer>
+    <p>&copy; 2026 Portal Ajuda Guarapuava - Projeto Escolar de Apoio ao Estudante.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

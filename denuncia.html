@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Ajuda Guarapuava - Portal de Escuta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <h1>🛡️ Portal Ajuda Guarapuava</h1>
+      </div>
+      <div class="accessibility-controls">
+        <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
+        <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
+        <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
+        <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="denuncia.html" class="active">Portal de Escuta</a></li>
+        <li><a href="teste.html">Quiz Interativo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>🤝 Portal de Escuta e Acolhimento</h2>
+    <p class="subtitle">Este é um espaço seguro e anônimo para você desabafar ou relatar situações de bullying em escolas de Guarapuava.</p>
+
+    <div class="escuta-grid">
+      <section class="form-container">
+        <h3>Formulário de Relato (Simulado)</h3>
+        <p class="small-text">ℹ️ Nenhuma informação digitada neste formulário será enviada ou salva em bancos de dados.</p>
+        
+        <form id="form-denuncia">
+          <div class="form-group">
+            <label for="nome-aluno">Seu Nome (Opcional - Pode ser anônimo):</label>
+            <input type="text" id="nome-aluno" placeholder="Digite seu nome ou deixe em branco para anônimo">
+          </div>
+
+          <div class="form-group">
+            <label for="autor-bullying">Nome da Pessoa/Grupo Autor da Situação (Opcional):</label>
+            <input type="text" id="autor-bullying" placeholder="Nome de quem praticou a atitude">
+          </div>
+
+          <div class="form-group">
+            <label for="escola-guarapuava">Escola onde aconteceu (Apenas Guarapuava - PR): *</label>
+            <select id="escola-guarapuava" required>
+              <option value="">-- Selecione uma escola de Guarapuava --</option>
+              <option value="Colegio Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
+              <option value="Colegio Arnaldo Busato">Colégio Estadual Arnaldo Busato</option>
+              <option value="Colegio Manoel Ribas">Colégio Estadual Manoel Ribas</option>
+              <option value="Colegio Campo Real">Colégio Campo Real</option>
+              <option value="Colegio Guairaca">Colégio Guairacá</option>
+              <option value="Outra Escola de Guarapuava">Outra Escola de Guarapuava</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="tipo-ocorrencia">Tipo de Ocorrência: *</label>
+            <select id="tipo-ocorrencia" required>
+              <option value="">-- Selecione o tipo --</option>
+              <option value="Agressao Verbal">Agressão Verbal (Xingamentos/Apelidos)</option>
+              <option value="Agressao Fisica">Agressão Física ou Intimidação</option>
+              <option value="Cyberbullying">Cyberbullying (Redes Sociais)</option>
+              <option value="Exclusao Social">Exclusão / Isolamento Forçado</option>
+              <option value="Outro">Outro tipo de constrangimento</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="relato">Escreva aqui seu desabafo ou relato: *</label>
+            <textarea id="relato" rows="5" placeholder="Conte o que aconteceu..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Enviar Desabafo / Relato</button>
+        </form>
+
+        <div id="mensagem-acolhimento" class="hidden"></div>
+      </section>
+
+      <aside class="sidebar-help">
+        <div class="card-quote">
+          <h4>💡 Frase do Dia</h4>
+          <blockquote id="quote-display">
+            "A empatia é a capacidade de ver o mundo com os olhos do outro e ouvir com o coração do outro."
+          </blockquote>
+        </div>
+
+        <div class="card-orientacao">
+          <h4>📌 O que fazer se você precisar de ajuda imediata?</h4>
+          <p>Você não precisa carregar essa dor sozinho(a). Procure apoio com:</p>
+          <ul>
+            <li>🏫 <strong>Pedagogo(a) ou Professor(a)</strong> da sua escola em Guarapuava.</li>
+            <li>👨‍👩‍👧 <strong>Pais ou Familiares</strong> de sua confiança.</li>
+            <li>👥 <strong>Direção Escolar</strong> para intervir no ambiente escolar.</li>
+            <li>📞 <strong>Disque 100 / Disque 181 (PR):</strong> Canais gratuitos e anônimos de denúncia de violação de direitos.</li>
+            <li>💚 <strong>CVV (Centro de Valorização da Vida):</strong> Ligue 188 para apoio emocional gratuito.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
+
+  <footer>
+    <p>&copy; 2026 Portal Ajuda Guarapuava - Projeto Escolar de Apoio ao Estudante.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
