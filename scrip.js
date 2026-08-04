@@ -169,3 +169,169 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       question: "8. Ao perceber que um colega anda triste, calado e isolado ultimamente:",
+      options: [
+        { text: "Zombo da tristeza dele chamando de frescura.", points: 1 },
+        { text: "Ignoro completamente o comportamento.", points: 2 },
+        { text: "Penso que não é da minha conta.", points: 3 },
+        { text: "Pergunto gentilmente se ele está bem.", points: 4 },
+        { text: "Ofereço escuta empática e sugiro que busquemos apoio com a pedagogia.", points: 5 }
+      ]
+    },
+    {
+      question: "9. Se você magoar algum colega sem querer em uma brincadeira:",
+      options: [
+        { text: "Culpo a vítima dizendo que ela é 'mimada'.", points: 1 },
+        { text: "Nego que fiz algo de errado.", points: 2 },
+        { text: "Deixo o tempo passar sem tocar no assunto.", points: 3 },
+        { text: "Peço desculpas simples pelo ocorrido.", points: 4 },
+        { text: "Peço desculpas sinceras e me me me me comprometo a mudar a atitude.", points: 5 }
+      ]
+    },
+    {
+      question: "10. Quando o professor pede para formar duplas e alguém fica sobrando:",
+      options: [
+        { text: "Excluo propositalmente para o colega ficar sozinho.", points: 1 },
+        { text: "Recuso formar grupo com quem não é meu amigo.", points: 2 },
+        { text: "Aceito o colega apenas se o professor mandar.", points: 3 },
+        { text: "Acolho o colega na minha equipe sem problemas.", points: 4 },
+        { text: "Convido ativamente o colega que sobrou para se juntar ao meu grupo.", points: 5 }
+      ]
+    },
+    {
+      question: "11. Em relação às postagens de colegas nas redes sociais, qual é sua conduta?",
+      options: [
+        { text: "Deixo comentários de ódio e ofensas (hater).", points: 1 },
+        { text: "Curto publicações que zombam dos outros.", points: 2 },
+        { text: "Sou neutro nas redes sociais.", points: 3 },
+        { text: "Trato todos online com o mesmo respeito do mundo real.", points: 4 },
+        { text: "Promovo conteúdos positivos e combato o cyberbullying.", points: 5 }
+      ]
+    },
+    {
+      question: "12. Quando alguém discorda de você em um debate dentro da sala de aula:",
+      options: [
+        { text: "Ofendo a pessoa pessoalmente.", points: 1 },
+        { text: "Interrompo o colega com deboche.", points: 2 },
+        { text: "Fico com raiva e ignoro o resto da aula.", points: 3 },
+        { text: "Escuto e defendo minha ideia com educação.", points: 4 },
+        { text: "Respeito a opinião alheia e mantenho um diálogo construtivo.", points: 5 }
+      ]
+    },
+    {
+      question: "13. O que você acha de apelidos baseados em características físicas dos colegas?",
+      options: [
+        { text: "Acho ótimo e crio apelidos para todo mundo.", points: 1 },
+        { text: "Uso apelidos quando estou com raiva de alguém.", points: 2 },
+        { text: "Não uso, mas aceito se outros usarem comigo.", points: 3 },
+        { text: "Não gosto e peço para não me chamarem por apelidos.", points: 4 },
+        { text: "Reprovo totalmente o uso de apelidos pejorativos e defendo quem for alvo.", points: 5 }
+      ]
+    },
+    {
+      question: "14. Se você presenciar um ato de agressão física no ambiente escolar:",
+      options: [
+        { text: "Incentivo a briga e gravo no celular.", points: 1 },
+        { text: "Fico assistindo com a multidão.", points: 2 },
+        { text: "Saio de perto para não sobbrar para mim.", points: 3 },
+        { text: "Procuro um inspetor ou professor para intervir.", points: 4 },
+        { text: "Aviso imediatamente a direção/equipe escolar para interromper a violência.", points: 5 }
+      ]
+    },
+    {
+      question: "15. Para você, qual a importância da empatia no dia a dia da sua escola?",
+      options: [
+        { text: "Acho uma bobagem sem importância.", points: 1 },
+        { text: "Apenas algo chato que os professores mandam ouvir.", points: 2 },
+        { text: "Algo bonito na teoria, mas difícil de praticar.", points: 3 },
+        { text: "Uma qualidade fundamental para viver em sociedade.", points: 4 },
+        { text: "O pilar essencial para construir um ambiente escolar seguro e acolhedor.", points: 5 }
+      ]
+    }
+  ];
+
+  const questionsContainer = document.getElementById('questions-container');
+  const quizForm = document.getElementById('quiz-form');
+  const quizResult = document.getElementById('quiz-result');
+  const resultScore = document.getElementById('result-score');
+  const resultMessage = document.getElementById('result-message');
+  const btnRestart = document.getElementById('btn-restart-quiz');
+
+  let selectedQuestions = [];
+
+  function loadQuiz() {
+    if (!questionsContainer) return;
+
+    questionsContainer.innerHTML = '';
+    quizResult.classList.add('hidden');
+    quizForm.classList.remove('hidden');
+
+    // Embaralhar e selecionar 5 perguntas aleatórias das 15
+    const shuffled = [...questionsPool].sort(() => 0.5 - Math.random());
+    selectedQuestions = shuffled.slice(0, 5);
+
+    selectedQuestions.forEach((q, qIndex) => {
+      const card = document.createElement('div');
+      card.className = 'quiz-question-card';
+
+      let optionsHTML = '';
+      q.options.forEach((opt, optIndex) => {
+        optionsHTML += `
+          <label class="quiz-option">
+            <input type="radio" name="question_${qIndex}" value="${opt.points}" required>
+            ${opt.text}
+          </label>
+        `;
+      });
+
+      card.innerHTML = `
+        <h4>${q.question}</h4>
+        ${optionsHTML}
+      `;
+      questionsContainer.appendChild(card);
+    });
+  }
+
+  if (quizForm) {
+    loadQuiz();
+
+    quizForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let totalPoints = 0;
+      const formData = new FormData(quizForm);
+
+      for (let [key, value] of formData.entries()) {
+        totalPoints += parseInt(value);
+      }
+
+      // Máximo de pontos possível: 25 (5 perguntas * 5 pontos)
+      quizForm.classList.add('hidden');
+      quizResult.classList.remove('hidden');
+
+      resultScore.textContent = `Sua pontuação final foi: ${totalPoints} de 25 pontos.`;
+
+      // Mensagens baseadas no resultado
+      if (totalPoints < 15) {
+        resultMessage.innerHTML = `
+          ❌ <strong>Seu resultado saiu!</strong><br>
+          Parece que você não é muito bom com as pessoas. Recomendamos que você melhore em alguns pontos, reflita sobre suas atitudes e pratique mais a empatia no dia a dia.
+        `;
+      } else if (totalPoints >= 15 && totalPoints < 22) {
+        resultMessage.innerHTML = `
+          ⚠️ <strong>Seu resultado saiu!</strong><br>
+          Você tem uma boa noção de convivência, mas ainda pode evoluir! Fique atento às pequenas atitudes diárias para ajudar a combater o bullying na escola.
+        `;
+      } else {
+        resultMessage.innerHTML = `
+          🌟 <strong>Seu resultado saiu! Excelente!</strong><br>
+          Você demonstra alta empatia, respeito e é um exemplo positivo no ambiente escolar. Continue promovendo o acolhimento!
+        `;
+      }
+    });
+
+    if (btnRestart) {
+      btnRestart.addEventListener('click', loadQuiz);
+    }
+  }
+
+});
