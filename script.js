@@ -1,6 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ACESSIBILIDADE E PERSISTÊNCIA
+  /* ===================================================
+     1. MENU DE ACESSIBILIDADE RETRÁTIL & PERSISTÊNCIA
+     =================================================== */
+
+  const btnToggleAcc = document.getElementById('btn-toggle-accessibility');
+  const accMenu = document.getElementById('accessibility-menu');
+
+  if (btnToggleAcc && accMenu) {
+    btnToggleAcc.addEventListener('click', (e) => {
+      e.stopPropagation();
+      accMenu.classList.toggle('hidden');
+    });
+
+    // Fechar ao clicar fora
+    document.addEventListener('click', (e) => {
+      if (!accMenu.contains(e.target) && e.target !== btnToggleAcc) {
+        accMenu.classList.add('hidden');
+      }
+    });
+  }
+
+  // Carregar temas salvos
   const savedTheme = localStorage.getItem('theme');
   const savedFontSize = localStorage.getItem('fontSize');
 
@@ -52,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Botão Voltar ao Topo
   const btnBackToTop = document.getElementById('btn-back-to-top');
   if (btnBackToTop) {
     window.addEventListener('scroll', () => {
@@ -63,7 +85,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // FORMULÁRIO DE ESCUTA
+
+  /* ===================================================
+     2. DEMONSTRAÇÃO DE LOGIN SEED PR (login.html)
+     =================================================== */
+
+  const formLogin = document.getElementById('form-login-seed');
+  const loginFeedback = document.getElementById('login-feedback');
+
+  if (formLogin) {
+    formLogin.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email-seed').value.trim();
+      const tipoUsuario = document.querySelector('input[name="tipo_usuario"]:checked').value;
+      const icone = tipoUsuario === 'aluno' ? '🧑' : '👩‍🎓';
+
+      if (!email.toLowerCase().endsWith('@escola.pr.gov.br')) {
+        loginFeedback.innerHTML = `
+          <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; margin-top: 15px; font-weight: bold;">
+            ❌ Por favor, utilize um e-mail institucional válido da Seed PR terminado em <u>@escola.pr.gov.br</u>.
+          </div>
+        `;
+        loginFeedback.classList.remove('hidden');
+        return;
+      }
+
+      loginFeedback.innerHTML = `
+        <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-top: 15px;">
+          <h4>${icone} Login Efetuado com Sucesso!</h4>
+          <p>Bem-vindo(a), <strong>${email}</strong> (Perfil: ${tipoUsuario.toUpperCase()}).</p>
+          <p><small>Sessão simulada no ambiente de testes do Portal Ajuda Guarapuava.</small></p>
+        </div>
+      `;
+      loginFeedback.classList.remove('hidden');
+    });
+  }
+
+
+  /* ===================================================
+     3. FORMULÁRIO DE ESCUTA (denuncia.html)
+     =================================================== */
+
   const formDenuncia = document.getElementById('form-denuncia');
   const msgAcolhimento = document.getElementById('mensagem-acolhimento');
 
@@ -87,23 +150,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // BANCO DO QUIZ E LÓGICA
+
+  /* ===================================================
+     4. QUIZ DE EMPATIA (teste.html)
+     =================================================== */
+
   const questionsPool = [
     { question: "1. Como você reage ao ver um colega sendo excluído do grupo no intervalo?", options: [{ text: "Dou risada.", points: 1 }, { text: "Finjo que não vi.", points: 2 }, { text: "Fico na minha.", points: 3 }, { text: "Chamo o colega para sentar comigo.", points: 4 }, { text: "Acolho e integro ao meu grupo.", points: 5 }] },
     { question: "2. Quando presenciou piadas pejorativas sobre a aparência de alguém:", options: [{ text: "Crio novos apelidos.", points: 1 }, { text: "Dou risada.", points: 2 }, { text: "Fico calado.", points: 3 }, { text: "Peço para pararem.", points: 4 }, { text: "Defendo e aviso um professor.", points: 5 }] },
     { question: "3. Foto constrangedora de colega compartilhada no grupo da turma:", options: [{ text: "Reencaminho.", points: 1 }, { text: "Reajo com risadas.", points: 2 }, { text: "Ignoro.", points: 3 }, { text: "Peço privado para apagarem.", points: 4 }, { text: "Repreendo o ato e dou apoio à vítima.", points: 5 }] },
     { question: "4. Seu amigo praticando bullying contra outra pessoa:", options: [{ text: "Ajudo nas agressões.", points: 1 }, { text: "Apoio para não perder amizade.", points: 2 }, { text: "Não me meto.", points: 3 }, { text: "Aviso em particular que está errado.", points: 4 }, { text: "Converso seriamente para ele parar.", points: 5 }] },
-    { question: "5. Aluno novo com dificuldade de adaptação:", options: [{ text: "Zombo dele.", points: 1 }, { text: "Evito me aproximar.", points: 2 }, { text: "Deixo no canto dele.", points: 3 }, { text: "Dou boas-vindas.", points: 4 }, { text: "Mostro a escola e o apresento aos colegas.", points: 5 }] },
-    { question: "6. Boato maldoso circulando na escola:", options: [{ text: "Invento mais histórias.", points: 1 }, { text: "Repasso aos amigos.", points: 2 }, { text: "Escuto e me calo.", points: 3 }, { text: "Não repasso.", points: 4 }, { text: "Corto a fofoca e defendo o colega.", points: 5 }] },
-    { question: "7. Pessoas com estilos ou opiniões diferentes das suas:", options: [{ text: "Zombo abertamente.", points: 1 }, { text: "Falo mal pelas costas.", points: 2 }, { text: "Mantenho distância.", points: 3 }, { text: "Respeito normalmente.", points: 4 }, { text: "Valorizo a diversidade.", points: 5 }] },
-    { question: "8. Colega triste e isolado ultimamente:", options: [{ text: "Chamo de 'frescura'.", points: 1 }, { text: "Ignoro.", points: 2 }, { text: "Acho que não é problema meu.", points: 3 }, { text: "Pergunto se está bem.", points: 4 }, { text: "Ofereço escuta e sugiro buscar pedagogia.", points: 5 }] },
-    { question: "9. Se magoar um colega sem querer:", options: [{ text: "Digo que ele é 'mimado'.", points: 1 }, { text: "Nego o que fiz.", points: 2 }, { text: "Ignoro.", points: 3 }, { text: "Peço desculpas simples.", points: 4 }, { text: "Peço desculpas sinceras e me comprometo a mudar.", points: 5 }] },
-    { question: "10. Formação de duplas na aula e alguém sobra:", options: [{ text: "Excluo de propósito.", points: 1 }, { text: "Recuso o colega.", points: 2 }, { text: "Aceito só se o professor mandar.", points: 3 }, { text: "Acolho na equipe.", points: 4 }, { text: "Convido o colega ativamente para o grupo.", points: 5 }] },
-    { question: "11. Postagens dos colegas em redes sociais:", options: [{ text: "Deixo ofensas e xingamentos.", points: 1 }, { text: "Curto posts que zombam dos outros.", points: 2 }, { text: "Sou neutro.", points: 3 }, { text: "Trato com o mesmo respeito do presencial.", points: 4 }, { text: "Promovo respeito e combato o cyberbullying.", points: 5 }] },
-    { question: "12. Discordância em um debate de sala de aula:", options: [{ text: "Ofendo a pessoa.", points: 1 }, { text: "Debocho.", points: 2 }, { text: "Fico com raiva.", points: 3 }, { text: "Defendo minha ideia com educação.", points: 4 }, { text: "Mantenho um diálogo construtivo e respeitoso.", points: 5 }] },
-    { question: "13. Apelidos pejorativos baseados em aparência:", options: [{ text: "Crio para todo mundo.", points: 1 }, { text: "Uso quando estou bravo.", points: 2 }, { text: "Não uso, mas aceito.", points: 3 }, { text: "Não gosto e peço para não usarem.", points: 4 }, { text: "Reprovo totalmente o uso de apelidos pejorativos.", points: 5 }] },
-    { question: "14. Agressão física na escola:", options: [{ text: "Incentivo e gravo vídeo.", points: 1 }, { text: "Fico assistindo.", points: 2 }, { text: "Saio de perto.", points: 3 }, { text: "Procuro um inspetor ou professor.", points: 4 }, { text: "Aviso a direção imediatamente para intervir.", points: 5 }] },
-    { question: "15. Importância da empatia na escola:", options: [{ text: "Bobagem sem valor.", points: 1 }, { text: "Assunto chato.", points: 2 }, { text: "Teoria bonita, mas difícil.", points: 3 }, { text: "Qualidade importante.", points: 4 }, { text: "Pilar essencial para um ambiente seguro.", points: 5 }] }
+    { question: "5. Aluno novo com dificuldade de adaptação:", options: [{ text: "Zombo dele.", points: 1 }, { text: "Evito me aproximar.", points: 2 }, { text: "Deixo no canto dele.", points: 3 }, { text: "Dou boas-vindas.", points: 4 }, { text: "Mostro a escola e o apresento aos colegas.", points: 5 }] }
   ];
 
   const questionsContainer = document.getElementById('questions-container');

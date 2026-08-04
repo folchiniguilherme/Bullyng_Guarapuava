@@ -15,20 +15,25 @@
           <img src="image_956a00.png" alt="Logo Portal Ajuda Guarapuava" class="site-logo">
         </a>
       </div>
-      <div class="accessibility-controls">
-        <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
-        <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
-        <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
-        <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+      
+      <div class="accessibility-wrapper">
+        <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
+        <div id="accessibility-menu" class="accessibility-dropdown hidden">
+          <button id="btn-font-increase" title="Aumentar Fonte">A+ Aumentar</button>
+          <button id="btn-font-decrease" title="Diminuir Fonte">A- Diminuir</button>
+          <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
+          <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+        </div>
       </div>
     </div>
 
     <nav class="main-nav">
       <ul>
-        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html" class="active">Portal de Escuta</a></li>
         <li><a href="teste.html">Quiz Interativo</a></li>
         <li><a href="contatos.html">Contatos & Ajuda</a></li>
+        <li><a href="login.html" class="nav-login">🔐 Login Seed</a></li>
       </ul>
     </nav>
   </header>
@@ -123,7 +128,8 @@
   <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
 
   <footer>
-    <p>&copy; 2026 Portal Ajuda Guarapuava - Projeto Escolar de Apoio ao Estudante.</p>
+    <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
+    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
   </footer>
 
   <script src="script.js"></script>

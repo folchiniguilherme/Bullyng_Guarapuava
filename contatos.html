@@ -15,30 +15,34 @@
           <img src="image_956a00.png" alt="Logo Portal Ajuda Guarapuava" class="site-logo">
         </a>
       </div>
-      <div class="accessibility-controls">
-        <button id="btn-font-increase" title="Aumentar Fonte">A+</button>
-        <button id="btn-font-decrease" title="Diminuir Fonte">A-</button>
-        <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
-        <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+      
+      <div class="accessibility-wrapper">
+        <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
+        <div id="accessibility-menu" class="accessibility-dropdown hidden">
+          <button id="btn-font-increase" title="Aumentar Fonte">A+ Aumentar</button>
+          <button id="btn-font-decrease" title="Diminuir Fonte">A- Diminuir</button>
+          <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
+          <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+        </div>
       </div>
     </div>
 
     <nav class="main-nav">
       <ul>
-        <li><a href="index.html">Página Inicial</a></li>
+        <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
         <li><a href="teste.html">Quiz Interativo</a></li>
         <li><a href="contatos.html" class="active">Contatos & Ajuda</a></li>
+        <li><a href="login.html" class="nav-login">🔐 Login Seed</a></li>
       </ul>
     </nav>
   </header>
 
   <main class="container">
     <h2>📞 Canais de Apoio e Instituições de Ajuda</h2>
-    <p class="subtitle">Se precisar de orientação imediata, estes órgãos e serviços oficiais estão prontos para te ajudar:</p>
+    <p class="subtitle">Se precisar de orientação imediata, estes órgãos oficiais estão prontos para ajudar:</p>
 
     <div class="contacts-grid">
-
       <div class="contact-card">
         <h3>🏫 SEED - PR (Secretaria de Educação)</h3>
         <p>Acompanhamento e orientações para a comunidade escolar do Paraná.</p>
@@ -47,46 +51,46 @@
 
       <div class="contact-card">
         <h3>🛡️ Disque 100 (Direitos Humanos)</h3>
-        <p>Canal nacional gratuito e anônimo para denúncias de violência contra crianças e adolescentes.</p>
+        <p>Canal nacional gratuito e anônimo para denúncias de violência escolar e infantil.</p>
         <p><strong>Telefone:</strong> Ligação gratuita 100</p>
         <a href="https://www.gov.br/mdh/pt-br/disque100" target="_blank" class="contact-link">Saiba Mais no Portal Gov.br</a>
       </div>
 
       <div class="contact-card">
         <h3>🏢 Conselho Tutelar de Guarapuava</h3>
-        <p>Órgão encarregado de zelar pelos direitos das crianças e adolescentes no município.</p>
-        <p><strong>Telefone:</strong> (42) 3623-2892 / Emergency (42) 99975-3290</p>
+        <p>Zela pelos direitos das crianças e adolescentes no município.</p>
+        <p><strong>Telefone:</strong> (42) 3623-2892 / (42) 99975-3290</p>
         <a href="https://www.guarapuava.pr.gov.br/" target="_blank" class="contact-link">Prefeitura de Guarapuava</a>
       </div>
 
       <div class="contact-card">
         <h3>💚 CVV (Centro de Valorização da Vida)</h3>
-        <p>Apoio emocional e prevenção do suicídio, atendendo de forma voluntária e gratuita.</p>
-        <p><strong>Telefone:</strong> Ligue 188 (24 Horas)</p>
+        <p>Apoio emocional e escuta qualificada 24 horas por dia.</p>
+        <p><strong>Telefone:</strong> Ligue 188</p>
         <a href="https://www.cvv.org.br/" target="_blank" class="contact-link">Conversar via Chat On-line</a>
       </div>
 
       <div class="contact-card">
         <h3>🚨 Disque 181 (Denúncia Anônima PR)</h3>
-        <p>Serviço do Estado do Paraná para denúncias anônimas de qualquer tipo de crime e violência escolar.</p>
+        <p>Serviço do Estado do Paraná para denúncias sigilosas de segurança.</p>
         <p><strong>Telefone:</strong> Ligue 181</p>
         <a href="https://www.denuncia181.pr.gov.br/" target="_blank" class="contact-link">Fazer Denúncia On-line</a>
       </div>
 
       <div class="contact-card">
-        <h3>📍 NRE Guarapuava (Núcleo Regional de Educação)</h3>
-        <p>Órgão responsável pela gestão das escolas estaduais da região de Guarapuava.</p>
+        <h3>📍 NRE Guarapuava</h3>
+        <p>Núcleo Regional de Educação responsável pelas escolas estaduais da região.</p>
         <p><strong>Telefone:</strong> (42) 3621-7100</p>
         <a href="https://nreguarapuava.seed.pr.gov.br/" target="_blank" class="contact-link">Site do NRE Guarapuava</a>
       </div>
-
     </div>
   </main>
 
   <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
 
   <footer>
-    <p>&copy; 2026 Portal Ajuda Guarapuava - Projeto Escolar de Apoio ao Estudante.</p>
+    <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
+    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
   </footer>
 
   <script src="script.js"></script>

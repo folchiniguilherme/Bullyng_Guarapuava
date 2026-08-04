@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Quiz Interativo</title>
+  <title>Portal Ajuda Guarapuava - Login Seed PR</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,29 +31,49 @@
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
-        <li><a href="teste.html" class="active">Quiz Interativo</a></li>
+        <li><a href="teste.html">Quiz Interativo</a></li>
         <li><a href="contatos.html">Contatos & Ajuda</a></li>
-        <li><a href="login.html" class="nav-login">🔐 Login Seed</a></li>
+        <li><a href="login.html" class="active nav-login">🔐 Login Seed</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container">
-    <h2>🎯 Quiz de Convivência e Empatia</h2>
-    <p class="subtitle">Responda às 5 perguntas sorteadas para testar suas atitudes na escola!</p>
+  <main class="container login-container-wrapper">
+    <div class="login-card">
+      <div class="login-header">
+        <h2>Acesso Institucional Seed PR</h2>
+        <p>Utilize sua conta institucional <code>@escola.pr.gov.br</code> para entrar.</p>
+      </div>
 
-    <div id="quiz-box">
-      <form id="quiz-form">
-        <div id="questions-container"></div>
-        <button type="submit" id="btn-finalizar-quiz" class="btn-primary">Ver Meu Resultado</button>
+      <form id="form-login-seed">
+        <div class="role-selector">
+          <label class="role-option">
+            <input type="radio" name="tipo_usuario" value="aluno" checked>
+            <span class="role-box">🧑 Aluno</span>
+          </label>
+          <label class="role-option">
+            <input type="radio" name="tipo_usuario" value="professor">
+            <span class="role-box">👩‍🎓 Professor</span>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label for="email-seed">E-mail da Escola (@escola.pr.gov.br):</label>
+          <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+        </div>
+
+        <div class="form-group">
+          <label for="senha-seed">Senha:</label>
+          <input type="password" id="senha-seed" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn-google-login">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" class="google-icon">
+          Entrar com Conta Google Escola
+        </button>
       </form>
 
-      <div id="quiz-result" class="hidden">
-        <h3>Resultado do Teste</h3>
-        <p id="result-score"></p>
-        <p id="result-message" class="result-box"></p>
-        <button id="btn-restart-quiz" class="btn-secondary">Refazer com Novas Perguntas</button>
-      </div>
+      <div id="login-feedback" class="hidden"></div>
     </div>
   </main>
 
