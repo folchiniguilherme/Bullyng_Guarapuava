@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Quiz Interativo</title>
+  <title>Portal Ajuda Guarapuava - Teste de Personalidade</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,6 @@
       <div class="logo">
         <a href="index.html" class="logo-link">
           <span class="logo-emoji">👐</span>
-          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
@@ -31,23 +30,26 @@
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
-            <h4>Acesso Seed PR</h4>
-            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
-            <form id="form-login-seed">
-              <div class="role-selector">
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="aluno" checked>
-                  <span class="role-box">🧑 Aluno</span>
-                </label>
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="professor">
-                  <span class="role-box">👩‍🎓 Prof.</span>
-                </label>
-              </div>
-              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-              <input type="password" id="senha-seed" placeholder="••••••••" required>
-              <button type="submit" class="btn-login-submit">Entrar</button>
-            </form>
+            <div id="login-form-container">
+              <h4>Acesso Seed PR</h4>
+              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <form id="form-login-seed">
+                <div class="role-selector">
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="aluno" checked>
+                    <span class="role-box">🧑 Aluno</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="professor">
+                    <span class="role-box">👩‍🎓 Prof.</span>
+                  </label>
+                </div>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" required>
+                <button type="submit" class="btn-login-submit">Entrar</button>
+              </form>
+            </div>
+            <div id="user-profile-badge" class="hidden"></div>
             <div id="login-feedback" class="hidden"></div>
           </div>
         </div>
@@ -58,7 +60,7 @@
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
-        <li><a href="teste.html" class="active">Quiz Interativo</a></li>
+        <li><a href="teste.html" class="active">Teste de Personalidade</a></li>
         <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
         <li><a href="contatos.html">Contatos & Apoio</a></li>
       </ul>
@@ -66,31 +68,27 @@
   </header>
 
   <main class="container">
-    <div id="quiz-box">
-      <h2>🧩 Quiz: Você sabe como reagir ao Bullying?</h2>
-      <p class="subtitle">Responda às perguntas abaixo para testar seus conhecimentos sobre respeito e empatia na escola.</p>
+    <div id="teste-container" class="info-card">
+      <h2>🧩 Teste de Personalidade e Empatia Escolar</h2>
+      <p class="intro-text">
+        O teste serve para medir seu nível de personalidade, convivência e empatia no ambiente escolar. 
+        Serão apresentadas 5 situações aleatórias. Escolha a atitude que melhor representa sua reação natural.
+      </p>
 
-      <form id="quiz-form">
-        <div class="quiz-question">
-          <p><strong>1. Se você vir um colega sendo ridicularizado no pátio, qual é a atitude correta?</strong></p>
-          <label><input type="radio" name="q1" value="errada"> Rir junto para não virar o próximo alvo.</label><br>
-          <label><input type="radio" name="q1" value="correta"> Acolher o colega e avisar um professor/pedagogo.</label><br>
-          <label><input type="radio" name="q1" value="errada"> Gravar um vídeo e postar nas redes sociais.</label>
-        </div>
+      <div id="teste-login-required" class="hidden message-box warning-box">
+        🔒 <strong>Acesso Restrito:</strong> É necessário realizar o <strong>Login Seed</strong> (menu no topo) para fazer o teste.
+      </div>
 
-        <br>
+      <div id="teste-already-done" class="hidden message-box info-box">
+        📅 <strong>Limite Diário Alcançado:</strong> Você já realizou o teste hoje! É permitido realizar apenas 1 vez por dia para acompanhar sua evolução.
+      </div>
 
-        <div class="quiz-question">
-          <p><strong>2. Criar figurinhas zombando de fotos de um colega sem a permissão dele é:</strong></p>
-          <label><input type="radio" name="q2" value="correta"> Cyberbullying, pois causa constrangimento e humilhação.</label><br>
-          <label><input type="radio" name="q2" value="errada"> Apenas uma "brincadeira saudável".</label>
-        </div>
-
-        <br>
-        <button type="button" id="btn-calcular-quiz" class="btn-primary">Ver Resultado</button>
+      <form id="teste-form" class="hidden">
+        <div id="perguntas-dinamicas"></div>
+        <button type="button" id="btn-finalizar-teste" class="btn-primary">Calcular Nível de Personalidade</button>
       </form>
 
-      <div id="quiz-resultado" class="hidden" style="margin-top:20px;"></div>
+      <div id="teste-resultado" class="hidden" style="margin-top:25px;"></div>
     </div>
   </main>
 

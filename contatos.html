@@ -13,7 +13,6 @@
       <div class="logo">
         <a href="index.html" class="logo-link">
           <span class="logo-emoji">👐</span>
-          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
@@ -31,23 +30,26 @@
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
-            <h4>Acesso Seed PR</h4>
-            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
-            <form id="form-login-seed">
-              <div class="role-selector">
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="aluno" checked>
-                  <span class="role-box">🧑 Aluno</span>
-                </label>
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="professor">
-                  <span class="role-box">👩‍🎓 Prof.</span>
-                </label>
-              </div>
-              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-              <input type="password" id="senha-seed" placeholder="••••••••" required>
-              <button type="submit" class="btn-login-submit">Entrar</button>
-            </form>
+            <div id="login-form-container">
+              <h4>Acesso Seed PR</h4>
+              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <form id="form-login-seed">
+                <div class="role-selector">
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="aluno" checked>
+                    <span class="role-box">🧑 Aluno</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="professor">
+                    <span class="role-box">👩‍🎓 Prof.</span>
+                  </label>
+                </div>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" required>
+                <button type="submit" class="btn-login-submit">Entrar</button>
+              </form>
+            </div>
+            <div id="user-profile-badge" class="hidden"></div>
             <div id="login-feedback" class="hidden"></div>
           </div>
         </div>
@@ -58,7 +60,7 @@
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
-        <li><a href="teste.html">Quiz Interativo</a></li>
+        <li><a href="teste.html">Teste de Personalidade</a></li>
         <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
         <li><a href="contatos.html" class="active">Contatos & Apoio</a></li>
       </ul>

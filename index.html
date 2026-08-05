@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Início</title>
+  <title>Portal Ajuda Guarapuava</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,6 @@
       <div class="logo">
         <a href="index.html" class="logo-link">
           <span class="logo-emoji">👐</span>
-          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
@@ -31,23 +30,26 @@
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
-            <h4>Acesso Seed PR</h4>
-            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
-            <form id="form-login-seed">
-              <div class="role-selector">
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="aluno" checked>
-                  <span class="role-box">🧑 Aluno</span>
-                </label>
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="professor">
-                  <span class="role-box">👩‍🎓 Prof.</span>
-                </label>
-              </div>
-              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-              <input type="password" id="senha-seed" placeholder="••••••••" required>
-              <button type="submit" class="btn-login-submit">Entrar</button>
-            </form>
+            <div id="login-form-container">
+              <h4>Acesso Seed PR</h4>
+              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <form id="form-login-seed">
+                <div class="role-selector">
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="aluno" checked>
+                    <span class="role-box">🧑 Aluno</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="professor">
+                    <span class="role-box">👩‍🎓 Prof.</span>
+                  </label>
+                </div>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" required>
+                <button type="submit" class="btn-login-submit">Entrar</button>
+              </form>
+            </div>
+            <div id="user-profile-badge" class="hidden"></div>
             <div id="login-feedback" class="hidden"></div>
           </div>
         </div>
@@ -58,7 +60,7 @@
       <ul>
         <li><a href="index.html" class="active">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
-        <li><a href="teste.html">Quiz Interativo</a></li>
+        <li><a href="teste.html">Teste de Personalidade</a></li>
         <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
         <li><a href="contatos.html">Contatos & Apoio</a></li>
       </ul>
@@ -66,28 +68,28 @@
   </header>
 
   <main class="container">
-    <section class="hero-section">
-      <div class="hero-text">
-        <h2>Juntos por uma escola mais segura e acolhedora</h2>
-        <p class="subtitle">
-          "Bem-vindo ao Portal de Apoio ao Estudante de Guarapuava. Um espaço seguro para encontrar informações, escuta e apoio."
-        </p>
-        <a href="denuncia.html" class="btn-primary">Precisa desabafar? Clique aqui</a>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Estudantes unidos">
+    <section class="hero-thumbnail">
+      <div class="thumbnail-badge">REDE DE PROTEÇÃO ESCOLAR DE GUARAPUAVA</div>
+      <h1 class="hero-main-title">PORTAL AJUDA GUARAPUAVA</h1>
+      <p class="hero-description">
+        Sua plataforma integrada de escuta ativa, apoio emocional e combate ao bullying nas escolas estaduais. 
+        Um espaço seguro para desabafar, medir seu nível de empatia e encontrar auxílio rápido.
+      </p>
+      <div class="hero-buttons">
+        <a href="denuncia.html" class="btn-hero-primary">📢 Fazer um Relato Seguro</a>
+        <a href="teste.html" class="btn-hero-secondary">🧩 Fazer Teste de Personalidade</a>
       </div>
     </section>
 
     <section class="info-card">
       <h3>O que é Bullying?</h3>
       <p>
-        O bullying corresponde a atitudes agressivas, intencionais e repetitivas, que ocorrem sem motivação evidente, adotadas por um ou mais estudantes contra outro(s).
+        O bullying corresponde a atitudes agressivas, intencionais e repetitivas, adotadas por um ou mais estudantes contra outro(s).
       </p>
       <ul>
         <li><strong>Agressão Verbal:</strong> Apelidos pejorativos, xingamentos e humilhações.</li>
         <li><strong>Agressão Física:</strong> Empurrões, beliscões ou danos a pertences.</li>
-        <li><strong>Cyberbullying:</strong> Violência praticada no ambiente virtual (redes sociais, mensagens).</li>
+        <li><strong>Cyberbullying:</strong> Violência praticada no ambiente virtual (redes sociais e mensagens).</li>
         <li><strong>Exclusão Social:</strong> Isolamento intencional da vítima das atividades do grupo.</li>
       </ul>
     </section>

@@ -13,7 +13,6 @@
       <div class="logo">
         <a href="index.html" class="logo-link">
           <span class="logo-emoji">👐</span>
-          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
@@ -31,23 +30,26 @@
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
-            <h4>Acesso Seed PR</h4>
-            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
-            <form id="form-login-seed">
-              <div class="role-selector">
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="aluno" checked>
-                  <span class="role-box">🧑 Aluno</span>
-                </label>
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="professor">
-                  <span class="role-box">👩‍🎓 Prof.</span>
-                </label>
-              </div>
-              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-              <input type="password" id="senha-seed" placeholder="••••••••" required>
-              <button type="submit" class="btn-login-submit">Entrar</button>
-            </form>
+            <div id="login-form-container">
+              <h4>Acesso Seed PR</h4>
+              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <form id="form-login-seed">
+                <div class="role-selector">
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="aluno" checked>
+                    <span class="role-box">🧑 Aluno</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="professor">
+                    <span class="role-box">👩‍🎓 Prof.</span>
+                  </label>
+                </div>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" required>
+                <button type="submit" class="btn-login-submit">Entrar</button>
+              </form>
+            </div>
+            <div id="user-profile-badge" class="hidden"></div>
             <div id="login-feedback" class="hidden"></div>
           </div>
         </div>
@@ -58,7 +60,7 @@
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html" class="active">Portal de Escuta</a></li>
-        <li><a href="teste.html">Quiz Interativo</a></li>
+        <li><a href="teste.html">Teste de Personalidade</a></li>
         <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
         <li><a href="contatos.html">Contatos & Apoio</a></li>
       </ul>
@@ -77,22 +79,64 @@
         </div>
 
         <div class="form-group">
-          <label for="escola-guarapuava">Sua Escola em Guarapuava:</label>
+          <label for="escola-guarapuava">Escola Estadual em Guarapuava (29 Unidades):</label>
           <select id="escola-guarapuava" required>
             <option value="">Selecione sua escola...</option>
-            <option value="Colégio Estadual Cívico-Militar Bento Munhoz">Colégio Cívico-Militar Bento Munhoz</option>
-            <option value="Colégio Estadual Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
-            <option value="Colégio Estadual Manoel Ribas">Colégio Estadual Manoel Ribas</option>
-            <option value="Outra">Outra Escola / Não listar</option>
+            <option value="CE Profª Alba Keinert">Colégio Estadual Professora Alba Keinert</option>
+            <option value="CE Prof Amarilio">Colégio Estadual Professor Amarilio</option>
+            <option value="CE Profª Ana Vanda Bassara">Colégio Estadual Professora Ana Vanda Bassara</option>
+            <option value="CE Antonio Tupy Pinheiro">Colégio Estadual Antonio Tupy Pinheiro</option>
+            <option value="CE Benedito de Paula Louro">Colégio Estadual Benedito de Paula Louro</option>
+            <option value="CE Bento Munhoz Rocha Neto">Colégio Cívico-Militar Bento Munhoz Rocha Neto</option>
+            <option value="CE Bibiana Bitencourt">Colégio Estadual Bibiana Bitencourt</option>
+            <option value="CEEBJA Nova Visao">CEEBJA Nova Visão</option>
+            <option value="CEEP Arlindo Ribeiro">CEEP Arlindo Ribeiro</option>
+            <option value="CE Cesar Stange">Colégio Estadual Cesar Stange</option>
+            <option value="CE Padre Chagas">Colégio Estadual Padre Chagas</option>
+            <option value="CE Cristo Rei">Colégio Estadual Cristo Rei</option>
+            <option value="CE Profª Dulce Maschio">Colégio Estadual Professora Dulce Maschio</option>
+            <option value="CE Prof Francisco Carneiro Martins">Colégio Estadual Professor Francisco Carneiro Martins</option>
+            <option value="CE Visconde de Guarapuava">Colégio Estadual Visconde de Guarapuava</option>
+            <option value="CE Ver Heitor Rocha Kramer">Colégio Estadual Vereador Heitor Rocha Kramer</option>
+            <option value="CE Padre Honorino João Muraro">Colégio Estadual Padre Honorino João Muraro</option>
+            <option value="CE Profª Leni Marlene Jacob">Colégio Estadual Professora Leni Marlene Jacob</option>
+            <option value="CE Liane Marta da Costa">Colégio Estadual Liane Marta da Costa</option>
+            <option value="CE Mahatma Gandhi">Colégio Estadual Mahatma Gandhi</option>
+            <option value="CE Manoel Ribas">Colégio Estadual Manoel Ribas</option>
+            <option value="EE Moacyr Julio Silvestri">Escola Estadual Moacyr Julio Silvestri</option>
+            <option value="CE Newton Felipe Albach">Colégio Estadual Newton Felipe Albach</option>
+            <option value="CE Prof Pedro Carli">Colégio Estadual Professor Pedro Carli</option>
+            <option value="CE Dom Pedro I">Colégio Estadual Dom Pedro I</option>
+            <option value="EE Dr Rubem Fleury da Rocha">Escola Estadual Doutor Rubem Fleury da Rocha</option>
+            <option value="CE Rui Barbosa">Colégio Estadual Rui Barbosa</option>
+            <option value="CE Palmeirinha">Colégio Estadual do Campo Palmeirinha</option>
+            <option value="Outra / Não listar">Outra Instituição</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="nome-agressor">Nome do Autor / Agressor (Opcional):</label>
+          <input type="text" id="nome-agressor" placeholder="Ex: Nome do envolvido ou 'Desconhecido'">
+        </div>
+
+        <div class="form-group">
+          <label for="tipo-agressao">Tipo de Agressão:</label>
+          <select id="tipo-agressao" required>
+            <option value="">Selecione o tipo...</option>
+            <option value="Agressão Verbal">Agressão Verbal (Apelidos, xingamentos, humilhação)</option>
+            <option value="Agressão Física">Agressão Física (Empurrões, agressões, danos a pertences)</option>
+            <option value="Cyberbullying">Cyberbullying (Mensagens, vazamento de fotos, figurinhas)</option>
+            <option value="Exclusão Social">Exclusão Social / Intimidação</option>
+            <option value="Outro">Outro tipo de violência</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="relato-texto">Conte o que aconteceu:</label>
-          <textarea id="relato-texto" rows="5" placeholder="Escreva aqui seu desabafo ou relato com o máximo de detalhes possível..." required></textarea>
+          <textarea id="relato-texto" rows="5" placeholder="Escreva aqui seu desabafo ou relato com detalhes..." required></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Enviar Relato</button>
+        <button type="submit" id="btn-enviar-denuncia" class="btn-submit">Enviar Relato</button>
       </form>
 
       <div id="mensagem-acolhimento" class="hidden"></div>

@@ -13,7 +13,6 @@
       <div class="logo">
         <a href="index.html" class="logo-link">
           <span class="logo-emoji">👐</span>
-          <span class="logo-text">Ajuda Guarapuava</span>
         </a>
       </div>
       
@@ -31,23 +30,26 @@
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
-            <h4>Acesso Seed PR</h4>
-            <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
-            <form id="form-login-seed">
-              <div class="role-selector">
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="aluno" checked>
-                  <span class="role-box">🧑 Aluno</span>
-                </label>
-                <label class="role-option">
-                  <input type="radio" name="tipo_usuario" value="professor">
-                  <span class="role-box">👩‍🎓 Prof.</span>
-                </label>
-              </div>
-              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-              <input type="password" id="senha-seed" placeholder="••••••••" required>
-              <button type="submit" class="btn-login-submit">Entrar</button>
-            </form>
+            <div id="login-form-container">
+              <h4>Acesso Seed PR</h4>
+              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <form id="form-login-seed">
+                <div class="role-selector">
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="aluno" checked>
+                    <span class="role-box">🧑 Aluno</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="professor">
+                    <span class="role-box">👩‍🎓 Prof.</span>
+                  </label>
+                </div>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" required>
+                <button type="submit" class="btn-login-submit">Entrar</button>
+              </form>
+            </div>
+            <div id="user-profile-badge" class="hidden"></div>
             <div id="login-feedback" class="hidden"></div>
           </div>
         </div>
@@ -58,7 +60,7 @@
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="denuncia.html">Portal de Escuta</a></li>
-        <li><a href="teste.html">Quiz Interativo</a></li>
+        <li><a href="teste.html">Teste de Personalidade</a></li>
         <li><a href="ajuda.html" class="active">Ajuda & Bem-Estar</a></li>
         <li><a href="contatos.html">Contatos & Apoio</a></li>
       </ul>
@@ -74,26 +76,19 @@
         <h3>🛡️ Dicas para Enfrentar o Bullying</h3>
         <p>Se você está passando por provocações ou agressões, lembre-se: <strong>a culpa nunca é sua</strong>.</p>
         <ul>
-          <li><strong>Não reaja com violência:</strong> O agressor busca uma reação emotiva. Responda com firmeza ou simplesmente se afaste.</li>
-          <li><strong>Guarde evidências:</strong> Em casos de Cyberbullying, tire print das mensagens e guarde as datas.</li>
-          <li><strong>Procure um "Porto Seguro":</strong> Fique perto de amigos em quem confia durante o intervalo.</li>
-          <li><strong>Rompa o silêncio:</strong> Fale com a equipe pedagógica ou use nosso <a href="denuncia.html">Portal de Escuta</a>.</li>
+          <li><strong>Não reaja com violência:</strong> Responda com firmeza ou se afaste com segurança.</li>
+          <li><strong>Guarde evidências:</strong> Tire prints de conversas virtuais e anote datas.</li>
+          <li><strong>Busque ajuda:</strong> Fale com a equipe pedagógica ou use nosso <a href="denuncia.html">Portal de Escuta</a>.</li>
         </ul>
       </article>
 
       <article class="info-card">
-        <h3>🌱 Como Controlar a Ansiedade na Escola</h3>
-        <p>A ansiedade antes de provas ou apresentações de trabalhos pode ser avassaladora. Teste estas técnicas:</p>
+        <h3>🌱 Controle de Ansiedade</h3>
+        <p>Técnicas rápidas para aplicar na escola durante momentos de estresse:</p>
         <ul>
-          <li><strong>Técnica de Respiração 4-7-8:</strong> Inspire pelo nariz por 4s, segure por 7s e solte devagar pela boca por 8s.</li>
-          <li><strong>Foque no presente (Grounding):</strong> Olhe ao seu redor e identifique 5 coisas visíveis, 4 táticas e 3 auditivas.</li>
-          <li><strong>Organização:</strong> Divida tarefas grandes de estudo em pequenas partes diárias.</li>
+          <li><strong>Respiração 4-7-8:</strong> Inspire por 4s, segure por 7s e solte em 8s.</li>
+          <li><strong>Técnica de Aterramento (Grounding):</strong> Observe 5 objetos ao seu redor para voltar ao presente.</li>
         </ul>
-      </article>
-
-      <article class="info-card highlight-card">
-        <h3>🤝 Busca de Apoio</h3>
-        <p>Se a ansiedade está atrapalhando seu sono ou rendimento, busque apoio de psicólogos, pedagogos da escola ou ligue para o CVV (número 188).</p>
       </article>
     </div>
   </main>

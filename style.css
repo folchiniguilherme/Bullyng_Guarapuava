@@ -1,5 +1,5 @@
 /* ===================================================
-   1. PALETAS DE CORES & MODO ESCURO
+   1. PALETAS DE CORES & VARIÁVEIS
    =================================================== */
 :root {
   --grad-1: #005CD6;
@@ -81,7 +81,7 @@ body {
 }
 
 /* ===================================================
-   3. HEADER, DROPDOWNS E NAVEGAÇÃO
+   3. HEADER & HERO CENTRALIZADO (THUMBNAIL STYLE)
    =================================================== */
 header {
   background: var(--header-bg);
@@ -93,20 +93,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: #ffffff;
 }
 
 .logo-emoji { font-size: 2.2rem; }
-.logo-text { font-size: 1.4rem; font-weight: 800; }
 
 .top-bar-actions { display: flex; gap: 12px; }
 
@@ -132,7 +121,7 @@ header {
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
   z-index: 1000;
-  min-width: 250px;
+  min-width: 280px;
 }
 
 .accessibility-dropdown button {
@@ -145,6 +134,38 @@ header {
   border-radius: 6px;
   cursor: pointer;
   text-align: left;
+}
+
+/* Perfil do Usuário no Dropdown */
+.profile-card {
+  text-align: center;
+  padding: 10px;
+}
+
+.profile-avatar {
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.profile-email {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 12px;
+}
+
+.btn-logout {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .role-selector { display: flex; gap: 8px; margin-bottom: 10px; }
@@ -196,26 +217,106 @@ header {
   color: #0800D6;
 }
 
-/* ===================================================
-   4. CARDS E CONTEÚDOS
-   =================================================== */
-.hero-section {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  background: var(--card-bg);
-  padding: 30px;
-  border-radius: 16px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  border-left: 8px solid var(--grad-3);
+/* STYLES HERO THUMBNAIL */
+.hero-thumbnail {
+  background: linear-gradient(135deg, rgba(0, 92, 214, 0.9), rgba(0, 214, 201, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  padding: 60px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  margin-bottom: 35px;
 }
 
-.hero-text { flex: 1; min-width: 280px; }
-.hero-image { flex: 1; min-width: 280px; }
-.hero-image img { width: 100%; border-radius: 12px; max-height: 250px; object-fit: cover; }
+.thumbnail-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(5px);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
 
-.info-card, .form-container, #quiz-box, .contact-card {
+.hero-main-title {
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  max-width: 750px;
+  margin: 0 auto 25px auto;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background: #ffffff;
+  color: #005CD6;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-hero-secondary {
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* ===================================================
+   4. PERGUNTAS DO TESTE & CARDS
+   =================================================== */
+.question-card {
+  background: var(--bg-color);
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  border-left: 5px solid var(--grad-1);
+}
+
+.question-card p {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.question-option {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.message-box {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.warning-box { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+.info-box { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+.info-card, .form-container, .contact-card {
   background: var(--card-bg);
   padding: 25px;
   border-radius: 16px;
@@ -229,13 +330,11 @@ header {
   gap: 20px;
 }
 
-.highlight-card { border-left: 6px solid #00D6C9; }
-
 .btn-primary, .btn-submit {
   display: inline-block;
   background: linear-gradient(90deg, var(--grad-1), var(--grad-2));
   color: #fff;
-  padding: 10px 24px;
+  padding: 12px 28px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
