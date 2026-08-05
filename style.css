@@ -1,107 +1,132 @@
 /* ===================================================
-   1. PALETAS DE CORES & VARIÁVEIS
+   1. VARIÁVEIS DE DESIGN & TEMAS
    =================================================== */
 :root {
-  --grad-1: #005CD6;
-  --grad-2: #00A0D6;
-  --bg-color: #f0f4f8;
-  --card-bg: #ffffff;
-  --text-color: #1a2530;
-  --border-color: #d1e7dd;
-  --font-size-base: 16px;
-  --header-bg: linear-gradient(135deg, var(--grad-1), var(--grad-2));
-  --footer-bg: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+  --primary: #005CD6;
+  --primary-hover: #0046a3;
+  --secondary: #00A0D6;
+  --bg-main: #f4f7fb;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --font-base: 16px;
+  --header-gradient: linear-gradient(135deg, #005CD6, #00A0D6);
+  --footer-gradient: linear-gradient(135deg, #005CD6, #00A0D6);
 }
 
+/* Modo Escuro */
 body.dark-mode {
-  --bg-color: #1e1e2d;
-  --card-bg: #2b2b3d;
-  --text-color: #f0f0f5;
-  --border-color: #3f3f5a;
-  --header-bg: linear-gradient(135deg, #0f172a, #1e293b);
-  --footer-bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --header-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+  --footer-gradient: linear-gradient(135deg, #0f172a, #1e293b);
 }
 
+/* Alto Contraste */
 body.high-contrast {
-  --bg-color: #000000 !important;
-  --card-bg: #000000 !important;
-  --text-color: #ffff00 !important;
+  --bg-main: #000000 !important;
+  --bg-card: #000000 !important;
+  --text-main: #ffff00 !important;
+  --text-muted: #ffffff !important;
   --border-color: #ffffff !important;
-  --header-bg: #000000 !important;
-  --footer-bg: #000000 !important;
+  --header-gradient: #000000 !important;
+  --footer-gradient: #000000 !important;
 }
 
+/* Reset Global */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
 }
 
 html {
-  font-size: var(--font-size-base);
+  font-size: var(--font-base);
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--bg-main);
+  color: var(--text-main);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.5;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hidden {
+  display: none !important;
 }
 
 /* ===================================================
-   2. TOP BAR MAIS COMPACTA & CONTROLES
+   2. HEADER & TOP BAR REDUZIDA
    =================================================== */
 header {
-  background: var(--header-bg);
-  padding: 4px 16px; /* Reduzido para deixar mais fina */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  background: var(--header-gradient);
+  color: #ffffff;
+  padding: 6px 20px 8px 20px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 42px;
-}
-
-.logo-text {
-  color: #ffffff;
-  font-weight: 900;
-  letter-spacing: 0.8px;
-  font-size: 1rem;
+  min-height: 38px;
 }
 
 .logo-link {
   text-decoration: none;
 }
 
-.top-bar-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.logo-text {
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.6px;
 }
 
-/* Botão de Login */
+.top-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Botão de Login "Entre com o @escola" */
 .btn-login-toggle {
-  background: rgba(255, 255, 255, 0.95);
-  color: #005CD6;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
   border: none;
-  padding: 5px 12px;
-  border-radius: 14px;
+  padding: 5px 14px;
+  border-radius: var(--radius-lg);
   font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
-  transition: background 0.2s ease;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-login-toggle:hover {
   background: #ffffff;
+  transform: translateY(-1px);
 }
 
 .user-avatar-img {
@@ -109,16 +134,16 @@ header {
   height: 22px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid #005CD6;
+  border: 1.5px solid var(--primary);
 }
 
-/* Botão Circular de Acessibilidade ≣ no canto superior direito */
+/* Botão Circular de Acessibilidade ≣ */
 .btn-acc-circle {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  color: #005CD6;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
   border: none;
   font-size: 1.2rem;
   font-weight: bold;
@@ -126,15 +151,16 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-acc-circle:hover {
   background: #ffffff;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
+/* Dropdowns Position & Animation */
 .accessibility-wrapper, .login-wrapper {
   position: relative;
 }
@@ -142,14 +168,20 @@ header {
 .accessibility-dropdown, .login-dropdown-menu {
   position: absolute;
   right: 0;
-  top: 42px;
-  background: var(--card-bg);
+  top: 44px;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  padding: 14px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-  z-index: 1000;
-  min-width: 240px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 2000;
+  min-width: 250px;
+  animation: popupSlide 0.2s ease-out;
+}
+
+@keyframes popupSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .accessibility-dropdown button {
@@ -159,35 +191,38 @@ header {
   margin-bottom: 6px;
   background: transparent;
   border: 1px solid var(--border-color);
-  color: var(--text-color);
-  border-radius: 8px;
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   text-align: left;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
+  transition: all 0.2s ease;
 }
 
 .accessibility-dropdown button:hover {
-  background: var(--grad-1);
-  color: #fff;
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
 }
 
-/* Form de Login no Dropdown */
+/* Menu de Login Interno */
 .login-dropdown-menu h4 {
-  margin-bottom: 4px;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  margin-bottom: 2px;
+  color: var(--text-main);
 }
 
 .login-subtext {
   font-size: 0.75rem;
-  opacity: 0.8;
-  margin-bottom: 10px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
 }
 
 .role-selector {
   display: flex;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .role-option {
@@ -204,187 +239,406 @@ header {
   text-align: center;
   padding: 5px;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
 }
 
 .role-option input:checked + .role-box {
-  background: var(--grad-1);
+  background: var(--primary);
   color: #ffffff;
-  border-color: var(--grad-1);
-}
-
-.login-dropdown-menu input[type="email"],
-.login-dropdown-menu input[type="password"] {
-  width: 100%;
-  padding: 7px 9px;
-  margin-bottom: 8px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-size: 0.82rem;
+  border-color: var(--primary);
 }
 
 .btn-login-submit {
   width: 100%;
-  padding: 7px;
-  background: var(--grad-1);
-  color: #fff;
+  padding: 8px;
+  background: var(--primary);
+  color: #ffffff;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-/* Card de Perfil do Usuário Logado */
+.btn-login-submit:hover {
+  background: var(--primary-hover);
+}
+
+/* Profile Card (Quando Logado) */
 .profile-card {
   text-align: center;
-  padding: 8px 4px;
+  padding: 4px;
 }
 
 .profile-avatar-img {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   margin-bottom: 8px;
-  border: 2px solid var(--grad-1);
+  border: 2px solid var(--primary);
   object-fit: cover;
 }
 
 .profile-name {
-  font-weight: bold;
-  font-size: 0.95rem;
-  margin-bottom: 2px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-main);
 }
 
 .profile-email {
-  font-size: 0.78rem;
-  opacity: 0.75;
-  margin-bottom: 10px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
 }
 
-/* Navegação Principal */
+/* Navegação Abaixo do Top Bar */
+.main-nav {
+  margin-top: 6px;
+}
+
 .main-nav ul {
   display: flex;
   list-style: none;
-  margin-top: 4px;
   gap: 6px;
   flex-wrap: wrap;
 }
 
 .main-nav a {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.18);
-  font-size: 0.85rem;
+  font-size: 0.83rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.14);
   transition: all 0.2s ease;
 }
 
 .main-nav a:hover, .main-nav a.active {
   background: #ffffff;
-  color: #005CD6;
+  color: var(--primary);
 }
 
 /* ===================================================
-   3. CONTEÚDO PRINCIPAL
+   3. ESTRUTURA E CONTEÚDO PRINCIPAL
    =================================================== */
 .container {
-  max-width: 1000px;
-  margin: 20px auto;
+  max-width: 980px;
+  margin: 24px auto;
   padding: 0 16px;
   flex: 1;
+  width: 100%;
 }
 
 .subtitle {
   margin-top: 4px;
-  margin-bottom: 18px;
-  opacity: 0.85;
+  margin-bottom: 20px;
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
-.contacts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 14px;
+/* Hero / Thumbnail (Página Inicial) */
+.hero-thumbnail {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 40px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
 }
 
-.contact-card {
-  background: var(--card-bg);
-  padding: 18px;
-  border-radius: 10px;
+.thumbnail-badge {
+  display: inline-block;
+  background: rgba(0, 92, 214, 0.08);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+.hero-main-title {
+  font-size: 1.8rem;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  max-width: 620px;
+  margin: 0 auto 24px auto;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.btn-hero-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-hero-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(0, 92, 214, 0.06);
+}
+
+/* ===================================================
+   4. FORMULÁRIOS & CARDS
+   =================================================== */
+.form-container, .info-card, .contact-card {
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 92, 214, 0.15);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-main);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--border-color);
+}
+
+/* Grid de Contatos & Ajuda */
+.contacts-grid, .help-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
 }
 
 .contact-card h3 {
-  color: var(--grad-1);
-  margin-bottom: 6px;
+  color: var(--primary);
+  margin-bottom: 8px;
   font-size: 1.05rem;
 }
 
 .contact-card p {
   font-size: 0.88rem;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+/* Caixas de Alerta */
+.alert-box {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
   line-height: 1.4;
 }
 
-.hidden {
-  display: none !important;
+.alert-box.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #b45309;
+}
+
+.alert-box.info {
+  background: rgba(0, 92, 214, 0.08);
+  border: 1px solid rgba(0, 92, 214, 0.2);
+  color: var(--primary);
 }
 
 /* ===================================================
-   4. BALÃO TRANSPARENTE DE NOTIFICAÇÃO (TOAST)
+   5. TOAST, MODAL & ELEMENTOS FLUTUANTES
    =================================================== */
 .toast-balao {
   position: fixed;
-  bottom: 25px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.85);
   color: #ffffff;
-  padding: 8px 20px;
-  border-radius: 20px;
+  padding: 8px 22px;
+  border-radius: var(--radius-lg);
   font-size: 0.85rem;
   font-weight: 600;
   z-index: 3000;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-md);
 }
 
 .toast-balao.show {
   opacity: 1;
 }
 
-/* ===================================================
-   5. FOOTER & BOTÃO TOPO
-   =================================================== */
-#btn-back-to-top {
+.modal-overlay {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--grad-1);
-  color: #fff;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 50px;
-  cursor: pointer;
-  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
 }
 
+.modal-box {
+  background: var(--bg-card);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  max-width: 420px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+#btn-back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-lg);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#btn-back-to-top:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* Spinner de Carregamento */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(0, 92, 214, 0.2);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 12px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===================================================
+   6. FOOTER
+   =================================================== */
 footer {
   text-align: center;
-  padding: 12px;
-  background: var(--footer-bg);
-  color: #fff;
+  padding: 16px;
+  background: var(--footer-gradient);
+  color: #ffffff;
   margin-top: auto;
   font-size: 0.82rem;
+}
+
+footer strong {
+  font-weight: 700;
 }
