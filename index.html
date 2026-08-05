@@ -3,59 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava</title>
+  <title>Portal Ajuda Guarapuava - Início</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <div class="top-bar">
-      <div class="logo">
-        <a href="index.html" class="logo-link">
-          <span class="logo-emoji">👐</span>
-        </a>
-      </div>
-      
+      <div class="logo"><a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a></div>
       <div class="top-bar-actions">
-        <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
-          <div id="accessibility-menu" class="accessibility-dropdown hidden">
-            <button id="btn-font-increase">A+ Aumentar</button>
-            <button id="btn-font-decrease">A- Diminuir</button>
-            <button id="btn-dark-mode">🌙 Modo Escuro</button>
-            <button id="btn-high-contrast">👁️ Alto Contraste</button>
-          </div>
-        </div>
-
         <div class="login-wrapper">
-          <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
+          <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
                 <div class="role-selector">
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="aluno" checked>
-                    <span class="role-box">🧑 Aluno</span>
-                  </label>
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="professor">
-                    <span class="role-box">👩‍🎓 Prof.</span>
-                  </label>
+                  <label class="role-option"><input type="radio" name="tipo_usuario" value="aluno" checked><span class="role-box">Aluno</span></label>
+                  <label class="role-option"><input type="radio" name="tipo_usuario" value="professor"><span class="role-box">Professor</span></label>
                 </div>
                 <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-                <input type="password" id="senha-seed" placeholder="••••••••" required>
+                <input type="password" id="senha-seed" placeholder="Senha" required>
                 <button type="submit" class="btn-login-submit">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
-            <div id="login-feedback" class="hidden"></div>
+          </div>
+        </div>
+        <div class="accessibility-wrapper">
+          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
+          <div id="accessibility-menu" class="accessibility-dropdown hidden">
+            <button id="btn-font-increase">A+ Aumentar Fonte</button>
+            <button id="btn-font-decrease">A- Diminuir Fonte</button>
+            <button id="btn-dark-mode">Modo Escuro</button>
+            <button id="btn-high-contrast">Alto Contraste</button>
           </div>
         </div>
       </div>
     </div>
-
     <nav class="main-nav">
       <ul>
         <li><a href="index.html" class="active">Início</a></li>
@@ -72,36 +56,19 @@
       <div class="thumbnail-badge">REDE DE PROTEÇÃO ESCOLAR DE GUARAPUAVA</div>
       <h1 class="hero-main-title">PORTAL AJUDA GUARAPUAVA</h1>
       <p class="hero-description">
-        Sua plataforma integrada de escuta ativa, apoio emocional e combate ao bullying nas escolas estaduais. 
-        Um espaço seguro para desabafar, medir seu nível de empatia e encontrar auxílio rápido.
+        Plataforma integrada para combate ao bullying e apoio emocional. Um ambiente seguro para desabafar, aprender a lidar com a ansiedade e fortalecer a empatia nas escolas.
       </p>
       <div class="hero-buttons">
-        <a href="denuncia.html" class="btn-hero-primary">📢 Fazer um Relato Seguro</a>
-        <a href="teste.html" class="btn-hero-secondary">🧩 Fazer Teste de Personalidade</a>
+        <a href="denuncia.html" class="btn-hero-primary">Fazer um Relato Seguro</a>
+        <a href="teste.html" class="btn-hero-secondary">Medir minha Empatia</a>
       </div>
-    </section>
-
-    <section class="info-card">
-      <h3>O que é Bullying?</h3>
-      <p>
-        O bullying corresponde a atitudes agressivas, intencionais e repetitivas, adotadas por um ou mais estudantes contra outro(s).
-      </p>
-      <ul>
-        <li><strong>Agressão Verbal:</strong> Apelidos pejorativos, xingamentos e humilhações.</li>
-        <li><strong>Agressão Física:</strong> Empurrões, beliscões ou danos a pertences.</li>
-        <li><strong>Cyberbullying:</strong> Violência praticada no ambiente virtual (redes sociais e mensagens).</li>
-        <li><strong>Exclusão Social:</strong> Isolamento intencional da vítima das atividades do grupo.</li>
-      </ul>
     </section>
   </main>
 
-  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
-
+  <button id="btn-back-to-top">↑</button>
   <footer>
-    <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
-    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
+    <p>Projeto por <strong>Guilherme L. Folchini</strong> &copy; 2026 | <small>Powered by GitHub & Gemini</small></p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>

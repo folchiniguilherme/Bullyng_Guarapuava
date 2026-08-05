@@ -12,23 +12,13 @@
     <div class="top-bar">
       <div class="logo">
         <a href="index.html" class="logo-link">
-          <span class="logo-emoji">👐</span>
+          <span class="logo-text">PORTAL GUARAPUAVA</span>
         </a>
       </div>
       
       <div class="top-bar-actions">
-        <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
-          <div id="accessibility-menu" class="accessibility-dropdown hidden">
-            <button id="btn-font-increase">A+ Aumentar</button>
-            <button id="btn-font-decrease">A- Diminuir</button>
-            <button id="btn-dark-mode">🌙 Modo Escuro</button>
-            <button id="btn-high-contrast">👁️ Alto Contraste</button>
-          </div>
-        </div>
-
         <div class="login-wrapper">
-          <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
+          <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
@@ -37,11 +27,11 @@
                 <div class="role-selector">
                   <label class="role-option">
                     <input type="radio" name="tipo_usuario" value="aluno" checked>
-                    <span class="role-box">🧑 Aluno</span>
+                    <span class="role-box">Aluno</span>
                   </label>
                   <label class="role-option">
                     <input type="radio" name="tipo_usuario" value="professor">
-                    <span class="role-box">👩‍🎓 Prof.</span>
+                    <span class="role-box">Professor</span>
                   </label>
                 </div>
                 <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
@@ -50,7 +40,16 @@
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
-            <div id="login-feedback" class="hidden"></div>
+          </div>
+        </div>
+
+        <div class="accessibility-wrapper">
+          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Opções de Acessibilidade">≣</button>
+          <div id="accessibility-menu" class="accessibility-dropdown hidden">
+            <button id="btn-font-increase">A+ Aumentar Fonte</button>
+            <button id="btn-font-decrease">A- Diminuir Fonte</button>
+            <button id="btn-dark-mode">Modo Escuro</button>
+            <button id="btn-high-contrast">Alto Contraste</button>
           </div>
         </div>
       </div>
@@ -68,27 +67,24 @@
   </header>
 
   <main class="container">
-    <div id="teste-container" class="info-card">
-      <h2>🧩 Teste de Personalidade e Empatia Escolar</h2>
-      <p class="intro-text">
-        O teste serve para medir seu nível de personalidade, convivência e empatia no ambiente escolar. 
-        Serão apresentadas 5 situações aleatórias. Escolha a atitude que melhor representa sua reação natural.
-      </p>
+    <div class="contact-card">
+      <h2>Questionário de Convivência & Empatia Escolar</h2>
+      <p class="subtitle">Responda com sinceridade às questões abaixo para refletir sobre seu papel na convivência escolar.</p>
 
-      <div id="teste-login-required" class="hidden message-box warning-box">
-        🔒 <strong>Acesso Restrito:</strong> É necessário realizar o <strong>Login Seed</strong> (menu no topo) para fazer o teste.
+      <div id="teste-login-required" class="hidden alert-box warning">
+        <strong>Atenção:</strong> É necessário estar logado com seu e-mail <code>@escola.pr.gov.br</code> para realizar o teste.
       </div>
 
-      <div id="teste-already-done" class="hidden message-box info-box">
-        📅 <strong>Limite Diário Alcançado:</strong> Você já realizou o teste hoje! É permitido realizar apenas 1 vez por dia para acompanhar sua evolução.
+      <div id="teste-already-done" class="hidden alert-box info">
+        <strong>Você já realizou o teste hoje!</strong> Volte amanhã para fazer uma nova avaliação.
       </div>
 
       <form id="teste-form" class="hidden">
-        <div id="perguntas-dinamicas"></div>
-        <button type="button" id="btn-finalizar-teste" class="btn-primary">Calcular Nível de Personalidade</button>
+        <div id="container-perguntas"></div>
+        <button type="submit" id="btn-finalizar-teste" class="btn-primary" style="margin-top: 20px; width: 100%;">Finalizar e Ver Resultado</button>
       </form>
 
-      <div id="teste-resultado" class="hidden" style="margin-top:25px;"></div>
+      <div id="teste-resultado" class="hidden result-box"></div>
     </div>
   </main>
 
