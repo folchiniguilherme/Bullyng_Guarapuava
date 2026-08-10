@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Escuta Segura</title>
+  <title>Portal Guarapuava - Escuta Segura</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,29 +11,19 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
+        <a href="index.html" class="logo-link">PORTAL GUARAPUAVA</a>
       </div>
       <div class="top-bar-actions">
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
-              <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Utilize sua conta <code>@escola.pr.gov.br</code></p>
+              <h4 style="margin-bottom:4px; font-size:0.9rem;">Acesso Seed PR</h4>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:12px;">Utilize sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
-                <div class="role-selector">
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="aluno" checked>
-                    <span class="role-box">Aluno</span>
-                  </label>
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="professor">
-                    <span class="role-box">Professor</span>
-                  </label>
-                </div>
-                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-                <input type="password" id="senha-seed" placeholder="••••••••" required>
-                <button type="submit" class="btn-login-submit">Entrar</button>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" style="margin-bottom:10px;" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" style="margin-bottom:12px;" required>
+                <button type="submit" class="btn-primary" style="width:100%; padding:8px;">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
@@ -41,7 +31,7 @@
         </div>
 
         <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Opções de Acessibilidade">≣</button>
+          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Acessibilidade">≣</button>
           <div id="accessibility-menu" class="accessibility-dropdown hidden">
             <button id="btn-font-increase">A+ Aumentar Fonte</button>
             <button id="btn-font-decrease">A- Diminuir Fonte</button>
@@ -69,7 +59,7 @@
       <p class="subtitle">Um canal protegido para expor situações de bullying ou desabafar com sigilo.</p>
 
       <div id="denuncia-login-gate" class="alert-box warning hidden">
-        <strong>🔒 Acesso Restrito:</strong> É necessário estar logado com sua conta <code>@escola.pr.gov.br</code> para acessar o formulário de escuta. Clique em <strong>"Entre com o @escola"</strong> no menu superior.
+        🔒 <strong>Acesso Restrito:</strong> É necessário estar logado com sua conta <code>@escola.pr.gov.br</code> para acessar o formulário de escuta. Clique em <strong>"Entre com o @escola"</strong> no menu superior.
       </div>
 
       <form id="form-denuncia" class="hidden">
@@ -115,18 +105,13 @@
         </div>
 
         <div class="form-group">
-          <label for="nome-agressor">Pessoa ou Autor da Agressão (Opcional):</label>
-          <input type="text" id="nome-agressor" placeholder="Nome ou apelido (se souber)">
-        </div>
-
-        <div class="form-group">
           <label for="tipo-agressao">Tipo de Ocorrência:</label>
           <select id="tipo-agressao" required>
             <option value="">-- Selecione o tipo --</option>
             <option value="Verbal">Agressão Verbal / Ofensas</option>
             <option value="Física">Agressão Física ou Ameaças</option>
             <option value="Cyberbullying">Cyberbullying / Redes Sociais</option>
-            <option value="Exclusão">Exclusão Social e Isolamento</option>
+            <option value="Exclusão">Exclusão Social / Isolamento</option>
             <option value="Outro">Outros Tipos de Conflito</option>
           </select>
         </div>
@@ -136,34 +121,26 @@
           <textarea id="relato-texto" rows="5" placeholder="Escreva aqui detalhadamente o que ocorreu..." required></textarea>
         </div>
 
-        <button type="submit" class="btn-primary" style="width: 100%;">Enviar Relato Protegido</button>
+        <button type="submit" class="btn-primary" style="width:100%;">Enviar Relato Protegido</button>
       </form>
     </div>
   </main>
 
   <div id="modal-confirmacao" class="modal-overlay hidden">
     <div class="modal-box">
-      <div id="modal-loading" class="spinner hidden"></div>
-      <div id="modal-content-step1">
-        <h3>Confirmar Envio</h3>
-        <p>Seu relato será registrado com sigilo. Deseja prosseguir?</p>
-        <div class="modal-buttons">
-          <button id="btn-modal-sim" class="btn-primary">Sim, Enviar</button>
-          <button id="btn-modal-cancelar" class="btn-secondary">Cancelar</button>
-        </div>
-      </div>
-      <div id="modal-content-step2" class="hidden">
-        <span class="success-icon">✓</span>
-        <h3>Relato Enviado com Sucesso!</h3>
+      <h3>Confirmar Envio</h3>
+      <p style="margin:12px 0; font-size:0.9rem; color:var(--text-muted);">Seu relato será enviado de forma confidencial. Deseja prosseguir?</p>
+      <div class="modal-buttons">
+        <button id="btn-modal-sim" class="btn-primary">Sim, Enviar</button>
+        <button id="btn-modal-cancelar" class="btn-secondary">Cancelar</button>
       </div>
     </div>
   </div>
 
-  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
+  <button id="btn-back-to-top">↑ Topo</button>
 
   <footer>
     <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
-    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
   </footer>
 
   <script src="script.js"></script>

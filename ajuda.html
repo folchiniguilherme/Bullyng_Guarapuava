@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Ajuda & Bem-Estar</title>
+  <title>Portal Guarapuava - Ajuda & Bem-Estar</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,18 +11,19 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
+        <a href="index.html" class="logo-link">PORTAL GUARAPUAVA</a>
       </div>
       <div class="top-bar-actions">
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
-              <h4>Acesso Seed PR</h4>
+              <h4 style="margin-bottom:4px; font-size:0.9rem;">Acesso Seed PR</h4>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:12px;">Utilize sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
-                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-                <input type="password" id="senha-seed" placeholder="••••••••" required>
-                <button type="submit" class="btn-login-submit">Entrar</button>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" style="margin-bottom:10px;" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" style="margin-bottom:12px;" required>
+                <button type="submit" class="btn-primary" style="width:100%; padding:8px;">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
@@ -30,7 +31,7 @@
         </div>
 
         <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
+          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Acessibilidade">≣</button>
           <div id="accessibility-menu" class="accessibility-dropdown hidden">
             <button id="btn-font-increase">A+ Aumentar Fonte</button>
             <button id="btn-font-decrease">A- Diminuir Fonte</button>
@@ -54,47 +55,45 @@
 
   <main class="container">
     <div class="section-header">
-      <h2>🌱 Guia de Saúde Mental & Convivência</h2>
-      <p>Ferramentas práticas para encarar desafios emocionais na escola e na vida pessoal.</p>
+      <h2>🌱 Guia Prático de Saúde Mental e Convivência</h2>
+      <p class="subtitle">Orientações úteis para aplicar na sua rotina diária no colégio.</p>
     </div>
 
     <div class="contacts-grid">
       <div class="contact-card">
-        <h3>🛡️ Enfrando o Bullying & Cyberbullying</h3>
-        <p><strong>Não devolva na mesma moeda:</strong> Reagir com agressão gera uma escalada da situação.</p>
-        <p><strong>Guarde evidências:</strong> Caso ocorra no meio digital, tire prints das conversas e links.</p>
-        <p><strong>Acione a escola:</strong> Converse com um pedagogo ou professor de sua confiança.</p>
+        <h3 style="color:var(--primary); margin-bottom:8px;">🛡️ Enfrentando o Bullying</h3>
+        <p><strong>• Guarde Provas:</strong> Em casos digitais (cyberbullying), tire prints de mensagens e perfis.</p>
+        <p><strong>• Não Reaja com Violência:</strong> Agressão gera mais conflito. Mantenha a calma e busque ajuda.</p>
+        <p><strong>• Procure a Equipe:</strong> Avise o pedagogo ou professor responsável na escola.</p>
       </div>
 
       <div class="contact-card">
-        <h3>🧘 Exercício de Respiração (Técnica 4-7-8)</h3>
-        <p>Quando sentir ansiedade ou taquicardia em provas/apresentações:</p>
-        <p><strong>1. Inspire:</strong> Pelo nariz suavemente durante 4 segundos.</p>
-        <p><strong>2. Segure:</strong> O ar nos pulmões por 7 segundos.</p>
-        <p><strong>3. Solte:</strong> Devagar pela boca durante 8 segundos. Repita 4 vezes.</p>
+        <h3 style="color:var(--primary); margin-bottom:8px;">🧘 Técnica de Respiração (4-7-8)</h3>
+        <p>Em momentos de ansiedade ou nervosismo antes de apresentações:</p>
+        <p><strong>1. Inspire</strong> pelo nariz durante 4 segundos.</p>
+        <p><strong>2. Segure</strong> o ar nos pulmões durante 7 segundos.</p>
+        <p><strong>3. Solte</strong> o ar pela boca suavemente por 8 segundos. Repita 4 vezes.</p>
       </div>
 
       <div class="contact-card">
-        <h3>💙 Como Apoiar um Amigo Triste</h3>
-        <p><strong>Escuta sem Julgamento:</strong> Pergunte como a pessoa está se sentindo e apenas ouça.</p>
-        <p><strong>Respeite o Tempo:</strong> Não force a pessoa a expor o que não deseja no momento.</p>
-        <p><strong>Acompanhe:</strong> Se notar sinais graves de isolamento, avise a equipe pedagógica.</p>
+        <h3 style="color:var(--primary); margin-bottom:8px;">💙 Apoiando um Amigo</h3>
+        <p><strong>• Escute sem Julgar:</strong> Dê espaço para a pessoa expor o que sente sem interrupções.</p>
+        <p><strong>• Valide os Sentimentos:</strong> Evite frases como "isso é bobagem" ou "já vai passar".</p>
+        <p><strong>• Chame Ajuda Profissional:</strong> Se notá-lo muito isolado, avise um adulto de confiança.</p>
       </div>
 
       <div class="contact-card">
-        <h3>📚 Organização da Rotina de Estudos</h3>
-        <p><strong>Pausas Curtas:</strong> Estude 25 minutos e descanse 5 minutos (Método Pomodoro).</p>
-        <p><strong>Evite Comparações:</strong> Cada pessoa possui seu tempo de aprendizado e adaptação.</p>
-        <p><strong>Sono Regulado:</strong> Priorize dormir bem para garantir foco e regulação emocional.</p>
+        <h3 style="color:var(--primary); margin-bottom:8px;">📚 Foco e Organização</h3>
+        <p><strong>• Técnica Pomodoro:</strong> Estude 25 minutos e descanse 5 minutos para não sobrecarregar a mente.</p>
+        <p><strong>• Sono de Qualidade:</strong> Dormir de 7 a 8 horas por noite é essencial para a retenção de conteúdo.</p>
       </div>
     </div>
   </main>
 
-  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
+  <button id="btn-back-to-top">↑ Topo</button>
 
   <footer>
     <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
-    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
   </footer>
 
   <script src="script.js"></script>

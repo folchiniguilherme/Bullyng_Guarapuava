@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Teste de Personalidade</title>
+  <title>Portal Guarapuava - Teste de Personalidade</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,19 +11,19 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
+        <a href="index.html" class="logo-link">PORTAL GUARAPUAVA</a>
       </div>
       <div class="top-bar-actions">
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
-              <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Utilize sua conta <code>@escola.pr.gov.br</code></p>
+              <h4 style="margin-bottom:4px; font-size:0.9rem;">Acesso Seed PR</h4>
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:12px;">Utilize sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
-                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-                <input type="password" id="senha-seed" placeholder="••••••••" required>
-                <button type="submit" class="btn-login-submit">Entrar</button>
+                <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" style="margin-bottom:10px;" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" style="margin-bottom:12px;" required>
+                <button type="submit" class="btn-primary" style="width:100%; padding:8px;">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
+          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Acessibilidade">≣</button>
           <div id="accessibility-menu" class="accessibility-dropdown hidden">
             <button id="btn-font-increase">A+ Aumentar Fonte</button>
             <button id="btn-font-decrease">A- Diminuir Fonte</button>
@@ -56,30 +56,29 @@
   <main class="container">
     <div class="contact-card">
       <h2>🧩 Teste de Empatia e Convivência Escolar</h2>
-      <p class="subtitle">Responda às questões hipotéticas e conheça o seu perfil de ação na comunidade escolar.</p>
+      <p class="subtitle">Responda com sinceridade às questões para descobrir o seu perfil de atitude na comunidade escolar.</p>
 
       <div id="teste-login-required" class="alert-box warning hidden">
-        🔒 <strong>Atenção:</strong> Faça login com seu e-mail <code>@escola.pr.gov.br</code> no menu superior para realizar este teste.
+        🔒 <strong>Atenção:</strong> Faça login com seu e-mail <code>@escola.pr.gov.br</code> no menu superior para acessar o teste.
       </div>
 
       <div id="teste-already-done" class="alert-box info hidden">
-        📅 <strong>Você já fez a autoavaliação hoje!</strong> Seu teste poderá ser refeito novamente amanhã.
+        📅 <strong>Você já realizou esta autoavaliação hoje!</strong> Volte amanhã para fazer um novo teste.
       </div>
 
       <form id="teste-form" class="hidden">
         <div id="container-perguntas"></div>
-        <button type="submit" class="btn-primary" style="margin-top:20px; width:100%;">Finalizar e Gerar Perfil</button>
+        <button type="submit" class="btn-primary" style="width:100%; margin-top:16px;">Finalizar e Ver Perfil</button>
       </form>
 
       <div id="teste-resultado" class="hidden"></div>
     </div>
   </main>
 
-  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
+  <button id="btn-back-to-top">↑ Topo</button>
 
   <footer>
     <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
-    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
   </footer>
 
   <script src="script.js"></script>
