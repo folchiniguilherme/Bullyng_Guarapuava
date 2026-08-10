@@ -1,18 +1,17 @@
 /* ===================================================
-   PALETA OFICIAL DE GUARAPUAVA & VARIÁVEIS DE TEMA
+   COR PRINCIPAL: #00750C (VERDE GUARAPUAVA)
    =================================================== */
 :root {
-  --g-blue: #004375;
-  --g-teal: #006875;
-  --g-green: #00750C;
-  --g-emerald: #00755B;
+  --primary: #00750C;
+  --primary-hover: #005208;
+  --primary-light: rgba(0, 117, 12, 0.12);
+  --secondary: #004375;
+  --accent: #006875;
   
-  --primary: var(--g-blue);
-  --primary-hover: #002d50;
   --bg-main: #f4f7fb;
   --bg-card: #ffffff;
   --bg-input: #ffffff;
-  --bg-header: linear-gradient(135deg, #004375, #006875);
+  --bg-header: #00750C;
   --text-main: #0f172a;
   --text-muted: #475569;
   --border-color: #cbd5e1;
@@ -22,12 +21,13 @@
 }
 
 body.dark-mode {
-  --primary: #38bdf8;
-  --primary-hover: #0284c7;
+  --primary: #22c55e;
+  --primary-hover: #16a34a;
+  --primary-light: rgba(34, 197, 94, 0.15);
   --bg-main: #0b1329;
   --bg-card: #1e293b;
   --bg-input: #0f172a;
-  --bg-header: linear-gradient(135deg, #07162c, #0d2838);
+  --bg-header: #07162c;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --border-color: #334155;
@@ -66,7 +66,7 @@ body {
 
 .hidden { display: none !important; }
 
-/* HEADER & ESTRUTURA */
+/* HEADER E LOGO SVG */
 header {
   background: var(--bg-header);
   color: #ffffff;
@@ -75,7 +75,7 @@ header {
   top: 0;
   z-index: 1000;
   box-shadow: var(--shadow-md);
-  border-bottom: 3px solid var(--g-emerald);
+  border-bottom: 3px solid var(--primary-hover);
 }
 
 .top-bar {
@@ -93,11 +93,10 @@ header {
   gap: 12px;
 }
 
-.brasao-img {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.25));
+.brasao-svg {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
 }
 
 .logo-link {
@@ -118,9 +117,9 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
 
 .btn-login-toggle {
   background: #ffffff;
-  color: var(--g-blue);
+  color: var(--primary);
   border: none;
-  padding: 7px 16px;
+  padding: 8px 16px;
   border-radius: 20px;
   font-weight: 700;
   font-size: 0.82rem;
@@ -132,7 +131,7 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: var(--g-emerald);
+  background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
   border: none;
   font-size: 1.2rem;
@@ -193,15 +192,15 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   font-size: 0.85rem;
   padding: 6px 14px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.15);
 }
 
 .main-nav a.active, .main-nav a:hover {
-  background: var(--g-green);
-  color: #ffffff;
+  background: #ffffff;
+  color: var(--primary);
 }
 
-/* LAYOUT E CARDS */
+/* ESTRUTURA PRINCIPAL */
 .container {
   max-width: 960px;
   margin: 24px auto;
@@ -215,7 +214,7 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
 
 .hero-card {
   background: var(--bg-card);
-  border-left: 6px solid var(--g-green);
+  border-left: 6px solid var(--primary);
   border-right: 1px solid var(--border-color);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -227,8 +226,8 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
 }
 
 .hero-tag {
-  background: rgba(0, 117, 12, 0.12);
-  color: var(--g-green);
+  background: var(--primary-light);
+  color: var(--primary);
   font-size: 0.78rem;
   font-weight: 800;
   padding: 4px 12px;
@@ -257,8 +256,8 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
 }
 
 .feature-icon { font-size: 2.2rem; margin-bottom: 8px; }
-.mural-card { border-top: 3px solid var(--g-emerald); }
-.mural-author { font-weight: 700; color: var(--g-blue); font-size: 0.88rem; margin-bottom: 6px; }
+.mural-card { border-top: 3px solid var(--primary); }
+.mural-author { font-weight: 700; color: var(--primary); font-size: 0.88rem; margin-bottom: 6px; }
 
 .form-group { margin-bottom: 16px; }
 .form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; }
@@ -274,7 +273,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .btn-primary {
-  background: var(--g-blue);
+  background: var(--primary);
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -285,9 +284,10 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   text-decoration: none;
   display: inline-block;
 }
+.btn-primary:hover { background: var(--primary-hover); }
 
 .btn-secondary {
-  background: var(--g-green);
+  background: var(--secondary);
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -301,14 +301,14 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 
 .alert-box { padding: 14px 18px; border-radius: 6px; font-size: 0.88rem; margin-bottom: 18px; }
 .alert-box.warning { background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #b45309; }
-.alert-box.info { background: rgba(0, 104, 117, 0.12); border: 1px solid var(--g-teal); color: var(--text-main); }
+.alert-box.info { background: var(--primary-light); border: 1px solid var(--primary); color: var(--text-main); }
 
 /* CHAT DA IA (GUARABOT) */
 .ai-widget-button {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: var(--g-green);
+  background: var(--primary);
   color: #ffffff;
   border: none;
   padding: 12px 20px;
@@ -324,8 +324,8 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   position: fixed;
   bottom: 85px;
   right: 24px;
-  width: 340px;
-  height: 460px;
+  width: 350px;
+  height: 480px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
@@ -337,7 +337,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .ai-chat-header {
-  background: var(--g-blue);
+  background: var(--primary);
   color: #ffffff;
   padding: 12px 16px;
   display: flex;
@@ -357,13 +357,13 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   font-size: 0.88rem;
 }
 
-.chat-msg { max-width: 82%; padding: 9px 13px; border-radius: 12px; line-height: 1.4; }
-.chat-msg.bot { background: rgba(0, 104, 117, 0.12); color: var(--text-main); align-self: flex-start; }
-.chat-msg.user { background: var(--g-blue); color: #ffffff; align-self: flex-end; }
+.chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; line-height: 1.4; }
+.chat-msg.bot { background: var(--primary-light); color: var(--text-main); align-self: flex-start; border-left: 3px solid var(--primary); }
+.chat-msg.user { background: var(--primary); color: #ffffff; align-self: flex-end; }
 
 .ai-chat-input-area { padding: 10px; border-top: 1px solid var(--border-color); display: flex; gap: 6px; }
 .ai-chat-input-area input { flex: 1; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 20px; outline: none; }
-.ai-chat-input-area button { background: var(--g-green); color: #ffffff; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+.ai-chat-input-area button { background: var(--primary); color: #ffffff; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; }
 
 .toast-balao {
   position: fixed;
@@ -402,7 +402,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 
 #btn-back-to-top {
   position: fixed; bottom: 85px; left: 20px;
-  background: var(--g-blue); color: #ffffff; border: none;
+  background: var(--primary); color: #ffffff; border: none;
   padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700;
   display: none;
 }

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===================================================
-  // 1. CHAT DA IA (GUARABOT) - PROTEGIDO CONTRA ERROS
+  // 1. MOTOR DA IA (GUARABOT DINÂMICO E COMPLETO)
   // ===================================================
   const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
   const aiWindow = document.getElementById('ai-chat-window');
@@ -24,23 +24,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function processarPerguntaIA(pergunta) {
-      const p = pergunta.toLowerCase();
+      const p = pergunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       let resposta = "";
 
-      if (p.includes('oi') || p.includes('olá') || p.includes('boa')) {
-        resposta = "Olá! Sou o **GuaraBot**, assistente virtual das escolas de Guarapuava. Como posso te ajudar hoje?";
-      } else if (p.includes('bullying') || p.includes('ofensa') || p.includes('ameaça')) {
-        resposta = "Se você estiver passando por bullying, acesse a aba **Portal de Escuta** para registrar um relato sigiloso.";
-      } else if (p.includes('ansie') || p.includes('triste') || p.includes('calma') || p.includes('medo')) {
-        resposta = "Para momentos difíceis, experimente a respiração 4-7-8 (inspire por 4s, segure por 7s e solte por 8s). Veja mais na aba **Ajuda & Bem-Estar**.";
-      } else if (p.includes('escola') || p.includes('colegio')) {
-        resposta = "Atendemos todas as 29 Escolas Estaduais do município de Guarapuava!";
-      } else if (p.includes('ligar') || p.includes('contato') || p.includes('emergencia') || p.includes('cvv')) {
-        resposta = "Para apoio emocional urgente, ligue gratuitamente para o **CVV no número 188** (disponível 24 horas).";
-      } else {
-        resposta = "Compreendo! Você pode usar o menu para enviar um **Relato**, testar sua empatia no **Quiz**, ou conferir nossos guias.";
+      // Matriz de Inteligência por Intenção
+      if (p.includes('oi') || p.includes('ola') || p.includes('bom dia') || p.includes('boa tarde') || p.includes('boa noite')) {
+        resposta = "Olá! Sou o **GuaraBot**, assistente de convivência escolar de Guarapuava. Como posso te apoiar hoje?";
+      } 
+      else if (p.includes('bullying') || p.includes('ofensa') || p.includes('ameaca') || p.includes('zoacao') || p.includes('xingamento')) {
+        resposta = "Ninguém deve passar por bullying sozinho. Você pode fazer um relato 100% seguro na aba **Portal de Escuta**. Se preferir não se identificar, o formulário permite envio anônimo.";
+      } 
+      else if (p.includes('ansie') || p.includes('triste') || p.includes('medo') || p.includes('pânico') || p.includes('desespero') || p.includes('choro')) {
+        resposta = "Sinto muito que esteja se sentindo assim. Tente fazer a **técnica de respiração 4-7-8**: inspire por 4 segundos, segure por 7 segundos e solte devagar em 8 segundos. Acesse a aba **Ajuda & Bem-Estar** para mais dicas.";
+      } 
+      else if (p.includes('ligar') || p.includes('emergencia') || p.includes('cvv') || p.includes('socorro') || p.includes('telefone') || p.includes('ajuda urgente')) {
+        resposta = "Para ajuda e apoio emocional urgente 24h, ligue gratuitamente para o **CVV no número 188**. Se for situação grave na escola, procure a direção ou o Conselho Tutelar de Guarapuava no telefone (42) 99975-3162.";
+      } 
+      else if (p.includes('escola') || p.includes('colegio') || p.includes('guarapuava') || p.includes('onde')) {
+        resposta = "Nossa plataforma atende todas as **29 Escolas Estaduais do município de Guarapuava**. Você pode selecionar seu colégio na aba de Relato.";
+      } 
+      else if (p.includes('login') || p.includes('email') || p.includes('escola.pr') || p.includes('acesso')) {
+        resposta = "Para acessar recursos restritos como o relato e o teste de personalidade, clique no botão **'Entre com o @escola'** no topo do site e use seu e-mail institucional do Paraná.";
+      }
+      else if (p.includes('teste') || p.includes('quiz') || p.includes('empatia')) {
+        resposta = "O **Teste de Empatia** ajuda você a refletir sobre suas atitudes no dia a dia escolar. Você encontra o link direto no menu superior!";
+      }
+      else if (p.includes('mural') || p.includes('mensagem') || p.includes('recado')) {
+        resposta = "Você pode publicar mensagens de incentivo para outros alunos diretamente no **Mural de Apoio** localizado na página inicial.";
+      }
+      else {
+        resposta = "Entendi! Você pode me perguntar sobre **Bullying**, **Ansiedade**, **Contatos de Emergência (CVV)** ou navegar pelo menu para fazer um **Relato** ou o **Teste de Empatia**.";
       }
 
+      // Simula digitação humana
       setTimeout(() => adicionarMensagem('bot', resposta), 400);
     }
 
@@ -60,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================
-  // 2. TEMAS E ACESSIBILIDADE
+  // 2. ACESSIBILIDADE E TEMAS
   // ===================================================
   const savedTheme = localStorage.getItem('appTheme');
   if (savedTheme === 'dark') document.body.classList.add('dark-mode');
@@ -119,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         savedFontSize += 10;
         document.documentElement.style.fontSize = `${savedFontSize}%`;
         localStorage.setItem('appFontSize', savedFontSize);
-        mostrarToast("Tamanho da fonte aumentado");
+        mostrarToast("Fonte Aumentada");
       }
     };
   }
@@ -131,13 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
         savedFontSize -= 10;
         document.documentElement.style.fontSize = `${savedFontSize}%`;
         localStorage.setItem('appFontSize', savedFontSize);
-        mostrarToast("Tamanho da fonte diminuído");
+        mostrarToast("Fonte Diminuída");
       }
     };
   }
 
   // ===================================================
-  // 3. LOGIN COM @escola.pr.gov.br
+  // 3. LOGIN @escola.pr.gov.br
   // ===================================================
   const btnLoginToggle = document.getElementById('btn-toggle-login');
   const loginMenu = document.getElementById('login-dropdown');
@@ -185,13 +201,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = emailInput ? emailInput.value.trim() : '';
 
       if (!email.toLowerCase().endsWith('@escola.pr.gov.br')) {
-        alert("Atenção: É necessário utilizar um e-mail com final @escola.pr.gov.br");
+        alert("Atenção: É necessário utilizar um e-mail @escola.pr.gov.br");
         return;
       }
 
       const nome = email.split('@')[0].replace(/\./g, ' ').toUpperCase();
       localStorage.setItem('seedUser', JSON.stringify({ email, nome }));
-      mostrarToast("Login realizado com sucesso!");
+      mostrarToast("Login efetuado com sucesso!");
       location.reload();
     };
   }
@@ -236,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('muralPosts', JSON.stringify(posts));
         formNovoPost.reset();
         carregarMural();
-        mostrarToast("Sua mensagem foi publicada no mural!");
+        mostrarToast("Mensagem publicada no mural!");
       }
     };
   }
@@ -269,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnSim) {
       btnSim.onclick = () => {
-        alert("Seu relato foi enviado com sucesso e total confidencialidade!");
+        alert("Seu relato foi enviado com total sigilo!");
         location.reload();
       };
     }
@@ -308,19 +324,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderizarPerguntasQuiz() {
     const bancoPerguntas = [
       {
-        q: "1. Ao ver um colega isolado no intervalo, você:",
+        q: "1. Ao ver um colega isolado no intervalo, qual é a sua atitude?",
         opts: [
           { txt: "Aproximo-me e o convido para conversar.", pts: 3 },
-          { txt: "Cumprimento educadamente de longe.", pts: 2 },
-          { txt: "Não faço nada, pois não o conheço.", pts: 1 }
+          { txt: "Cumprimento de longe com simpatia.", pts: 2 },
+          { txt: "Não faço nada, pois prefiro não me envolver.", pts: 1 }
         ]
       },
       {
-        q: "2. Quando alguém discorda de você em um trabalho de grupo:",
+        q: "2. Quando um colega discorda da sua opinião em um trabalho de grupo:",
         opts: [
-          { txt: "Escuto com atenção para encontrar um meio-termo.", pts: 3 },
-          { txt: "Aceito a vontade da maioria sem discutir.", pts: 2 },
-          { txt: "Insisto até que todos concordem comigo.", pts: 1 }
+          { txt: "Escuto com atenção para tentar entender o ponto dele.", pts: 3 },
+          { txt: "Aceito a opinião dele apenas para evitar discussões.", pts: 2 },
+          { txt: "Insisto fortemente até que ele concorde comigo.", pts: 1 }
         ]
       }
     ];
@@ -361,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resContainer.innerHTML = `
           <div class="alert-box info" style="text-align:center;">
             <h3>Autoavaliação Concluída!</h3>
-            <p style="margin-top:10px;">Obrigado por praticar a empatia e fazer da escola um lugar melhor!</p>
+            <p style="margin-top:10px;">Obrigado por exercitar a empatia no cotidiano escolar!</p>
           </div>
         `;
       }
