@@ -10,7 +10,8 @@
 
   <header>
     <div class="top-bar">
-      <div class="logo">
+      <div class="brand-container">
+        <img src="image_f3b6c3.png" alt="Brasão de Guarapuava" class="brasao-img">
         <a href="index.html" class="logo-link">PORTAL GUARAPUAVA</a>
       </div>
       <div class="top-bar-actions">
@@ -106,6 +107,24 @@
       <div id="mural-feed" class="mural-grid"></div>
     </section>
   </main>
+
+  <button id="btn-toggle-ai-chat" class="ai-widget-button">🤖 IA de Apoio</button>
+
+  <div id="ai-chat-window" class="ai-chat-window hidden">
+    <div class="ai-chat-header">
+      <h4>🤖 GuaraBot - Assistente Estudantil</h4>
+      <button id="btn-close-ai" class="btn-close-chat">&times;</button>
+    </div>
+    <div id="ai-chat-messages" class="ai-chat-messages">
+      <div class="chat-msg bot">
+        Olá! Sou o **GuaraBot**, assistente de convivência das escolas de Guarapuava. Como posso te ajudar hoje?
+      </div>
+    </div>
+    <div class="ai-chat-input-area">
+      <input type="text" id="input-ai-msg" placeholder="Digite sua dúvida aqui...">
+      <button id="btn-send-ai">Enviar</button>
+    </div>
+  </div>
 
   <button id="btn-back-to-top">↑ Topo</button>
 

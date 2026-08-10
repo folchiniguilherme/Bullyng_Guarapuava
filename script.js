@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===================================================
-  // 1. SISTEMA DE TEMAS & ACESSIBILIDADE
+  // 1. TEMAS & ACESSIBILIDADE
   // ===================================================
   const savedTheme = localStorage.getItem('appTheme');
   if (savedTheme === 'dark') document.body.classList.add('dark-mode');
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => toast.classList.remove('show'), 2200);
   }
 
-  // Toggle do Menu de Acessibilidade
   const btnAcc = document.getElementById('btn-toggle-accessibility');
   const menuAcc = document.getElementById('accessibility-menu');
   if (btnAcc && menuAcc) {
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', () => menuAcc.classList.add('hidden'));
   }
 
-  // Botão Modo Escuro
   const btnDark = document.getElementById('btn-dark-mode');
   if (btnDark) {
     btnDark.onclick = () => {
@@ -45,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Botão Alto Contraste
   const btnContrast = document.getElementById('btn-high-contrast');
   if (btnContrast) {
     btnContrast.onclick = () => {
@@ -56,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Botões de Fonte
   const btnFontInc = document.getElementById('btn-font-increase');
   if (btnFontInc) {
     btnFontInc.onclick = () => {
@@ -82,7 +78,66 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================
-  // 2. SISTEMA DE LOGIN (@escola.pr.gov.br)
+  // 2. IA GUARABOT CHAT
+  // ===================================================
+  const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
+  const aiWindow = document.getElementById('ai-chat-window');
+  const btnCloseAi = document.getElementById('btn-close-ai');
+  const btnSendAi = document.getElementById('btn-send-ai');
+  const inputAi = document.getElementById('input-ai-msg');
+  const chatMessages = document.getElementById('ai-chat-messages');
+
+  if (btnToggleAi && aiWindow) {
+    btnToggleAi.onclick = () => aiWindow.classList.toggle('hidden');
+    if (btnCloseAi) btnCloseAi.onclick = () => aiWindow.classList.add('hidden');
+
+    function adicionarMensagem(autor, texto) {
+      if (!chatMessages) return;
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${autor}`;
+      msgDiv.innerHTML = texto;
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function processarPerguntaIA(pergunta) {
+      const p = pergunta.toLowerCase();
+      let resposta = "";
+
+      if (p.includes('oi') || p.includes('olá') || p.includes('boa')) {
+        resposta = "Olá! Sou a **IA GuaraBot**, assistente de convivência das escolas de Guarapuava. Como posso ajudar?";
+      } else if (p.includes('bullying') || p.includes('ofensa') || p.includes('provocação') || p.includes('ameaça')) {
+        resposta = "Se estiver passando por bullying, você pode registrar um relato seguro no **Portal de Escuta** (é preciso estar logado com seu @escola).";
+      } else if (p.includes('ansie') || p.includes('triste') || p.includes('calma') || p.includes('medo') || p.includes('estresse')) {
+        resposta = "Para momentos difíceis, experimente a respiração 4-7-8 (4s inspirando, 7s segurando, 8s soltando). Veja mais em **Ajuda & Bem-Estar**.";
+      } else if (p.includes('escola') || p.includes('colegio')) {
+        resposta = "A plataforma cobre todas as 29 Escolas Estaduais de Guarapuava!";
+      } else if (p.includes('ligar') || p.includes('contato') || p.includes('emergencia') || p.includes('cvv')) {
+        resposta = "Se precisar de ajuda urgente, o **CVV atende 24h pelo número 188** (ligação gratuita). Acesse a página **Contatos & Apoio**.";
+      } else {
+        resposta = "Entendido! Você pode explorar o menu para fazer um **Relato**, testar sua empatia no **Quiz**, ou conferir o **Guia de Ajuda**.";
+      }
+
+      setTimeout(() => adicionarMensagem('bot', resposta), 500);
+    }
+
+    if (btnSendAi && inputAi) {
+      const enviarMsg = () => {
+        const texto = inputAi.value.trim();
+        if (texto) {
+          adicionarMensagem('user', texto);
+          inputAi.value = '';
+          processarPerguntaIA(texto);
+        }
+      };
+
+      btnSendAi.onclick = enviarMsg;
+      inputAi.onkeypress = (e) => { if (e.key === 'Enter') enviarMsg(); };
+    }
+  }
+
+  // ===================================================
+  // 3. SISTEMA DE LOGIN @escola.pr.gov.br
   // ===================================================
   const btnLoginToggle = document.getElementById('btn-toggle-login');
   const loginMenu = document.getElementById('login-dropdown');
@@ -148,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
   atualizarEstadoLogin();
 
   // ===================================================
-  // 3. MURAL DE APOIO (INÍCIO)
+  // 4. MURAL DE APOIO (INDEX)
   // ===================================================
   const muralFeed = document.getElementById('mural-feed');
   const formNovoPost = document.getElementById('form-novo-post');
@@ -193,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarMural();
 
   // ===================================================
-  // 4. PORTAL DE ESCUTA / DENÚNCIA (SEGURANÇA & COOLDOWN)
+  // 5. PORTAL DE ESCUTA / DENÚNCIA
   // ===================================================
   const formDenuncia = document.getElementById('form-denuncia');
   const gateDenuncia = document.getElementById('denuncia-login-gate');
@@ -239,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================
-  // 5. TESTE DE PERSONALIDADE / EMPATIA (QUIZ DEDICADO)
+  // 6. QUIZ DE EMPATIA
   // ===================================================
   const testeForm = document.getElementById('teste-form');
   if (testeForm) {
@@ -312,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     bancoPerguntas.forEach((item, pIdx) => {
       let optionsHtml = '';
-      item.opts.forEach((opt, oIdx) => {
+      item.opts.forEach((opt) => {
         optionsHtml += `
           <label style="display:block; margin:8px 0; cursor:pointer;">
             <input type="radio" name="p_${pIdx}" value="${opt.pts}" required>
@@ -334,9 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let pontuacaoTotal = 0;
       for (let i = 0; i < bancoPerguntas.length; i++) {
         const selected = document.querySelector(`input[name="p_${i}"]:checked`);
-        if (selected) {
-          pontuacaoTotal += parseInt(selected.value);
-        }
+        if (selected) pontuacaoTotal += parseInt(selected.value);
       }
 
       const user = JSON.parse(localStorage.getItem('seedUser'));
@@ -368,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================
-  // 6. BOTÃO VOLTAR AO TOPO
+  // 7. BOTÃO VOLTAR AO TOPO
   // ===================================================
   const btnTop = document.getElementById('btn-back-to-top');
   if (btnTop) {
