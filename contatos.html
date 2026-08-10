@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Contatos & Apoio</title>
+  <title>Portal Ajuda Guarapuava - Contatos de Apoio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,46 +11,31 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link">
-          <span class="logo-text">PORTAL GUARAPUAVA</span>
-        </a>
+        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
       </div>
-      
       <div class="top-bar-actions">
-        <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-toggle">🚹 Acessibilidade ▾</button>
-          <div id="accessibility-menu" class="accessibility-dropdown hidden">
-            <button id="btn-font-increase">A+ Aumentar Fonte</button>
-            <button id="btn-font-decrease">A- Diminuir Fonte</button>
-            <button id="btn-dark-mode">🌙 Modo Escuro</button>
-            <button id="btn-high-contrast">👁️ Alto Contraste</button>
-          </div>
-        </div>
-
         <div class="login-wrapper">
-          <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
+          <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
-                <div class="role-selector">
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="aluno" checked>
-                    <span class="role-box">🧑 Aluno</span>
-                  </label>
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="professor">
-                    <span class="role-box">👩‍🎓 Prof.</span>
-                  </label>
-                </div>
                 <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
                 <input type="password" id="senha-seed" placeholder="••••••••" required>
                 <button type="submit" class="btn-login-submit">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
-            <div id="login-feedback" class="hidden"></div>
+          </div>
+        </div>
+
+        <div class="accessibility-wrapper">
+          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
+          <div id="accessibility-menu" class="accessibility-dropdown hidden">
+            <button id="btn-font-increase">A+ Aumentar Fonte</button>
+            <button id="btn-font-decrease">A- Diminuir Fonte</button>
+            <button id="btn-dark-mode">Modo Escuro</button>
+            <button id="btn-high-contrast">Alto Contraste</button>
           </div>
         </div>
       </div>
@@ -68,67 +53,40 @@
   </header>
 
   <main class="container">
-    <h2>📞 Canais Especializados de Saúde Mental e Apoio</h2>
-    <p class="subtitle">Espaços focados em acolhimento psicológico, escuta ativa e proteção dos estudantes:</p>
+    <div class="section-header">
+      <h2>📞 Canais de Emergência e Proteção</h2>
+      <p>Serviços públicos gratuitos de acolhimento emocional, direitos e segurança.</p>
+    </div>
 
     <div class="contacts-grid">
       <div class="contact-card">
         <h3>💛 CVV - Centro de Valorização da Vida</h3>
-        <p>Apoio emocional gratuito, sigiloso e humanizado para momentos de crise ou desabafo.</p>
-        <p><strong>Telefone:</strong> Disque 188 (24 Horas)</p>
-        <p><strong>Site:</strong> cvv.org.br</p>
-      </div>
-
-      <div class="contact-card">
-        <h3>🧠 CAPSi - Saúde Mental Infanto-Juvenil</h3>
-        <p>Atendimento psicológico e psiquiátrico público focado em crianças e adolescentes em Guarapuava.</p>
-        <p><strong>Endereço:</strong> R. Pres. Getúlio Vargas, Guarapuava</p>
-        <p><strong>Telefone:</strong> (42) 3621-4560</p>
-      </div>
-
-      <div class="contact-card">
-        <h3>💬 Pode Falar - UNICEF</h3>
-        <p>Canal de ajuda virtual e anônimo via chat para adolescentes e jovens falarem sobre sentimentos e saúde mental.</p>
-        <p><strong>Acesso:</strong> podefalar.org.br</p>
+        <p>Apoio emocional gratuito e confidencial 24 horas por dia.</p>
+        <p><strong>Ligue:</strong> 188</p>
+        <p><strong>Site:</strong> www.cvv.org.br</p>
       </div>
 
       <div class="contact-card">
         <h3>🛡️ Conselho Tutelar - Guarapuava</h3>
-        <p>Órgão focado na defesa dos direitos e proteção de crianças e adolescentes contra qualquer forma de violência.</p>
-        <p><strong>Telefone:</strong> (42) 3623-2892</p>
+        <p>Garantia dos direitos de crianças e adolescentes.</p>
+        <p><strong>Pólo Centro:</strong> (42) 3622-3882</p>
+        <p><strong>Plantão 24h:</strong> (42) 99975-3162</p>
       </div>
 
       <div class="contact-card">
-        <h3>🤝 CREAS - Apoio Psicossocial</h3>
-        <p>Centro de Referência Especializado com assistentes sociais e psicólogos para jovens e famílias em risco.</p>
-        <p><strong>Telefone:</strong> (42) 3622-1819</p>
+        <h3>🚓 Patrulha Escolar Comunitária</h3>
+        <p>Segurança preventiva no entorno das unidades escolares do Paraná.</p>
+        <p><strong>Emergência PM:</strong> 190</p>
+        <p><strong>Disque Denúncia:</strong> 181</p>
       </div>
 
       <div class="contact-card">
-        <h3>📢 Disque 100 - Direitos Humanos</h3>
-        <p>Canal público nacional para denúncias anônimas de graves violações e violências contra jovens.</p>
-        <p><strong>Telefone:</strong> Disque 100</p>
+        <h3>🏫 NUTE / SEED-PR</h3>
+        <p>Núcleo de Tecnologia e Acolhimento Educacional do Estado do Paraná.</p>
+        <p><strong>Atendimento Escolar:</strong> Com a equipe pedagógica do seu colégio.</p>
       </div>
     </div>
   </main>
-
-  <div id="modal-confirmacao" class="modal-overlay hidden">
-    <div class="modal-box">
-      <div id="modal-loading" class="spinner hidden"></div>
-      <div id="modal-content-step1">
-        <h3>❓ Você tem certeza?</h3>
-        <p id="modal-msg-text">Deseja confirmar o envio desta ação?</p>
-        <div class="modal-buttons">
-          <button id="btn-modal-sim" class="btn-primary">Sim, Enviar</button>
-          <button id="btn-modal-cancelar" class="btn-secondary">Cancelar</button>
-        </div>
-      </div>
-      <div id="modal-content-step2" class="hidden">
-        <span class="success-icon">✅</span>
-        <h3>Enviado com sucesso!</h3>
-      </div>
-    </div>
-  </div>
 
   <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
 

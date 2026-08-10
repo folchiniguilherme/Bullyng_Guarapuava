@@ -7,30 +7,41 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <header>
     <div class="top-bar">
-      <div class="logo"><a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a></div>
+      <div class="logo">
+        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
+      </div>
       <div class="top-bar-actions">
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
+              <p class="login-subtext">Utilize sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
                 <div class="role-selector">
-                  <label class="role-option"><input type="radio" name="tipo_usuario" value="aluno" checked><span class="role-box">Aluno</span></label>
-                  <label class="role-option"><input type="radio" name="tipo_usuario" value="professor"><span class="role-box">Professor</span></label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="aluno" checked>
+                    <span class="role-box">Aluno</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="tipo_usuario" value="professor">
+                    <span class="role-box">Professor</span>
+                  </label>
                 </div>
                 <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
-                <input type="password" id="senha-seed" placeholder="Senha" required>
+                <input type="password" id="senha-seed" placeholder="••••••••" required>
                 <button type="submit" class="btn-login-submit">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
           </div>
         </div>
+
         <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
+          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Opções de Acessibilidade">≣</button>
           <div id="accessibility-menu" class="accessibility-dropdown hidden">
             <button id="btn-font-increase">A+ Aumentar Fonte</button>
             <button id="btn-font-decrease">A- Diminuir Fonte</button>
@@ -40,6 +51,7 @@
         </div>
       </div>
     </div>
+
     <nav class="main-nav">
       <ul>
         <li><a href="index.html" class="active">Início</a></li>
@@ -52,23 +64,67 @@
   </header>
 
   <main class="container">
-    <section class="hero-thumbnail">
-      <div class="thumbnail-badge">REDE DE PROTEÇÃO ESCOLAR DE GUARAPUAVA</div>
-      <h1 class="hero-main-title">PORTAL AJUDA GUARAPUAVA</h1>
-      <p class="hero-description">
-        Plataforma integrada para combate ao bullying e apoio emocional. Um ambiente seguro para desabafar, aprender a lidar com a ansiedade e fortalecer a empatia nas escolas.
+    <section class="hero-card">
+      <span class="hero-tag">REDE DE PROTEÇÃO ESCOLAR DE GUARAPUAVA</span>
+      <h1 class="hero-title">Um ambiente seguro para aprender, desabafar e evoluir.</h1>
+      <p class="hero-text">
+        Plataforma estudantil dedicada ao combate ao bullying, apoio à saúde mental e fortalecimento da empatia nas escolas estaduais.
       </p>
-      <div class="hero-buttons">
-        <a href="denuncia.html" class="btn-hero-primary">Fazer um Relato Seguro</a>
-        <a href="teste.html" class="btn-hero-secondary">Medir minha Empatia</a>
+      <div class="hero-actions">
+        <a href="denuncia.html" class="btn-primary">Fazer um Relato Seguro</a>
+        <a href="teste.html" class="btn-secondary">Testar minha Empatia</a>
       </div>
+    </section>
+
+    <section class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🛡️</div>
+        <h3>Escuta Segura</h3>
+        <p>Relate conflitos de forma confidencial diretamente à equipe responsável.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌱</div>
+        <h3>Saúde Mental</h3>
+        <p>Acesse estratégias para lidar com ansiedade, rotina de estudos e emoções.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <h3>Rede Solidária</h3>
+        <p>Espaço colaborativo para trocar apoio com outros estudantes da região.</p>
+      </div>
+    </section>
+
+    <section class="mural-section">
+      <div class="section-header">
+        <h2>💬 Mural de Apoio da Comunidade</h2>
+        <p>Mensagens de incentivo e carinho enviadas pelos próprios estudantes.</p>
+      </div>
+
+      <div class="mural-form-card">
+        <h3>Deixe sua Mensagem Positiva</h3>
+        <form id="form-novo-post">
+          <div class="form-group">
+            <input type="text" id="autor-post" placeholder="Seu Nome ou Apelido (Ex: Aluno do 2º Ano)" required>
+          </div>
+          <div class="form-group">
+            <textarea id="texto-post" rows="3" placeholder="Escreva uma mensagem de incentivo para os seus colegas..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Publicar no Mural</button>
+        </form>
+      </div>
+
+      <div id="mural-feed" class="mural-grid">
+        </div>
     </section>
   </main>
 
-  <button id="btn-back-to-top">↑</button>
+  <button id="btn-back-to-top" title="Voltar ao topo">↑ Topo</button>
+
   <footer>
-    <p>Projeto por <strong>Guilherme L. Folchini</strong> &copy; 2026 | <small>Powered by GitHub & Gemini</small></p>
+    <p>Projeto Idealizado e Desenvolvido por <strong>Guilherme L. Folchini</strong> &copy; 2026</p>
+    <p class="powered-tag"><small>Powered by GitHub & Gemini</small></p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

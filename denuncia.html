@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Ajuda Guarapuava - Portal de Escuta</title>
+  <title>Portal Ajuda Guarapuava - Escuta Segura</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,18 +11,15 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link">
-          <span class="logo-text">PORTAL GUARAPUAVA</span>
-        </a>
+        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
       </div>
-      
       <div class="top-bar-actions">
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <p class="login-subtext">Utilize sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
                 <div class="role-selector">
                   <label class="role-option">
@@ -68,17 +65,21 @@
 
   <main class="container">
     <div class="form-container">
-      <h2>Portal de Escuta Segura</h2>
-      <p class="subtitle">Relate ocorrências ou desabafe com total sigilo e acolhimento.</p>
-      
-      <form id="form-denuncia">
+      <h2>📬 Espaço de Escuta e Relato Seguro</h2>
+      <p class="subtitle">Um canal protegido para expor situações de bullying ou desabafar com sigilo.</p>
+
+      <div id="denuncia-login-gate" class="alert-box warning hidden">
+        <strong>🔒 Acesso Restrito:</strong> É necessário estar logado com sua conta <code>@escola.pr.gov.br</code> para acessar o formulário de escuta. Clique em <strong>"Entre com o @escola"</strong> no menu superior.
+      </div>
+
+      <form id="form-denuncia" class="hidden">
         <div class="form-group">
           <label for="nome-aluno">Seu Nome (Opcional):</label>
-          <input type="text" id="nome-aluno" placeholder="Deixe em branco para enviar anonimamente">
+          <input type="text" id="nome-aluno" placeholder="Deixe em branco para manter sigilo absoluto">
         </div>
 
         <div class="form-group">
-          <label for="escola-guarapuava">Selecione sua Escola Estadual (Guarapuava):</label>
+          <label for="escola-guarapuava">Sua Escola Estadual (Guarapuava):</label>
           <select id="escola-guarapuava" required>
             <option value="">-- Selecione uma das 29 Escolas --</option>
             <option value="Colégio Estadual Alba Keinert">Colégio Estadual Alba Keinert</option>
@@ -114,28 +115,28 @@
         </div>
 
         <div class="form-group">
-          <label for="nome-agressor">Nome do Envolvido / Agressor (Opcional):</label>
-          <input type="text" id="nome-agressor" placeholder="Nome ou apelido se souber">
+          <label for="nome-agressor">Pessoa ou Autor da Agressão (Opcional):</label>
+          <input type="text" id="nome-agressor" placeholder="Nome ou apelido (se souber)">
         </div>
 
         <div class="form-group">
-          <label for="tipo-agressao">Tipo de Situação:</label>
+          <label for="tipo-agressao">Tipo de Ocorrência:</label>
           <select id="tipo-agressao" required>
             <option value="">-- Selecione o tipo --</option>
-            <option value="Verbal">Agressão Verbal / Apelidos ofensivos</option>
-            <option value="Física">Agressão Física ou Ameaça</option>
+            <option value="Verbal">Agressão Verbal / Ofensas</option>
+            <option value="Física">Agressão Física ou Ameaças</option>
             <option value="Cyberbullying">Cyberbullying / Redes Sociais</option>
-            <option value="Exclusão">Exclusão Social / Isolamento Forçado</option>
-            <option value="Outros">Outros tipos de conflito</option>
+            <option value="Exclusão">Exclusão Social e Isolamento</option>
+            <option value="Outro">Outros Tipos de Conflito</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="relato-texto">Escreva seu relato com detalhes:</label>
-          <textarea id="relato-texto" rows="5" placeholder="Conte o que aconteceu..." required></textarea>
+          <label for="relato-texto">Descreva a situação:</label>
+          <textarea id="relato-texto" rows="5" placeholder="Escreva aqui detalhadamente o que ocorreu..." required></textarea>
         </div>
 
-        <button type="submit" id="btn-enviar-denuncia" class="btn-primary">Enviar Relato</button>
+        <button type="submit" class="btn-primary" style="width: 100%;">Enviar Relato Protegido</button>
       </form>
     </div>
   </main>
@@ -144,8 +145,8 @@
     <div class="modal-box">
       <div id="modal-loading" class="spinner hidden"></div>
       <div id="modal-content-step1">
-        <h3>Você tem certeza?</h3>
-        <p id="modal-msg-text">Deseja confirmar o envio desta ação?</p>
+        <h3>Confirmar Envio</h3>
+        <p>Seu relato será registrado com sigilo. Deseja prosseguir?</p>
         <div class="modal-buttons">
           <button id="btn-modal-sim" class="btn-primary">Sim, Enviar</button>
           <button id="btn-modal-cancelar" class="btn-secondary">Cancelar</button>
@@ -153,7 +154,7 @@
       </div>
       <div id="modal-content-step2" class="hidden">
         <span class="success-icon">✓</span>
-        <h3>Enviado com sucesso!</h3>
+        <h3>Relato Enviado com Sucesso!</h3>
       </div>
     </div>
   </div>

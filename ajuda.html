@@ -11,46 +11,31 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link">
-          <span class="logo-emoji">👐</span>
-        </a>
+        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
       </div>
-      
       <div class="top-bar-actions">
-        <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
-          <div id="accessibility-menu" class="accessibility-dropdown hidden">
-            <button id="btn-font-increase">A+ Aumentar</button>
-            <button id="btn-font-decrease">A- Diminuir</button>
-            <button id="btn-dark-mode">🌙 Modo Escuro</button>
-            <button id="btn-high-contrast">👁️ Alto Contraste</button>
-          </div>
-        </div>
-
         <div class="login-wrapper">
-          <button id="btn-toggle-login" class="btn-login-toggle">🔐 Login Seed ▾</button>
+          <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
-                <div class="role-selector">
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="aluno" checked>
-                    <span class="role-box">🧑 Aluno</span>
-                  </label>
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="professor">
-                    <span class="role-box">👩‍🎓 Prof.</span>
-                  </label>
-                </div>
                 <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
                 <input type="password" id="senha-seed" placeholder="••••••••" required>
                 <button type="submit" class="btn-login-submit">Entrar</button>
               </form>
             </div>
             <div id="user-profile-badge" class="hidden"></div>
-            <div id="login-feedback" class="hidden"></div>
+          </div>
+        </div>
+
+        <div class="accessibility-wrapper">
+          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
+          <div id="accessibility-menu" class="accessibility-dropdown hidden">
+            <button id="btn-font-increase">A+ Aumentar Fonte</button>
+            <button id="btn-font-decrease">A- Diminuir Fonte</button>
+            <button id="btn-dark-mode">Modo Escuro</button>
+            <button id="btn-high-contrast">Alto Contraste</button>
           </div>
         </div>
       </div>
@@ -68,28 +53,40 @@
   </header>
 
   <main class="container">
-    <h2>🧠 Como Lidar com o Bullying e a Ansiedade Escolar</h2>
-    <p class="subtitle">Orientações práticas para proteger sua saúde mental e saber como agir no dia a dia.</p>
+    <div class="section-header">
+      <h2>🌱 Guia de Saúde Mental & Convivência</h2>
+      <p>Ferramentas práticas para encarar desafios emocionais na escola e na vida pessoal.</p>
+    </div>
 
-    <div class="help-cards-grid">
-      <article class="info-card">
-        <h3>🛡️ Dicas para Enfrentar o Bullying</h3>
-        <p>Se você está passando por provocações ou agressões, lembre-se: <strong>a culpa nunca é sua</strong>.</p>
-        <ul>
-          <li><strong>Não reaja com violência:</strong> Responda com firmeza ou se afaste com segurança.</li>
-          <li><strong>Guarde evidências:</strong> Tire prints de conversas virtuais e anote datas.</li>
-          <li><strong>Busque ajuda:</strong> Fale com a equipe pedagógica ou use nosso <a href="denuncia.html">Portal de Escuta</a>.</li>
-        </ul>
-      </article>
+    <div class="contacts-grid">
+      <div class="contact-card">
+        <h3>🛡️ Enfrando o Bullying & Cyberbullying</h3>
+        <p><strong>Não devolva na mesma moeda:</strong> Reagir com agressão gera uma escalada da situação.</p>
+        <p><strong>Guarde evidências:</strong> Caso ocorra no meio digital, tire prints das conversas e links.</p>
+        <p><strong>Acione a escola:</strong> Converse com um pedagogo ou professor de sua confiança.</p>
+      </div>
 
-      <article class="info-card">
-        <h3>🌱 Controle de Ansiedade</h3>
-        <p>Técnicas rápidas para aplicar na escola durante momentos de estresse:</p>
-        <ul>
-          <li><strong>Respiração 4-7-8:</strong> Inspire por 4s, segure por 7s e solte em 8s.</li>
-          <li><strong>Técnica de Aterramento (Grounding):</strong> Observe 5 objetos ao seu redor para voltar ao presente.</li>
-        </ul>
-      </article>
+      <div class="contact-card">
+        <h3>🧘 Exercício de Respiração (Técnica 4-7-8)</h3>
+        <p>Quando sentir ansiedade ou taquicardia em provas/apresentações:</p>
+        <p><strong>1. Inspire:</strong> Pelo nariz suavemente durante 4 segundos.</p>
+        <p><strong>2. Segure:</strong> O ar nos pulmões por 7 segundos.</p>
+        <p><strong>3. Solte:</strong> Devagar pela boca durante 8 segundos. Repita 4 vezes.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>💙 Como Apoiar um Amigo Triste</h3>
+        <p><strong>Escuta sem Julgamento:</strong> Pergunte como a pessoa está se sentindo e apenas ouça.</p>
+        <p><strong>Respeite o Tempo:</strong> Não force a pessoa a expor o que não deseja no momento.</p>
+        <p><strong>Acompanhe:</strong> Se notar sinais graves de isolamento, avise a equipe pedagógica.</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>📚 Organização da Rotina de Estudos</h3>
+        <p><strong>Pausas Curtas:</strong> Estude 25 minutos e descanse 5 minutos (Método Pomodoro).</p>
+        <p><strong>Evite Comparações:</strong> Cada pessoa possui seu tempo de aprendizado e adaptação.</p>
+        <p><strong>Sono Regulado:</strong> Priorize dormir bem para garantir foco e regulação emocional.</p>
+      </div>
     </div>
   </main>
 

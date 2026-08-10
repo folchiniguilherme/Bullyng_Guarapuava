@@ -11,29 +11,16 @@
   <header>
     <div class="top-bar">
       <div class="logo">
-        <a href="index.html" class="logo-link">
-          <span class="logo-text">PORTAL GUARAPUAVA</span>
-        </a>
+        <a href="index.html" class="logo-link"><span class="logo-text">PORTAL GUARAPUAVA</span></a>
       </div>
-      
       <div class="top-bar-actions">
         <div class="login-wrapper">
           <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
           <div id="login-dropdown" class="login-dropdown-menu hidden">
             <div id="login-form-container">
               <h4>Acesso Seed PR</h4>
-              <p class="login-subtext">Use sua conta <code>@escola.pr.gov.br</code></p>
+              <p class="login-subtext">Utilize sua conta <code>@escola.pr.gov.br</code></p>
               <form id="form-login-seed">
-                <div class="role-selector">
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="aluno" checked>
-                    <span class="role-box">Aluno</span>
-                  </label>
-                  <label class="role-option">
-                    <input type="radio" name="tipo_usuario" value="professor">
-                    <span class="role-box">Professor</span>
-                  </label>
-                </div>
                 <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" required>
                 <input type="password" id="senha-seed" placeholder="••••••••" required>
                 <button type="submit" class="btn-login-submit">Entrar</button>
@@ -44,7 +31,7 @@
         </div>
 
         <div class="accessibility-wrapper">
-          <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Opções de Acessibilidade">≣</button>
+          <button id="btn-toggle-accessibility" class="btn-acc-circle">≣</button>
           <div id="accessibility-menu" class="accessibility-dropdown hidden">
             <button id="btn-font-increase">A+ Aumentar Fonte</button>
             <button id="btn-font-decrease">A- Diminuir Fonte</button>
@@ -68,23 +55,23 @@
 
   <main class="container">
     <div class="contact-card">
-      <h2>Questionário de Convivência & Empatia Escolar</h2>
-      <p class="subtitle">Responda com sinceridade às questões abaixo para refletir sobre seu papel na convivência escolar.</p>
+      <h2>🧩 Teste de Empatia e Convivência Escolar</h2>
+      <p class="subtitle">Responda às questões hipotéticas e conheça o seu perfil de ação na comunidade escolar.</p>
 
-      <div id="teste-login-required" class="hidden alert-box warning">
-        <strong>Atenção:</strong> É necessário estar logado com seu e-mail <code>@escola.pr.gov.br</code> para realizar o teste.
+      <div id="teste-login-required" class="alert-box warning hidden">
+        🔒 <strong>Atenção:</strong> Faça login com seu e-mail <code>@escola.pr.gov.br</code> no menu superior para realizar este teste.
       </div>
 
-      <div id="teste-already-done" class="hidden alert-box info">
-        <strong>Você já realizou o teste hoje!</strong> Volte amanhã para fazer uma nova avaliação.
+      <div id="teste-already-done" class="alert-box info hidden">
+        📅 <strong>Você já fez a autoavaliação hoje!</strong> Seu teste poderá ser refeito novamente amanhã.
       </div>
 
       <form id="teste-form" class="hidden">
         <div id="container-perguntas"></div>
-        <button type="submit" id="btn-finalizar-teste" class="btn-primary" style="margin-top: 20px; width: 100%;">Finalizar e Ver Resultado</button>
+        <button type="submit" class="btn-primary" style="margin-top:20px; width:100%;">Finalizar e Gerar Perfil</button>
       </form>
 
-      <div id="teste-resultado" class="hidden result-box"></div>
+      <div id="teste-resultado" class="hidden"></div>
     </div>
   </main>
 
