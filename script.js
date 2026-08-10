@@ -1,7 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===================================================
-  // 1. TEMAS & ACESSIBILIDADE
+  // 1. CHAT DA IA (GUARABOT) - PROTEGIDO CONTRA ERROS
+  // ===================================================
+  const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
+  const aiWindow = document.getElementById('ai-chat-window');
+  const btnCloseAi = document.getElementById('btn-close-ai');
+  const btnSendAi = document.getElementById('btn-send-ai');
+  const inputAi = document.getElementById('input-ai-msg');
+  const chatMessages = document.getElementById('ai-chat-messages');
+
+  if (btnToggleAi && aiWindow) {
+    btnToggleAi.onclick = () => aiWindow.classList.toggle('hidden');
+    if (btnCloseAi) btnCloseAi.onclick = () => aiWindow.classList.add('hidden');
+
+    function adicionarMensagem(autor, texto) {
+      if (!chatMessages) return;
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `chat-msg ${autor}`;
+      msgDiv.innerHTML = texto;
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function processarPerguntaIA(pergunta) {
+      const p = pergunta.toLowerCase();
+      let resposta = "";
+
+      if (p.includes('oi') || p.includes('olá') || p.includes('boa')) {
+        resposta = "Olá! Sou o **GuaraBot**, assistente virtual das escolas de Guarapuava. Como posso te ajudar hoje?";
+      } else if (p.includes('bullying') || p.includes('ofensa') || p.includes('ameaça')) {
+        resposta = "Se você estiver passando por bullying, acesse a aba **Portal de Escuta** para registrar um relato sigiloso.";
+      } else if (p.includes('ansie') || p.includes('triste') || p.includes('calma') || p.includes('medo')) {
+        resposta = "Para momentos difíceis, experimente a respiração 4-7-8 (inspire por 4s, segure por 7s e solte por 8s). Veja mais na aba **Ajuda & Bem-Estar**.";
+      } else if (p.includes('escola') || p.includes('colegio')) {
+        resposta = "Atendemos todas as 29 Escolas Estaduais do município de Guarapuava!";
+      } else if (p.includes('ligar') || p.includes('contato') || p.includes('emergencia') || p.includes('cvv')) {
+        resposta = "Para apoio emocional urgente, ligue gratuitamente para o **CVV no número 188** (disponível 24 horas).";
+      } else {
+        resposta = "Compreendo! Você pode usar o menu para enviar um **Relato**, testar sua empatia no **Quiz**, ou conferir nossos guias.";
+      }
+
+      setTimeout(() => adicionarMensagem('bot', resposta), 400);
+    }
+
+    if (btnSendAi && inputAi) {
+      const enviarMsg = () => {
+        const texto = inputAi.value.trim();
+        if (texto) {
+          adicionarMensagem('user', texto);
+          inputAi.value = '';
+          processarPerguntaIA(texto);
+        }
+      };
+
+      btnSendAi.onclick = enviarMsg;
+      inputAi.onkeypress = (e) => { if (e.key === 'Enter') enviarMsg(); };
+    }
+  }
+
+  // ===================================================
+  // 2. TEMAS E ACESSIBILIDADE
   // ===================================================
   const savedTheme = localStorage.getItem('appTheme');
   if (savedTheme === 'dark') document.body.classList.add('dark-mode');
@@ -78,66 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================
-  // 2. IA GUARABOT CHAT
-  // ===================================================
-  const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
-  const aiWindow = document.getElementById('ai-chat-window');
-  const btnCloseAi = document.getElementById('btn-close-ai');
-  const btnSendAi = document.getElementById('btn-send-ai');
-  const inputAi = document.getElementById('input-ai-msg');
-  const chatMessages = document.getElementById('ai-chat-messages');
-
-  if (btnToggleAi && aiWindow) {
-    btnToggleAi.onclick = () => aiWindow.classList.toggle('hidden');
-    if (btnCloseAi) btnCloseAi.onclick = () => aiWindow.classList.add('hidden');
-
-    function adicionarMensagem(autor, texto) {
-      if (!chatMessages) return;
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `chat-msg ${autor}`;
-      msgDiv.innerHTML = texto;
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function processarPerguntaIA(pergunta) {
-      const p = pergunta.toLowerCase();
-      let resposta = "";
-
-      if (p.includes('oi') || p.includes('olá') || p.includes('boa')) {
-        resposta = "Olá! Sou a **IA GuaraBot**, assistente de convivência das escolas de Guarapuava. Como posso ajudar?";
-      } else if (p.includes('bullying') || p.includes('ofensa') || p.includes('provocação') || p.includes('ameaça')) {
-        resposta = "Se estiver passando por bullying, você pode registrar um relato seguro no **Portal de Escuta** (é preciso estar logado com seu @escola).";
-      } else if (p.includes('ansie') || p.includes('triste') || p.includes('calma') || p.includes('medo') || p.includes('estresse')) {
-        resposta = "Para momentos difíceis, experimente a respiração 4-7-8 (4s inspirando, 7s segurando, 8s soltando). Veja mais em **Ajuda & Bem-Estar**.";
-      } else if (p.includes('escola') || p.includes('colegio')) {
-        resposta = "A plataforma cobre todas as 29 Escolas Estaduais de Guarapuava!";
-      } else if (p.includes('ligar') || p.includes('contato') || p.includes('emergencia') || p.includes('cvv')) {
-        resposta = "Se precisar de ajuda urgente, o **CVV atende 24h pelo número 188** (ligação gratuita). Acesse a página **Contatos & Apoio**.";
-      } else {
-        resposta = "Entendido! Você pode explorar o menu para fazer um **Relato**, testar sua empatia no **Quiz**, ou conferir o **Guia de Ajuda**.";
-      }
-
-      setTimeout(() => adicionarMensagem('bot', resposta), 500);
-    }
-
-    if (btnSendAi && inputAi) {
-      const enviarMsg = () => {
-        const texto = inputAi.value.trim();
-        if (texto) {
-          adicionarMensagem('user', texto);
-          inputAi.value = '';
-          processarPerguntaIA(texto);
-        }
-      };
-
-      btnSendAi.onclick = enviarMsg;
-      inputAi.onkeypress = (e) => { if (e.key === 'Enter') enviarMsg(); };
-    }
-  }
-
-  // ===================================================
-  // 3. SISTEMA DE LOGIN @escola.pr.gov.br
+  // 3. LOGIN COM @escola.pr.gov.br
   // ===================================================
   const btnLoginToggle = document.getElementById('btn-toggle-login');
   const loginMenu = document.getElementById('login-dropdown');
@@ -148,11 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       loginMenu.classList.toggle('hidden');
     };
-    document.addEventListener('click', (e) => {
-      if (!loginMenu.contains(e.target) && e.target !== btnLoginToggle) {
-        loginMenu.classList.add('hidden');
-      }
-    });
   }
 
   function atualizarEstadoLogin() {
@@ -209,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const formNovoPost = document.getElementById('form-novo-post');
 
   const postsIniciais = [
-    { autor: "Ana Paula (Col. Alba Keinert)", texto: "Se você estiver passando por um momento difícil, saiba que não está sozinho. Dias melhores virão!" },
+    { autor: "Ana Paula (Col. Alba Keinert)", texto: "Se estiver passando por um momento difícil, saiba que você não está sozinho!" },
     { autor: "Lucas (CEEP Arlindo Ribeiro)", texto: "Respeito e empatia transformam a nossa escola. Um abraço a todos os colegas!" },
     { autor: "Profª Maria (Col. Visconde)", texto: "Sempre há alguém disposto a escutar. Não guarde suas dores para você." }
   ];
@@ -265,12 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     formDenuncia.onsubmit = (e) => {
       e.preventDefault();
-      const lastSent = localStorage.getItem('lastDenunciaTime');
-      if (lastSent && Date.now() - parseInt(lastSent) < 300000) {
-        alert("Por questões de segurança, aguarde 5 minutos entre o envio de relatos.");
-        return;
-      }
-
       const modal = document.getElementById('modal-confirmacao');
       if (modal) modal.classList.remove('hidden');
     };
@@ -280,7 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnSim) {
       btnSim.onclick = () => {
-        localStorage.setItem('lastDenunciaTime', Date.now().toString());
         alert("Seu relato foi enviado com sucesso e total confidencialidade!");
         location.reload();
       };
@@ -320,43 +308,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderizarPerguntasQuiz() {
     const bancoPerguntas = [
       {
-        q: "1. Ao ver um colega isolado durante o intervalo, qual é sua atitude?",
+        q: "1. Ao ver um colega isolado no intervalo, você:",
         opts: [
-          { txt: "Aproximo-me e o convido para sentar com meu grupo.", pts: 3 },
+          { txt: "Aproximo-me e o convido para conversar.", pts: 3 },
           { txt: "Cumprimento educadamente de longe.", pts: 2 },
-          { txt: "Não faço nada, pois não o conheço bem.", pts: 1 }
+          { txt: "Não faço nada, pois não o conheço.", pts: 1 }
         ]
       },
       {
-        q: "2. Quando alguém discorda das suas opiniões em um trabalho em grupo:",
+        q: "2. Quando alguém discorda de você em um trabalho de grupo:",
         opts: [
-          { txt: "Escuto com atenção e tento encontrar um meio-termo.", pts: 3 },
-          { txt: "Fico chateado, mas aceito a vontade da maioria.", pts: 2 },
-          { txt: "Insisto na minha ideia até que concordem comigo.", pts: 1 }
-        ]
-      },
-      {
-        q: "3. Se presenciar ofensas ou deboches no grupo da turma:",
-        opts: [
-          { txt: "Defendo o colega afetado ou peço para pararem.", pts: 3 },
-          { txt: "Envio uma mensagem no privado apoiando o colega.", pts: 2 },
-          { txt: "Prefiro não me envolver para evitar problemas.", pts: 1 }
-        ]
-      },
-      {
-        q: "4. Como você reage quando um amigo conta que está triste ou ansioso?",
-        opts: [
-          { txt: "Escuto sem julgar e ofereço meu apoio.", pts: 3 },
-          { txt: "Digo para ele não se preocupar tanto com isso.", pts: 2 },
-          { txt: "Mudo de assunto para não ficar um clima chato.", pts: 1 }
-        ]
-      },
-      {
-        q: "5. Para você, qual o papel do respeito na convivência escolar?",
-        opts: [
-          { txt: "Fundamental para que todos se sintam seguros e acolhidos.", pts: 3 },
-          { txt: "Importante apenas para evitar punições dos professores.", pts: 2 },
-          { txt: "Secundário, cada um deve cuidar da sua vida.", pts: 1 }
+          { txt: "Escuto com atenção para encontrar um meio-termo.", pts: 3 },
+          { txt: "Aceito a vontade da maioria sem discutir.", pts: 2 },
+          { txt: "Insisto até que todos concordem comigo.", pts: 1 }
         ]
       }
     ];
@@ -378,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.innerHTML += `
         <div style="margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border-color);">
-          <strong style="display:block; margin-bottom:8px; font-size:0.95rem;">${item.q}</strong>
+          <strong style="display:block; margin-bottom:8px;">${item.q}</strong>
           ${optionsHtml}
         </div>
       `;
@@ -386,12 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     testeForm.onsubmit = (e) => {
       e.preventDefault();
-      let pontuacaoTotal = 0;
-      for (let i = 0; i < bancoPerguntas.length; i++) {
-        const selected = document.querySelector(`input[name="p_${i}"]:checked`);
-        if (selected) pontuacaoTotal += parseInt(selected.value);
-      }
-
       const user = JSON.parse(localStorage.getItem('seedUser'));
       const hoje = new Date().toISOString().split('T')[0];
       localStorage.setItem(`teste_${user.email}`, hoje);
@@ -400,20 +358,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const resContainer = document.getElementById('teste-resultado');
       if (resContainer) {
         resContainer.classList.remove('hidden');
-        let mensagemPerfil = "";
-
-        if (pontuacaoTotal >= 13) {
-          mensagemPerfil = "<strong>Perfil Empático e Proativo!</strong> Você é uma referência positiva na sua escola, promovendo o respeito e o acolhimento.";
-        } else if (pontuacaoTotal >= 9) {
-          mensagemPerfil = "<strong>Perfil Consciente!</strong> Você respeita os colegas e tem boas intenções. Fique atento a oportunidades de ajudar quem precisa.";
-        } else {
-          mensagemPerfil = "<strong>Perfil em Desenvolvimento!</strong> Que tal praticar colocar-se no lugar do outro no dia a dia? Pequenas atitudes fazem grande diferença.";
-        }
-
         resContainer.innerHTML = `
           <div class="alert-box info" style="text-align:center;">
             <h3>Autoavaliação Concluída!</h3>
-            <p style="margin-top:10px; font-size:0.95rem;">${mensagemPerfil}</p>
+            <p style="margin-top:10px;">Obrigado por praticar a empatia e fazer da escola um lugar melhor!</p>
           </div>
         `;
       }
