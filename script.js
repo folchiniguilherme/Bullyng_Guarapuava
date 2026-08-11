@@ -463,4 +463,4 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     });
     btnTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-});
+ ;
