@@ -1,52 +1,64 @@
-// Dividindo a chave em duas partes para o GitHub não bloquear o commit:
-const parte1 = "Asyn";
-const parte2 = "cAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw";
+// ===================================================
+// 1. CONFIGURAÇÃO DA API DO GEMINI & GUARABOT
+// ===================================================
 
-// O JavaScript junta as duas partes automaticamente na hora de rodar:
-const API_KEY_GEMINI = parte1 + parte2;
+// Se você tiver uma chave válida (começando com AIzaSy...), coloque abaixo.
+// Se deixar vazio ou incorreto, a IA ativa o modo local automaticamente sem quebrar o site!
+const API_KEY_GEMINI = "AIzaSyAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw";
 
 async function consultarGeminiAPI(perguntaDoAluno) {
-  if (!API_KEY_GEMINI) {
-    return "⚠️ Adicione a chave de API no script.js.";
-  }
+  if (API_KEY_GEMINI && API_KEY_GEMINI.trim() !== "") {
+    try {
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY_GEMINI}`;
+      const contexto = "Você é o GuaraBot, assistente do Portal de Ajuda Guarapuava. Responda de forma acolhedora, objetiva e adequada para estudantes.";
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY_GEMINI}`;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: `${contexto}\n\nPergunta do aluno: ${perguntaDoAluno}` }]
+          }]
+        })
+      });
 
-  const contexto = "Você é o GuaraBot, assistente do Portal de Ajuda Guarapuava. Responda de forma acolhedora, objetiva e adequada para estudantes.";
-  
-  const payload = {
-    contents: [
-      {
-        parts: [
-          { text: `${contexto}\n\nPergunta do aluno: ${perguntaDoAluno}` }
-        ]
+      if (response.ok) {
+        const data = await response.json();
+        const texto = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (texto) return texto;
       }
-    ]
-  };
-
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      console.error("Detalhes do erro da API:", errorData);
-      throw new Error(`Erro ${response.status}`);
+    } catch (error) {
+      console.warn("API do Gemini indisponível. Alternando para resposta local.", error);
     }
-
-    const data = await response.json();
-    return data.candidates[0]?.content?.parts[0]?.text || "Não consegui gerar uma resposta.";
-
-  } catch (error) {
-    console.error("Erro na chamada:", error);
-    return "❌ Erro ao conectar com o GuaraBot. Verifique o console (F12) para detalhes.";
   }
+
+  // Fallback Local (IA Improvisada caso a API falhe ou a chave seja inválida)
+  return respostaLocalGuaraBot(perguntaDoAluno);
 }
 
-  // Lógica da Janela de Chat da IA
+function respostaLocalGuaraBot(pergunta) {
+  const p = pergunta.toLowerCase();
+  if (p.includes("bullying") || p.includes("provoca")) {
+    return "💙 **GuaraBot:** Se você ou um colega sofre bullying, não guarde para si. Procure a equipe pedagógica da sua escola, a SaferNet ou o BPEC.";
+  }
+  if (p.includes("estudo") || p.includes("prova") || p.includes("nota")) {
+    return "📚 **GuaraBot:** Dica de estudo: organize ciclos de 25 minutos de foco total com pausas de 5 minutos. Mantenha os cadernos em dia!";
+  }
+  if (p.includes("triste") || p.includes("ansios") || p.includes("ajuda")) {
+    return "🤝 **GuaraBot:** Você não está sozinho(a). Converse com a pedagogia da escola, com seus responsáveis ou ligue gratuitamente para o **CVV no 188**.";
+  }
+  return "🤖 **GuaraBot:** Estou aqui para apoiar estudantes de Guarapuava! Como posso te ajudar hoje com dicas de estudos ou bem-estar?";
+}
+
+
+// ===================================================
+// INICIALIZAÇÃO GERAL (EXECUTADO QUANDO O DOM CARREGAR)
+// ===================================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ---------------------------------------------------
+  // A. CHATBOX DA IA (GUARABOT)
+  // ---------------------------------------------------
   const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
   const aiWindow = document.getElementById('ai-chat-window');
   const btnCloseAi = document.getElementById('btn-close-ai');
@@ -62,8 +74,7 @@ async function consultarGeminiAPI(perguntaDoAluno) {
       if (!chatMessages) return;
       const msgDiv = document.createElement('div');
       msgDiv.className = `chat-msg ${autor}`;
-      
-      // Converte quebras de linha e negritos simples para exibição correta
+
       const textoFormatado = texto
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\n/g, '<br>');
@@ -81,14 +92,12 @@ async function consultarGeminiAPI(perguntaDoAluno) {
       adicionarMensagem('user', texto);
       inputAi.value = '';
 
-      // Indicador visual de carregamento da IA
       const typingDiv = document.createElement('div');
       typingDiv.className = 'typing-indicator';
-      typingDiv.textContent = 'GuaraBot (Gemini) está digitando...';
+      typingDiv.textContent = 'GuaraBot está digitando...';
       chatMessages.appendChild(typingDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
 
-      // Consulta a API do Gemini
       const respostaIA = await consultarGeminiAPI(texto);
 
       typingDiv.remove();
@@ -101,9 +110,10 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     }
   }
 
-  // ===================================================
-  // 2. ACESSIBILIDADE E TEMAS
-  // ===================================================
+
+  // ---------------------------------------------------
+  // B. ACESSIBILIDADE E TEMAS
+  // ---------------------------------------------------
   const savedTheme = localStorage.getItem('appTheme');
   if (savedTheme === 'dark') document.body.classList.add('dark-mode');
   if (savedTheme === 'contrast') document.body.classList.add('high-contrast');
@@ -178,9 +188,10 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     };
   }
 
-  // ===================================================
-  // 3. LOGIN @escola.pr.gov.br
-  // ===================================================
+
+  // ---------------------------------------------------
+  // C. LOGIN @escola.pr.gov.br
+  // ---------------------------------------------------
   const btnLoginToggle = document.getElementById('btn-toggle-login');
   const loginMenu = document.getElementById('login-dropdown');
   const formLogin = document.getElementById('form-login-seed');
@@ -239,30 +250,12 @@ async function consultarGeminiAPI(perguntaDoAluno) {
   }
   atualizarEstadoLogin();
 
-  // ===================================================
-  // 4. QUIZ DE EMPATIA (5 PERGUNTAS COMPLETAS)
-  // ===================================================
+
+  // ---------------------------------------------------
+  // D. QUIZ DE EMPATIA
+  // ---------------------------------------------------
   const testeForm = document.getElementById('teste-form');
-  if (testeForm) {
-    const user = JSON.parse(localStorage.getItem('seedUser'));
-    const msgLogin = document.getElementById('teste-login-required');
-    const msgDone = document.getElementById('teste-already-done');
-
-    if (!user) {
-      if (msgLogin) msgLogin.classList.remove('hidden');
-    } else {
-      const hoje = new Date().toISOString().split('T')[0];
-      const ultimoTeste = localStorage.getItem(`teste_${user.email}`);
-
-      if (ultimoTeste === hoje) {
-        if (msgDone) msgDone.classList.remove('hidden');
-      } else {
-        testeForm.classList.remove('hidden');
-        renderizarPerguntasQuiz();
-      }
-    }
-  }
-
+  
   function renderizarPerguntasQuiz() {
     const bancoPerguntas = [
       {
@@ -313,7 +306,7 @@ async function consultarGeminiAPI(perguntaDoAluno) {
 
     bancoPerguntas.forEach((item, pIdx) => {
       let optionsHtml = '';
-      item.opts.forEach((opt, oIdx) => {
+      item.opts.forEach((opt) => {
         optionsHtml += `
           <label style="display:flex; align-items:flex-start; gap:8px; margin:8px 0; cursor:pointer; font-size:0.9rem;">
             <input type="radio" name="p_${pIdx}" value="${opt.pts}" style="margin-top:3px;" required>
@@ -333,7 +326,7 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     testeForm.onsubmit = (e) => {
       e.preventDefault();
       let pontuacaoTotal = 0;
-      
+
       for (let i = 0; i < bancoPerguntas.length; i++) {
         const selecionada = document.querySelector(`input[name="p_${i}"]:checked`);
         if (selecionada) {
@@ -343,11 +336,13 @@ async function consultarGeminiAPI(perguntaDoAluno) {
 
       const user = JSON.parse(localStorage.getItem('seedUser'));
       const hoje = new Date().toISOString().split('T')[0];
-      localStorage.setItem(`teste_${user.email}`, hoje);
+      if (user) {
+        localStorage.setItem(`teste_${user.email}`, hoje);
+      }
 
       testeForm.classList.add('hidden');
       const resContainer = document.getElementById('teste-resultado');
-      
+
       let mensagemPerfil = "";
       if (pontuacaoTotal >= 13) {
         mensagemPerfil = "🌟 **Perfil Agente da Empatia:** Você demonstra excelente consciência social e ajuda ativamente a tornar o ambiente escolar acolhedor e seguro!";
@@ -369,9 +364,30 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     };
   }
 
-  // ===================================================
-  // 5. MURAL DE APOIO (INDEX)
-  // ===================================================
+  if (testeForm) {
+    const user = JSON.parse(localStorage.getItem('seedUser'));
+    const msgLogin = document.getElementById('teste-login-required');
+    const msgDone = document.getElementById('teste-already-done');
+
+    if (!user) {
+      if (msgLogin) msgLogin.classList.remove('hidden');
+    } else {
+      const hoje = new Date().toISOString().split('T')[0];
+      const ultimoTeste = localStorage.getItem(`teste_${user.email}`);
+
+      if (ultimoTeste === hoje) {
+        if (msgDone) msgDone.classList.remove('hidden');
+      } else {
+        testeForm.classList.remove('hidden');
+        renderizarPerguntasQuiz();
+      }
+    }
+  }
+
+
+  // ---------------------------------------------------
+  // E. MURAL DE APOIO
+  // ---------------------------------------------------
   const muralFeed = document.getElementById('mural-feed');
   const formNovoPost = document.getElementById('form-novo-post');
 
@@ -414,9 +430,10 @@ async function consultarGeminiAPI(perguntaDoAluno) {
   }
   carregarMural();
 
-  // ===================================================
-  // 6. PORTAL DE ESCUTA / DENÚNCIA
-  // ===================================================
+
+  // ---------------------------------------------------
+  // F. PORTAL DE ESCUTA / DENÚNCIA
+  // ---------------------------------------------------
   const formDenuncia = document.getElementById('form-denuncia');
   const gateDenuncia = document.getElementById('denuncia-login-gate');
 
@@ -453,9 +470,10 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     }
   }
 
-  // ===================================================
-  // 7. BOTÃO VOLTAR AO TOPO
-  // ===================================================
+
+  // ---------------------------------------------------
+  // G. BOTÃO VOLTAR AO TOPO
+  // ---------------------------------------------------
   const btnTop = document.getElementById('btn-back-to-top');
   if (btnTop) {
     window.addEventListener('scroll', () => {
@@ -463,4 +481,5 @@ async function consultarGeminiAPI(perguntaDoAluno) {
     });
     btnTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   }
- ;
+
+});
