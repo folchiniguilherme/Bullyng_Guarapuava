@@ -1,8 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ===================================================
-  // 1. MOTOR DE IA CONVERSACIONAL (GUARABOT 2.0)
-  // ===================================================
+ // ===================================================
+// 1. CHAMADA À API REAL DO GEMINI (GUARABOT IA)
+// ===================================================
+const API_KEY_GEMINI = "AIzaSyAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURwSUA_CHAAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw"; // 👈 Cole sua chave real (inicia com AIzaSy...)
+
+async function consultarGeminiAPI(perguntaDoAluno) {
+  if (!API_KEY_GEMINI || API_KEY_GEMINI === "AIzaSyAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw") {
+    return "⚠️ **Configuração pendente:** Adicione sua chave válida do Gemini no arquivo script.js para ativar a IA real!";
+  }
+
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY_GEMINI}`;
+
+  // Instrução de contexto para que a IA responda exatamente como o GuaraBot
+  const promptComInstrucao = `
+Você é o GuaraBot, a inteligência artificial do "Portal de Ajuda Guarapuava".
+Seu objetivo é orientar e apoiar estudantes da rede pública de Guarapuava e região (@escola.pr.gov.br).
+Diretrizes de resposta:
+1. Seja acolhedor, empático, claro e conciso.
+2. Forneça orientações sobre prevenção ao bullying, cyberbullying, saúde mental, bem-estar, estudos e canais oficiais de apoio (SEED-PR, BPEC, CVV 188, SaferNet).
+3. Use marcações simples como **negrito** e tópicos para organizar a leitura.
+4. Nunca forneça respostas inadequadas ou fora do contexto de apoio educacional e bem-estar estudantil.
+
+Pergunta do aluno: ${perguntaDoAluno}
+  `;
+
+  const payload = {
+    contents: [
+      {
+        parts: [{ text: promptComInstrucao }]
+      }
+    ]
+  };
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro de rede/API: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
+      return data.candidates[0].content.parts[0].text;
+    } else {
+      return "Não consegui processar a resposta no momento. Tente reformular sua pergunta!";
+    }
+  } catch (error) {
+    console.error("Erro na comunicação com a API do Gemini:", error);
+    return "❌ Ocorreu um erro ao conectar com a IA do Gemini. Verifique sua conexão ou se a chave de API é válida.";
+  }
+}
+
+  // Lógica da Janela de Chat da IA
   const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
   const aiWindow = document.getElementById('ai-chat-window');
   const btnCloseAi = document.getElementById('btn-close-ai');
@@ -18,78 +73,42 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!chatMessages) return;
       const msgDiv = document.createElement('div');
       msgDiv.className = `chat-msg ${autor}`;
-      msgDiv.innerHTML = texto;
+      
+      // Converte quebras de linha e negritos simples para exibição correta
+      const textoFormatado = texto
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+
+      msgDiv.innerHTML = textoFormatado;
       chatMessages.appendChild(msgDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
       return msgDiv;
     }
 
-    // Efeito de digitação para simular resposta de IA real
-    function simularDigitacaoEEnviar(respostaFinal) {
+    async function processarEnvioIA() {
+      const texto = inputAi.value.trim();
+      if (!texto) return;
+
+      adicionarMensagem('user', texto);
+      inputAi.value = '';
+
+      // Indicador visual de carregamento da IA
       const typingDiv = document.createElement('div');
       typingDiv.className = 'typing-indicator';
-      typingDiv.textContent = 'GuaraBot está pensando...';
+      typingDiv.textContent = 'GuaraBot (Gemini) está digitando...';
       chatMessages.appendChild(typingDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
 
-      setTimeout(() => {
-        typingDiv.remove();
-        adicionarMensagem('bot', respostaFinal);
-      }, 700 + Math.random() * 500);
-    }
+      // Consulta a API do Gemini
+      const respostaIA = await consultarGeminiAPI(texto);
 
-    function processarIA(pergunta) {
-      const raw = pergunta.trim();
-      const p = raw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-      // Base de conhecimento e PLN local avançado
-      if (p.includes('oi') || p.includes('ola') || p.includes('e ai') || p.includes('opa') || p.includes('bom dia') || p.includes('boa tarde') || p.includes('boa noite')) {
-        simularDigitacaoEEnviar("Olá! Eu sou o **GuaraBot**, sua inteligência artificial de apoio escolar. Em que posso te ajudar hoje? Posso orientar sobre **bullying**, **estresse**, **apoio emocional** ou **canais de ajuda**.");
-      }
-      else if (p.includes('quem e voce') || p.includes('oque voce faz') || p.includes('funciona')) {
-        simularDigitacaoEEnviar("Eu sou um assistente virtual treinado para tirar dúvidas sobre segurança escolar, saúde mental e orientar sobre como utilizar este portal para relatar abusos ou buscar apoio.");
-      }
-      else if (p.includes('cyber') || p.includes('internet') || p.includes('print') || p.includes('whatsapp') || p.includes('rede social') || p.includes('vazou') || p.includes('foto')) {
-        simularDigitacaoEEnviar("📌 **Em casos de Cyberbullying ou vazamento de fotos:**\n1. Tire *prints* comprovando as ofensas (com data e horário).\n2. Não responda aos provocadores.\n3. Bloqueie o perfil invasor.\n4. Comunique a direção escolar e denuncie no site da **SaferNet** (link na nossa aba *Contatos & Apoio*).");
-      }
-      else if (p.includes('bullying') || p.includes('ofensa') || p.includes('zoacao') || p.includes('apelido') || p.includes('agressao') || p.includes('ameaca')) {
-        simularDigitacaoEEnviar("🛡️ **O Bullying não deve ser tolerado.** Você não precisa passar por isso sozinho. Acesse a aba **Portal de Escuta** para registrar um relato sigiloso que será direcionado à equipe responsável.");
-      }
-      else if (p.includes('ansie') || p.includes('estresse') || p.includes('calma') || p.includes('nervoso') || p.includes('panico') || p.includes('medo') || p.includes('triste')) {
-        simularDigitacaoEEnviar("🌿 **Respire fundo.** Tente a técnica de respiração 4-7-8:\n• Puxe o ar em **4 segundos**\n• Segure por **7 segundos**\n• Solte devagar em **8 segundos**\nSe estiver se sentindo muito sobrecarregado, ligue gratuitamente para o **188 (CVV)**.");
-      }
-      else if (p.includes('teste') || p.includes('quiz') || p.includes('pergunta') || p.includes('nota')) {
-        simularDigitacaoEEnviar("📝 O nosso **Teste de Empatia** possui 5 perguntas situacionais para você avaliar como reage diante de desafios no colégio. Lembre-se de fazer login com seu e-mail `@escola.pr.gov.br` para liberar o formulário!");
-      }
-      else if (p.includes('policia') || p.includes('patrulha') || p.includes('bpec') || p.includes('seguranca')) {
-        simularDigitacaoEEnviar("🚔 A **Patrulha Escolar Comunitária (BPEC)** atua em parceria com os colégios estaduais do Paraná para garantir a segurança de alunos e professores através da mediação e prevenção.");
-      }
-      else if (p.includes('seed') || p.includes('ouvidoria') || p.includes('nucleo') || p.includes('nre')) {
-        simularDigitacaoEEnviar("🏛️ Você pode entrar em contato com o **Núcleo Regional de Educação (NRE Guarapuava)** ou com a **Ouvidoria da SEED-PR** na aba *Contatos & Apoio* do site.");
-      }
-      else if (p.includes('fonte') || p.includes('referencia') || p.includes('lei') || p.includes('pesquisa')) {
-        simularDigitacaoEEnviar("📚 Todo o nosso conteúdo é respaldado por fontes governamentais como a **Lei 13.185/2015**, **MEC**, **SEED-PR** e **SaferNet**. Confira todos os links na aba **Referências**.");
-      }
-      else if (p.includes('obrigad') || p.includes('valeu') || p.includes('tmj') || p.includes('obg')) {
-        simularDigitacaoEEnviar("Por nada! Estou sempre por aqui se precisar. CUIDE-SE BEM! 💚");
-      }
-      else {
-        simularDigitacaoEEnviar(`Compreendo sua dúvida sobre "${raw}". Como sou focado em apoio estudantil, posso te orientar sobre:\n• **Bullying e Cyberbullying**\n• **Dicas de Ansiedade e Estresse**\n• **Como fazer um Relato Sigiloso**\n• **Canais de Ajuda (SEED, BPEC, CVV)**\n\nQual desses tópicos você gostaria de explorar?`);
-      }
+      typingDiv.remove();
+      adicionarMensagem('bot', respostaIA);
     }
 
     if (btnSendAi && inputAi) {
-      const enviarMsg = () => {
-        const texto = inputAi.value.trim();
-        if (texto) {
-          adicionarMensagem('user', texto);
-          inputAi.value = '';
-          processarIA(texto);
-        }
-      };
-
-      btnSendAi.onclick = enviarMsg;
-      inputAi.onkeypress = (e) => { if (e.key === 'Enter') enviarMsg(); };
+      btnSendAi.onclick = processarEnvioIA;
+      inputAi.onkeypress = (e) => { if (e.key === 'Enter') processarEnvioIA(); };
     }
   }
 
@@ -232,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   atualizarEstadoLogin();
 
   // ===================================================
-  // 4. QUIZ DE EMPATIA (CORRIGIDO E COM 5 PERGUNTAS)
+  // 4. QUIZ DE EMPATIA (5 PERGUNTAS COMPLETAS)
   // ===================================================
   const testeForm = document.getElementById('teste-form');
   if (testeForm) {
@@ -256,7 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderizarPerguntasQuiz() {
-    // EXACTLY 5 DETAILED SITUATIONAL QUESTIONS
     const bancoPerguntas = [
       {
         q: "1. Ao presenciar um colega sendo ridicularizado ou sofrendo piadas no grupo da turma:",
@@ -270,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         q: "2. Quando um aluno novo chega na sala e se senta sozinho durante o intervalo:",
         opts: [
           { txt: "Vou até ele e o convido para se juntar ao meu grupo de amigos.", pts: 3 },
-          { txt: "Dau um 'oi' amigável de longe.", pts: 2 },
+          { txt: "Dou um 'oi' amigável de longe.", pts: 2 },
           { txt: "Apenas converso com quem já conheço.", pts: 1 }
         ]
       },
