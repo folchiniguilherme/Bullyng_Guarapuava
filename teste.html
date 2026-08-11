@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Guarapuava - Teste de Personalidade</title>
+  <title>Portal de Ajuda Guarapuava - Teste de Empatia</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +14,9 @@
         <svg class="brasao-svg" viewBox="0 0 100 100">
           <path d="M50 5 L88 22 V50 C88 75 50 95 50 95 C50 95 12 75 12 50 V22 Z" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
           <path d="M50 10 L82 25 V48 C82 70 50 88 50 88 C50 88 18 70 18 48 V25 Z" fill="#00750C"/>
-          <text x="50" y="58" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle">G</text>
+          <text x="50" y="60" font-size="38" font-weight="900" fill="#ffffff" text-anchor="middle">G</text>
         </svg>
-        <a href="index.html" class="logo-link">PORTAL GUARAPUAVA</a>
+        <a href="index.html" class="logo-link">Portal de Ajuda Guarapuava</a>
       </div>
       <div class="top-bar-actions">
         <div class="login-wrapper">
@@ -48,33 +48,35 @@
     </div>
 
     <nav class="main-nav">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="denuncia.html">Portal de Escuta</a></li>
-    <li><a href="teste.html">Teste de Personalidade</a></li>
-    <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
-    <li><a href="contatos.html">Contatos & Apoio</a></li>
-    <li><a href="referencias.html">Referências</a></li>
-  </ul>
-</nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="denuncia.html">Portal de Escuta</a></li>
+        <li><a href="teste.html" class="active">Teste de Personalidade</a></li>
+        <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
+        <li><a href="contatos.html">Contatos & Apoio</a></li>
+        <li><a href="referencias.html">Referências</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="container">
-    <div class="contact-card">
-      <h2>🧩 Teste de Empatia e Convivência Escolar</h2>
-      <p class="subtitle">Responda às questões para descobrir o seu perfil de atitude no ambiente escolar.</p>
+    <div class="section-header">
+      <h2>🧠 Teste de Empatia e Perfil de Convivência</h2>
+      <p class="subtitle">Responda às 5 perguntas abaixo para avaliar sua capacidade de promover um ambiente seguro.</p>
+    </div>
 
+    <div class="form-container">
       <div id="teste-login-required" class="alert-box warning hidden">
-        🔒 <strong>Atenção:</strong> Faça login com seu e-mail <code>@escola.pr.gov.br</code> no menu superior para acessar o teste.
+        🔒 Para realizar o teste, faça login no topo da página utilizando sua conta institucional <strong>@escola.pr.gov.br</strong>.
       </div>
 
       <div id="teste-already-done" class="alert-box info hidden">
-        📅 <strong>Você já realizou esta autoavaliação hoje!</strong> Volte amanhã para fazer um novo teste.
+        ✅ Você já realizou seu teste diário! Volte amanhã para uma nova reflexão.
       </div>
 
       <form id="teste-form" class="hidden">
         <div id="container-perguntas"></div>
-        <button type="submit" class="btn-primary" style="width:100%; margin-top:16px;">Finalizar e Ver Perfil</button>
+        <button type="submit" class="btn-primary" style="width:100%; margin-top:15px; padding:12px;">Finalizar e Ver Resultado</button>
       </form>
 
       <div id="teste-resultado" class="hidden"></div>
@@ -90,7 +92,7 @@
     </div>
     <div id="ai-chat-messages" class="ai-chat-messages">
       <div class="chat-msg bot">
-        Olá! Praticar empatia muda o ambiente escolar. Responda às perguntas!
+        Olá! Sou a IA do Portal. Se precisar de orientações sobre o teste ou convivência escolar, é só me perguntar!
       </div>
     </div>
     <div class="ai-chat-input-area">

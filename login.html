@@ -9,35 +9,55 @@
 <body>
 
   <header>
-    <div class="top-bar">
-      <div class="logo">
-        <a href="index.html">
-          <img src="image_956a00.png" alt="Logo Portal Ajuda Guarapuava" class="site-logo">
-        </a>
+  <div class="top-bar">
+    <div class="brand-container">
+      <svg class="brasao-svg" viewBox="0 0 100 100">
+        <path d="M50 5 L88 22 V50 C88 75 50 95 50 95 C50 95 12 75 12 50 V22 Z" fill="#ffffff" stroke="#ffffff" stroke-width="2"/>
+        <path d="M50 10 L82 25 V48 C82 70 50 88 50 88 C50 88 18 70 18 48 V25 Z" fill="#00750C"/>
+        <text x="50" y="60" font-size="38" font-weight="900" fill="#ffffff" text-anchor="middle">G</text>
+      </svg>
+      <a href="index.html" class="logo-link">Portal de Ajuda Guarapuava</a>
+    </div>
+    <div class="top-bar-actions">
+      <div class="login-wrapper">
+        <button id="btn-toggle-login" class="btn-login-toggle">Entre com o @escola</button>
+        <div id="login-dropdown" class="login-dropdown-menu hidden">
+          <div id="login-form-container">
+            <h4 style="margin-bottom:4px; font-size:0.9rem;">Acesso Seed PR</h4>
+            <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:12px;">Utilize sua conta <code>@escola.pr.gov.br</code></p>
+            <form id="form-login-seed">
+              <input type="email" id="email-seed" placeholder="seu.nome@escola.pr.gov.br" style="margin-bottom:10px;" required>
+              <input type="password" id="senha-seed" placeholder="••••••••" style="margin-bottom:12px;" required>
+              <button type="submit" class="btn-primary" style="width:100%; padding:8px;">Entrar</button>
+            </form>
+          </div>
+          <div id="user-profile-badge" class="hidden"></div>
+        </div>
       </div>
-      
+
       <div class="accessibility-wrapper">
-        <button id="btn-toggle-accessibility" class="btn-acc-toggle">♿ Acessibilidade ▾</button>
+        <button id="btn-toggle-accessibility" class="btn-acc-circle" title="Acessibilidade">≣</button>
         <div id="accessibility-menu" class="accessibility-dropdown hidden">
-          <button id="btn-font-increase" title="Aumentar Fonte">A+ Aumentar</button>
-          <button id="btn-font-decrease" title="Diminuir Fonte">A- Diminuir</button>
-          <button id="btn-dark-mode" title="Alternar Modo Escuro">🌙 Modo Escuro</button>
-          <button id="btn-high-contrast" title="Alternar Alto Contraste">👁️ Alto Contraste</button>
+          <button id="btn-font-increase">A+ Aumentar Fonte</button>
+          <button id="btn-font-decrease">A- Diminuir Fonte</button>
+          <button id="btn-dark-mode">Modo Escuro</button>
+          <button id="btn-high-contrast">Alto Contraste</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <nav class="main-nav">
-  <ul>
-    <li><a href="index.html">Início</a></li>
-    <li><a href="denuncia.html">Portal de Escuta</a></li>
-    <li><a href="teste.html">Teste de Personalidade</a></li>
-    <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
-    <li><a href="contatos.html">Contatos & Apoio</a></li>
-    <li><a href="referencias.html">Referências</a></li>
-  </ul>
-</nav>
-  </header>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="denuncia.html">Portal de Escuta</a></li>
+      <li><a href="teste.html">Teste de Personalidade</a></li>
+      <li><a href="ajuda.html">Ajuda & Bem-Estar</a></li>
+      <li><a href="contatos.html">Contatos & Apoio</a></li>
+      <li><a href="referencias.html">Referências</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main class="container login-container-wrapper">
     <div class="login-card">

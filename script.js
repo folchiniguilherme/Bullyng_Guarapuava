@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===================================================
-  // 1. MOTOR DA IA (GUARABOT - REFITO E EXPANDIDO)
+  // 1. MOTOR DE IA CONVERSACIONAL (GUARABOT 2.0)
   // ===================================================
   const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
   const aiWindow = document.getElementById('ai-chat-window');
@@ -21,41 +21,61 @@ document.addEventListener('DOMContentLoaded', () => {
       msgDiv.innerHTML = texto;
       chatMessages.appendChild(msgDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
+      return msgDiv;
     }
 
-    function processarPerguntaIA(pergunta) {
-      const p = pergunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-      let resposta = "";
+    // Efeito de digitação para simular resposta de IA real
+    function simularDigitacaoEEnviar(respostaFinal) {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'typing-indicator';
+      typingDiv.textContent = 'GuaraBot está pensando...';
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
 
-      if (p.includes('oi') || p.includes('ola') || p.includes('bom dia') || p.includes('boa tarde') || p.includes('boa noite')) {
-        resposta = "Olá! Sou o **GuaraBot**, assistente virtual do Portal Guarapuava. Como posso te ajudar hoje?";
-      } 
-      else if (p.includes('cyber') || p.includes('internet') || p.includes('print') || p.includes('rede social') || p.includes('foto')) {
-        resposta = "Em casos de Cyberbullying: salve todos os prints com data e hora, bloqueie o perfil e converse imediatamente com a direção da escola ou acesse a aba **Contatos & Apoio** para acionar a SaferNet.";
+      setTimeout(() => {
+        typingDiv.remove();
+        adicionarMensagem('bot', respostaFinal);
+      }, 700 + Math.random() * 500);
+    }
+
+    function processarIA(pergunta) {
+      const raw = pergunta.trim();
+      const p = raw.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      // Base de conhecimento e PLN local avançado
+      if (p.includes('oi') || p.includes('ola') || p.includes('e ai') || p.includes('opa') || p.includes('bom dia') || p.includes('boa tarde') || p.includes('boa noite')) {
+        simularDigitacaoEEnviar("Olá! Eu sou o **GuaraBot**, sua inteligência artificial de apoio escolar. Em que posso te ajudar hoje? Posso orientar sobre **bullying**, **estresse**, **apoio emocional** ou **canais de ajuda**.");
       }
-      else if (p.includes('bullying') || p.includes('ofensa') || p.includes('ameaca') || p.includes('apelido') || p.includes('agressao')) {
-        resposta = "O bullying prejudica a convivência escolar. Você pode registrar um relato seguro e sigiloso na aba **Portal de Escuta** do nosso site.";
-      } 
-      else if (p.includes('ansie') || p.includes('estresse') || p.includes('triste') || p.includes('panico') || p.includes('nervos')) {
-        resposta = "Para momentos de estresse ou ansiedade, conheça a **Técnica de Respiração 4-7-8** na aba **Ajuda & Bem-Estar**. Se precisar conversar, o CVV atende no número **188**.";
-      } 
-      else if (p.includes('patrulha') || p.includes('policia escolar') || p.includes('segurança')) {
-        resposta = "A **Patrulha Escolar Comunitária (BPEC)** atua preventivamente nas escolas do Paraná para garantir a segurança de alunos e professores.";
+      else if (p.includes('quem e voce') || p.includes('oque voce faz') || p.includes('funciona')) {
+        simularDigitacaoEEnviar("Eu sou um assistente virtual treinado para tirar dúvidas sobre segurança escolar, saúde mental e orientar sobre como utilizar este portal para relatar abusos ou buscar apoio.");
       }
-      else if (p.includes('ouvidoria') || p.includes('seed') || p.includes('secretaria')) {
-        resposta = "A Ouvidoria da SEED-PR acolhe manifestações sobre o ambiente escolar. Você encontra o link oficial na aba **Contatos & Apoio**.";
+      else if (p.includes('cyber') || p.includes('internet') || p.includes('print') || p.includes('whatsapp') || p.includes('rede social') || p.includes('vazou') || p.includes('foto')) {
+        simularDigitacaoEEnviar("📌 **Em casos de Cyberbullying ou vazamento de fotos:**\n1. Tire *prints* comprovando as ofensas (com data e horário).\n2. Não responda aos provocadores.\n3. Bloqueie o perfil invasor.\n4. Comunique a direção escolar e denuncie no site da **SaferNet** (link na nossa aba *Contatos & Apoio*).");
       }
-      else if (p.includes('fonte') || p.includes('referencia') || p.includes('lei') || p.includes('origem') || p.includes('pesquisa')) {
-        resposta = "Todas as informações e leis utilizadas no Portal estão listadas com links oficiais na nossa nova página de **Referências**!";
+      else if (p.includes('bullying') || p.includes('ofensa') || p.includes('zoacao') || p.includes('apelido') || p.includes('agressao') || p.includes('ameaca')) {
+        simularDigitacaoEEnviar("🛡️ **O Bullying não deve ser tolerado.** Você não precisa passar por isso sozinho. Acesse a aba **Portal de Escuta** para registrar um relato sigiloso que será direcionado à equipe responsável.");
       }
-      else if (p.includes('login') || p.includes('escola.pr') || p.includes('conta')) {
-        resposta = "Para acessar recursos restritos como o relato e o teste de personalidade, use o botão **'Entre com o @escola'** no topo do site e informe seu e-mail institucional do Paraná.";
+      else if (p.includes('ansie') || p.includes('estresse') || p.includes('calma') || p.includes('nervoso') || p.includes('panico') || p.includes('medo') || p.includes('triste')) {
+        simularDigitacaoEEnviar("🌿 **Respire fundo.** Tente a técnica de respiração 4-7-8:\n• Puxe o ar em **4 segundos**\n• Segure por **7 segundos**\n• Solte devagar em **8 segundos**\nSe estiver se sentindo muito sobrecarregado, ligue gratuitamente para o **188 (CVV)**.");
+      }
+      else if (p.includes('teste') || p.includes('quiz') || p.includes('pergunta') || p.includes('nota')) {
+        simularDigitacaoEEnviar("📝 O nosso **Teste de Empatia** possui 5 perguntas situacionais para você avaliar como reage diante de desafios no colégio. Lembre-se de fazer login com seu e-mail `@escola.pr.gov.br` para liberar o formulário!");
+      }
+      else if (p.includes('policia') || p.includes('patrulha') || p.includes('bpec') || p.includes('seguranca')) {
+        simularDigitacaoEEnviar("🚔 A **Patrulha Escolar Comunitária (BPEC)** atua em parceria com os colégios estaduais do Paraná para garantir a segurança de alunos e professores através da mediação e prevenção.");
+      }
+      else if (p.includes('seed') || p.includes('ouvidoria') || p.includes('nucleo') || p.includes('nre')) {
+        simularDigitacaoEEnviar("🏛️ Você pode entrar em contato com o **Núcleo Regional de Educação (NRE Guarapuava)** ou com a **Ouvidoria da SEED-PR** na aba *Contatos & Apoio* do site.");
+      }
+      else if (p.includes('fonte') || p.includes('referencia') || p.includes('lei') || p.includes('pesquisa')) {
+        simularDigitacaoEEnviar("📚 Todo o nosso conteúdo é respaldado por fontes governamentais como a **Lei 13.185/2015**, **MEC**, **SEED-PR** e **SaferNet**. Confira todos os links na aba **Referências**.");
+      }
+      else if (p.includes('obrigad') || p.includes('valeu') || p.includes('tmj') || p.includes('obg')) {
+        simularDigitacaoEEnviar("Por nada! Estou sempre por aqui se precisar. CUIDE-SE BEM! 💚");
       }
       else {
-        resposta = "Posso te ajudar com assuntos sobre **Bullying**, **Cyberbullying**, **Técnicas de Alívio de Estresse**, **Patrulha Escolar**, **Ouvidoria SEED** ou nossas **Referências** de pesquisa.";
+        simularDigitacaoEEnviar(`Compreendo sua dúvida sobre "${raw}". Como sou focado em apoio estudantil, posso te orientar sobre:\n• **Bullying e Cyberbullying**\n• **Dicas de Ansiedade e Estresse**\n• **Como fazer um Relato Sigiloso**\n• **Canais de Ajuda (SEED, BPEC, CVV)**\n\nQual desses tópicos você gostaria de explorar?`);
       }
-
-      setTimeout(() => adicionarMensagem('bot', resposta), 400);
     }
 
     if (btnSendAi && inputAi) {
@@ -64,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (texto) {
           adicionarMensagem('user', texto);
           inputAi.value = '';
-          processarPerguntaIA(texto);
+          processarIA(texto);
         }
       };
 
@@ -212,7 +232,138 @@ document.addEventListener('DOMContentLoaded', () => {
   atualizarEstadoLogin();
 
   // ===================================================
-  // 4. MURAL DE APOIO (INDEX)
+  // 4. QUIZ DE EMPATIA (CORRIGIDO E COM 5 PERGUNTAS)
+  // ===================================================
+  const testeForm = document.getElementById('teste-form');
+  if (testeForm) {
+    const user = JSON.parse(localStorage.getItem('seedUser'));
+    const msgLogin = document.getElementById('teste-login-required');
+    const msgDone = document.getElementById('teste-already-done');
+
+    if (!user) {
+      if (msgLogin) msgLogin.classList.remove('hidden');
+    } else {
+      const hoje = new Date().toISOString().split('T')[0];
+      const ultimoTeste = localStorage.getItem(`teste_${user.email}`);
+
+      if (ultimoTeste === hoje) {
+        if (msgDone) msgDone.classList.remove('hidden');
+      } else {
+        testeForm.classList.remove('hidden');
+        renderizarPerguntasQuiz();
+      }
+    }
+  }
+
+  function renderizarPerguntasQuiz() {
+    // EXACTLY 5 DETAILED SITUATIONAL QUESTIONS
+    const bancoPerguntas = [
+      {
+        q: "1. Ao presenciar um colega sendo ridicularizado ou sofrendo piadas no grupo da turma:",
+        opts: [
+          { txt: "Apoio o colega, repreendo a piada ou aviso a equipe pedagógica.", pts: 3 },
+          { txt: "Envio uma mensagem privada ao colega perguntando se ele está bem.", pts: 2 },
+          { txt: "Não faço nada para não me envolver na confusão.", pts: 1 }
+        ]
+      },
+      {
+        q: "2. Quando um aluno novo chega na sala e se senta sozinho durante o intervalo:",
+        opts: [
+          { txt: "Vou até ele e o convido para se juntar ao meu grupo de amigos.", pts: 3 },
+          { txt: "Dau um 'oi' amigável de longe.", pts: 2 },
+          { txt: "Apenas converso com quem já conheço.", pts: 1 }
+        ]
+      },
+      {
+        q: "3. Durante um trabalho em grupo, um integrante dá uma ideia muito diferente da sua:",
+        opts: [
+          { txt: "Ouço com atenção e tento integrar a ideia dele ao projeto.", pts: 3 },
+          { txt: "Aceito por educação, mas prefiro focar no que eu propus.", pts: 2 },
+          { txt: "Descarto a ideia imediatamente por achar a minha melhor.", pts: 1 }
+        ]
+      },
+      {
+        q: "4. Se você recebe uma foto embaraçosa ou boato de algum colega de escola no WhatsApp:",
+        opts: [
+          { txt: "Apago a mensagem imediatamente e não repasso para ninguém.", pts: 3 },
+          { txt: "Ignoro e finjo que não vi.", pts: 2 },
+          { txt: "Encaminho para os meus amigos mais próximos.", pts: 1 }
+        ]
+      },
+      {
+        q: "5. Se você percebe que um amigo anda triste, quieto e isolado há vários dias:",
+        opts: [
+          { txt: "Ofereço escuta atenta e, se necessário, o incentivo a buscar apoio na escola.", pts: 3 },
+          { txt: "Pergunto rapidamente se está tudo bem, mas não me aprofundo.", pts: 2 },
+          { txt: "Deixo para lá, pois acho que é apenas um momento dele.", pts: 1 }
+        ]
+      }
+    ];
+
+    const container = document.getElementById('container-perguntas');
+    if (!container) return;
+    container.innerHTML = '';
+
+    bancoPerguntas.forEach((item, pIdx) => {
+      let optionsHtml = '';
+      item.opts.forEach((opt, oIdx) => {
+        optionsHtml += `
+          <label style="display:flex; align-items:flex-start; gap:8px; margin:8px 0; cursor:pointer; font-size:0.9rem;">
+            <input type="radio" name="p_${pIdx}" value="${opt.pts}" style="margin-top:3px;" required>
+            <span>${opt.txt}</span>
+          </label>
+        `;
+      });
+
+      container.innerHTML += `
+        <div style="margin-bottom:20px; padding:14px; background:var(--bg-main); border-radius:8px; border:1px solid var(--border-color);">
+          <strong style="display:block; margin-bottom:10px; color:var(--primary); font-size:0.95rem;">${item.q}</strong>
+          ${optionsHtml}
+        </div>
+      `;
+    });
+
+    testeForm.onsubmit = (e) => {
+      e.preventDefault();
+      let pontuacaoTotal = 0;
+      
+      for (let i = 0; i < bancoPerguntas.length; i++) {
+        const selecionada = document.querySelector(`input[name="p_${i}"]:checked`);
+        if (selecionada) {
+          pontuacaoTotal += parseInt(selecionada.value);
+        }
+      }
+
+      const user = JSON.parse(localStorage.getItem('seedUser'));
+      const hoje = new Date().toISOString().split('T')[0];
+      localStorage.setItem(`teste_${user.email}`, hoje);
+
+      testeForm.classList.add('hidden');
+      const resContainer = document.getElementById('teste-resultado');
+      
+      let mensagemPerfil = "";
+      if (pontuacaoTotal >= 13) {
+        mensagemPerfil = "🌟 **Perfil Agente da Empatia:** Você demonstra excelente consciência social e ajuda ativamente a tornar o ambiente escolar acolhedor e seguro!";
+      } else if (pontuacaoTotal >= 9) {
+        mensagemPerfil = "👍 **Perfil Consciente:** Você respeita os colegas e evita conflitos, mas pode praticar ainda mais pequenas ações de apoio no dia a dia.";
+      } else {
+        mensagemPerfil = "💡 **Perfil em Desenvolvimento:** Que tal refletir sobre como pequenos gestos de atenção e respeito podem mudar o dia de um colega?";
+      }
+
+      if (resContainer) {
+        resContainer.classList.remove('hidden');
+        resContainer.innerHTML = `
+          <div class="alert-box info" style="text-align:center; padding:20px;">
+            <h3 style="margin-bottom:10px; color:var(--primary);">Pontuação Final: ${pontuacaoTotal} de 15 pontos</h3>
+            <p style="font-size:0.95rem; line-height:1.5;">${mensagemPerfil}</p>
+          </div>
+        `;
+      }
+    };
+  }
+
+  // ===================================================
+  // 5. MURAL DE APOIO (INDEX)
   // ===================================================
   const muralFeed = document.getElementById('mural-feed');
   const formNovoPost = document.getElementById('form-novo-post');
@@ -257,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarMural();
 
   // ===================================================
-  // 5. PORTAL DE ESCUTA / DENÚNCIA
+  // 6. PORTAL DE ESCUTA / DENÚNCIA
   // ===================================================
   const formDenuncia = document.getElementById('form-denuncia');
   const gateDenuncia = document.getElementById('denuncia-login-gate');
@@ -293,93 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modal) modal.classList.add('hidden');
       };
     }
-  }
-
-  // ===================================================
-  // 6. QUIZ DE EMPATIA
-  // ===================================================
-  const testeForm = document.getElementById('teste-form');
-  if (testeForm) {
-    const user = JSON.parse(localStorage.getItem('seedUser'));
-    const msgLogin = document.getElementById('teste-login-required');
-    const msgDone = document.getElementById('teste-already-done');
-
-    if (!user) {
-      if (msgLogin) msgLogin.classList.remove('hidden');
-    } else {
-      const hoje = new Date().toISOString().split('T')[0];
-      const ultimoTeste = localStorage.getItem(`teste_${user.email}`);
-
-      if (ultimoTeste === hoje) {
-        if (msgDone) msgDone.classList.remove('hidden');
-      } else {
-        testeForm.classList.remove('hidden');
-        renderizarPerguntasQuiz();
-      }
-    }
-  }
-
-  function renderizarPerguntasQuiz() {
-    const bancoPerguntas = [
-      {
-        q: "1. Ao ver um colega isolado no intervalo, qual é a sua atitude?",
-        opts: [
-          { txt: "Aproximo-me e o convido para conversar.", pts: 3 },
-          { txt: "Cumprimento de longe com simpatia.", pts: 2 },
-          { txt: "Não faço nada, pois prefiro não me envolver.", pts: 1 }
-        ]
-      },
-      {
-        q: "2. Quando um colega discorda da sua opinião em um trabalho de grupo:",
-        opts: [
-          { txt: "Escuto com atenção para tentar entender o ponto dele.", pts: 3 },
-          { txt: "Aceito a opinião dele apenas para evitar discussões.", pts: 2 },
-          { txt: "Insisto fortemente até que ele concorde comigo.", pts: 1 }
-        ]
-      }
-    ];
-
-    const container = document.getElementById('container-perguntas');
-    if (!container) return;
-    container.innerHTML = '';
-
-    bancoPerguntas.forEach((item, pIdx) => {
-      let optionsHtml = '';
-      item.opts.forEach((opt) => {
-        optionsHtml += `
-          <label style="display:block; margin:8px 0; cursor:pointer;">
-            <input type="radio" name="p_${pIdx}" value="${opt.pts}" required>
-            ${opt.txt}
-          </label>
-        `;
-      });
-
-      container.innerHTML += `
-        <div style="margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border-color);">
-          <strong style="display:block; margin-bottom:8px;">${item.q}</strong>
-          ${optionsHtml}
-        </div>
-      `;
-    });
-
-    testeForm.onsubmit = (e) => {
-      e.preventDefault();
-      const user = JSON.parse(localStorage.getItem('seedUser'));
-      const hoje = new Date().toISOString().split('T')[0];
-      localStorage.setItem(`teste_${user.email}`, hoje);
-
-      testeForm.classList.add('hidden');
-      const resContainer = document.getElementById('teste-resultado');
-      if (resContainer) {
-        resContainer.classList.remove('hidden');
-        resContainer.innerHTML = `
-          <div class="alert-box info" style="text-align:center;">
-            <h3>Autoavaliação Concluída!</h3>
-            <p style="margin-top:10px;">Obrigado por exercitar a empatia no cotidiano escolar!</p>
-          </div>
-        `;
-      }
-    };
   }
 
   // ===================================================

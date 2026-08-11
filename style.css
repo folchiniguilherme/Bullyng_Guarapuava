@@ -1,6 +1,8 @@
 /* ===================================================
+   PORTAL DE AJUDA GUARAPUAVA - ESTILOS GLOBAIS
    COR PRINCIPAL: #00750C (VERDE GUARAPUAVA)
    =================================================== */
+
 :root {
   --primary: #00750C;
   --primary-hover: #005208;
@@ -20,6 +22,7 @@
   --radius: 12px;
 }
 
+/* MODO ESCURO */
 body.dark-mode {
   --primary: #22c55e;
   --primary-hover: #16a34a;
@@ -35,6 +38,7 @@ body.dark-mode {
   --shadow-md: 0 4px 14px rgba(0,0,0,0.5);
 }
 
+/* ALTO CONTRASTE */
 body.high-contrast {
   --bg-main: #000000 !important;
   --bg-card: #000000 !important;
@@ -64,13 +68,17 @@ body {
   line-height: 1.5;
 }
 
-.hidden { display: none !important; }
+.hidden { 
+  display: none !important; 
+}
 
-/* HEADER E AJUSTE DO BRASÃO SVG */
+/* ===================================================
+   CABEÇALHO, TOP BAR, LOGO E TÍTULO
+   =================================================== */
 header {
   background: var(--bg-header);
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -90,13 +98,13 @@ header {
 .brand-container {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-left: -8px; /* Ajuste para o canto esquerdo */
+  gap: 16px;
+  margin-left: -16px; /* Deslocamento extra para a esquerda */
 }
 
 .brasao-svg {
-  width: 58px; /* Tamanho maior */
-  height: 58px;
+  width: 68px; /* Tamanho maior do símbolo G */
+  height: 68px;
   flex-shrink: 0;
   display: block;
 }
@@ -105,11 +113,14 @@ header {
   text-decoration: none;
   color: #ffffff;
   font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: 0.5px;
+  font-size: 1.45rem; /* Título maior */
+  letter-spacing: -0.3px;
+  line-height: 1.2;
 }
 
-body.high-contrast .logo-link { color: #ffff00 !important; }
+body.high-contrast .logo-link { 
+  color: #ffff00 !important; 
+}
 
 .top-bar-actions {
   display: flex;
@@ -117,6 +128,7 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   gap: 10px;
 }
 
+/* BOTÕES DE ACESSO E ACESSIBILIDADE */
 .btn-login-toggle {
   background: #ffffff;
   color: var(--primary);
@@ -127,6 +139,11 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   font-size: 0.82rem;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
+  transition: opacity 0.2s;
+}
+
+.btn-login-toggle:hover {
+  opacity: 0.9;
 }
 
 .btn-acc-circle {
@@ -144,7 +161,13 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   font-weight: bold;
 }
 
-.accessibility-wrapper, .login-wrapper { position: relative; }
+.btn-acc-circle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.accessibility-wrapper, .login-wrapper { 
+  position: relative; 
+}
 
 .accessibility-dropdown, .login-dropdown-menu {
   position: absolute;
@@ -174,6 +197,11 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   font-size: 0.85rem;
 }
 
+.accessibility-dropdown button:hover {
+  background: var(--primary-light);
+}
+
+/* NAVEGAÇÃO PRINCIPAL */
 .main-nav {
   max-width: 1000px;
   margin: 12px auto 0 auto;
@@ -195,6 +223,7 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   padding: 6px 14px;
   border-radius: 16px;
   background: rgba(255,255,255,0.15);
+  transition: all 0.2s;
 }
 
 .main-nav a.active, .main-nav a:hover {
@@ -202,7 +231,9 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   color: var(--primary);
 }
 
-/* ESTRUTURA PRINCIPAL */
+/* ===================================================
+   LAYOUT PRINCIPAL E CARDS
+   =================================================== */
 .container {
   max-width: 960px;
   margin: 24px auto;
@@ -211,8 +242,16 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   width: 100%;
 }
 
-.section-header { margin-bottom: 24px; text-align: center; }
-.subtitle { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
+.section-header { 
+  margin-bottom: 24px; 
+  text-align: center; 
+}
+
+.subtitle { 
+  color: var(--text-muted); 
+  font-size: 0.9rem; 
+  margin-top: 4px; 
+}
 
 .hero-card {
   background: var(--bg-card);
@@ -238,10 +277,26 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   margin-bottom: 12px;
 }
 
-.hero-title { font-size: 1.8rem; margin-bottom: 12px; }
-.hero-text { color: var(--text-muted); max-width: 620px; margin: 0 auto 24px auto; font-size: 0.95rem; }
-.hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.hero-title { 
+  font-size: 1.8rem; 
+  margin-bottom: 12px; 
+}
 
+.hero-text { 
+  color: var(--text-muted); 
+  max-width: 620px; 
+  margin: 0 auto 24px auto; 
+  font-size: 0.95rem; 
+}
+
+.hero-actions { 
+  display: flex; 
+  justify-content: center; 
+  gap: 12px; 
+  flex-wrap: wrap; 
+}
+
+/* GRIDS PARA CARDS */
 .features-grid, .mural-grid, .contacts-grid, .refs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -257,9 +312,21 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   box-shadow: var(--shadow-sm);
 }
 
-.feature-icon { font-size: 2.2rem; margin-bottom: 8px; }
-.mural-card { border-top: 3px solid var(--primary); }
-.mural-author { font-weight: 700; color: var(--primary); font-size: 0.88rem; margin-bottom: 6px; }
+.feature-icon { 
+  font-size: 2.2rem; 
+  margin-bottom: 8px; 
+}
+
+.mural-card { 
+  border-top: 3px solid var(--primary); 
+}
+
+.mural-author { 
+  font-weight: 700; 
+  color: var(--primary); 
+  font-size: 0.88rem; 
+  margin-bottom: 6px; 
+}
 
 .ref-card {
   border-top: 4px solid var(--primary);
@@ -268,8 +335,18 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   justify-content: space-between;
 }
 
-.ref-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--text-main); }
-.ref-card p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px; }
+.ref-card h3 { 
+  font-size: 1.05rem; 
+  margin-bottom: 8px; 
+  color: var(--text-main); 
+}
+
+.ref-card p { 
+  font-size: 0.88rem; 
+  color: var(--text-muted); 
+  margin-bottom: 14px; 
+}
+
 .ref-badge {
   display: inline-block;
   font-size: 0.72rem;
@@ -281,8 +358,19 @@ body.high-contrast .logo-link { color: #ffff00 !important; }
   margin-bottom: 8px;
 }
 
-.form-group { margin-bottom: 16px; }
-.form-group label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; }
+/* ===================================================
+   FORMULÁRIOS E INPUTS
+   =================================================== */
+.form-group { 
+  margin-bottom: 16px; 
+}
+
+.form-group label { 
+  display: block; 
+  font-weight: 600; 
+  font-size: 0.85rem; 
+  margin-bottom: 6px; 
+}
 
 input[type="text"], input[type="email"], input[type="password"], select, textarea {
   width: 100%;
@@ -305,8 +393,12 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
+  transition: background-color 0.2s;
 }
-.btn-primary:hover { background: var(--primary-hover); }
+
+.btn-primary:hover { 
+  background: var(--primary-hover); 
+}
 
 .btn-secondary {
   background: var(--secondary);
@@ -330,13 +422,34 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   align-items: center;
   gap: 4px;
 }
-.btn-link-out:hover { text-decoration: underline; }
 
-.alert-box { padding: 14px 18px; border-radius: 6px; font-size: 0.88rem; margin-bottom: 18px; }
-.alert-box.warning { background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #b45309; }
-.alert-box.info { background: var(--primary-light); border: 1px solid var(--primary); color: var(--text-main); }
+.btn-link-out:hover { 
+  text-decoration: underline; 
+}
 
-/* CHAT DA IA (GUARABOT) */
+/* ALERTAS */
+.alert-box { 
+  padding: 14px 18px; 
+  border-radius: 6px; 
+  font-size: 0.88rem; 
+  margin-bottom: 18px; 
+}
+
+.alert-box.warning { 
+  background: rgba(245, 158, 11, 0.15); 
+  border: 1px solid #f59e0b; 
+  color: #b45309; 
+}
+
+.alert-box.info { 
+  background: var(--primary-light); 
+  border: 1px solid var(--primary); 
+  color: var(--text-main); 
+}
+
+/* ===================================================
+   CHAT DA IA (GUARABOT 2.0)
+   =================================================== */
 .ai-widget-button {
   position: fixed;
   bottom: 24px;
@@ -378,7 +491,13 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   align-items: center;
 }
 
-.btn-close-chat { background: transparent; border: none; color: #ffffff; font-size: 1.2rem; cursor: pointer; }
+.btn-close-chat { 
+  background: transparent; 
+  border: none; 
+  color: #ffffff; 
+  font-size: 1.2rem; 
+  cursor: pointer; 
+}
 
 .ai-chat-messages {
   flex: 1;
@@ -390,14 +509,62 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   font-size: 0.88rem;
 }
 
-.chat-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; line-height: 1.4; }
-.chat-msg.bot { background: var(--primary-light); color: var(--text-main); align-self: flex-start; border-left: 3px solid var(--primary); }
-.chat-msg.user { background: var(--primary); color: #ffffff; align-self: flex-end; }
+.chat-msg { 
+  max-width: 85%; 
+  padding: 10px 14px; 
+  border-radius: 12px; 
+  line-height: 1.4; 
+  white-space: pre-line;
+}
 
-.ai-chat-input-area { padding: 10px; border-top: 1px solid var(--border-color); display: flex; gap: 6px; }
-.ai-chat-input-area input { flex: 1; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 20px; outline: none; }
-.ai-chat-input-area button { background: var(--primary); color: #ffffff; border: none; padding: 8px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+.chat-msg.bot { 
+  background: var(--primary-light); 
+  color: var(--text-main); 
+  align-self: flex-start; 
+  border-left: 3px solid var(--primary); 
+}
 
+.chat-msg.user { 
+  background: var(--primary); 
+  color: #ffffff; 
+  align-self: flex-end; 
+}
+
+.typing-indicator {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 6px 12px;
+}
+
+.ai-chat-input-area { 
+  padding: 10px; 
+  border-top: 1px solid var(--border-color); 
+  display: flex; 
+  gap: 6px; 
+}
+
+.ai-chat-input-area input { 
+  flex: 1; 
+  padding: 8px 12px; 
+  border: 1px solid var(--border-color); 
+  border-radius: 20px; 
+  outline: none; 
+}
+
+.ai-chat-input-area button { 
+  background: var(--primary); 
+  color: #ffffff; 
+  border: none; 
+  padding: 8px 14px; 
+  border-radius: 20px; 
+  font-weight: bold; 
+  cursor: pointer; 
+}
+
+/* ===================================================
+   TOASTS, MODAIS E RODAPÉ
+   =================================================== */
 .toast-balao {
   position: fixed;
   bottom: 24px;
@@ -414,7 +581,10 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
-.toast-balao.show { opacity: 1; }
+
+.toast-balao.show { 
+  opacity: 1; 
+}
 
 .modal-overlay {
   position: fixed;
@@ -423,6 +593,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   display: flex; align-items: center; justify-content: center;
   z-index: 3000;
 }
+
 .modal-box {
   background: var(--bg-card);
   padding: 24px;
@@ -431,12 +602,25 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   max-width: 400px;
   width: 90%;
 }
-.modal-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 18px; }
+
+.modal-buttons { 
+  display: flex; 
+  gap: 10px; 
+  justify-content: center; 
+  margin-top: 18px; 
+}
 
 #btn-back-to-top {
-  position: fixed; bottom: 85px; left: 20px;
-  background: var(--primary); color: #ffffff; border: none;
-  padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 700;
+  position: fixed; 
+  bottom: 85px; 
+  left: 20px;
+  background: var(--primary); 
+  color: #ffffff; 
+  border: none;
+  padding: 8px 16px; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  font-weight: 700;
   display: none;
 }
 
