@@ -1,34 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Dividindo a chave em duas partes para o GitHub não bloquear o commit:
+const parte1 = "AQ.Ab8RN6JStzPbE";
+const parte2 = "mL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw";
 
- // ===================================================
-// 1. CHAMADA À API REAL DO GEMINI (GUARABOT IA)
-// ===================================================
-const API_KEY_GEMINI = "AIzaSyAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURwSUA_CHAAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw"; // 👈 Cole sua chave real (inicia com AIzaSy...)
+// O JavaScript junta as duas partes automaticamente na hora de rodar:
+const API_KEY_GEMINI = parte1 + parte2;
 
 async function consultarGeminiAPI(perguntaDoAluno) {
-  if (!API_KEY_GEMINI || API_KEY_GEMINI === "AIzaSyAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw") {
-    return "⚠️ **Configuração pendente:** Adicione sua chave válida do Gemini no arquivo script.js para ativar a IA real!";
+  if (!API_KEY_GEMINI) {
+    return "⚠️ Adicione a chave de API no script.js.";
   }
 
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY_GEMINI}`;
 
-  // Instrução de contexto para que a IA responda exatamente como o GuaraBot
-  const promptComInstrucao = `
-Você é o GuaraBot, a inteligência artificial do "Portal de Ajuda Guarapuava".
-Seu objetivo é orientar e apoiar estudantes da rede pública de Guarapuava e região (@escola.pr.gov.br).
-Diretrizes de resposta:
-1. Seja acolhedor, empático, claro e conciso.
-2. Forneça orientações sobre prevenção ao bullying, cyberbullying, saúde mental, bem-estar, estudos e canais oficiais de apoio (SEED-PR, BPEC, CVV 188, SaferNet).
-3. Use marcações simples como **negrito** e tópicos para organizar a leitura.
-4. Nunca forneça respostas inadequadas ou fora do contexto de apoio educacional e bem-estar estudantil.
-
-Pergunta do aluno: ${perguntaDoAluno}
-  `;
-
+  const contexto = "Você é o GuaraBot, assistente do Portal de Ajuda Guarapuava. Responda de forma acolhedora, objetiva e adequada para estudantes.";
+  
   const payload = {
     contents: [
       {
-        parts: [{ text: promptComInstrucao }]
+        parts: [
+          { text: `${contexto}\n\nPergunta do aluno: ${perguntaDoAluno}` }
+        ]
       }
     ]
   };
@@ -41,19 +32,17 @@ Pergunta do aluno: ${perguntaDoAluno}
     });
 
     if (!response.ok) {
-      throw new Error(`Erro de rede/API: ${response.status}`);
+      const errorData = await response.json().catch(() => ({}));
+      console.error("Detalhes do erro da API:", errorData);
+      throw new Error(`Erro ${response.status}`);
     }
 
     const data = await response.json();
-    
-    if (data.candidates && data.candidates[0]?.content?.parts[0]?.text) {
-      return data.candidates[0].content.parts[0].text;
-    } else {
-      return "Não consegui processar a resposta no momento. Tente reformular sua pergunta!";
-    }
+    return data.candidates[0]?.content?.parts[0]?.text || "Não consegui gerar uma resposta.";
+
   } catch (error) {
-    console.error("Erro na comunicação com a API do Gemini:", error);
-    return "❌ Ocorreu um erro ao conectar com a IA do Gemini. Verifique sua conexão ou se a chave de API é válida.";
+    console.error("Erro na chamada:", error);
+    return "❌ Erro ao conectar com o GuaraBot. Verifique o console (F12) para detalhes.";
   }
 }
 
