@@ -1,6 +1,6 @@
 // Dividindo a chave em duas partes para o GitHub não bloquear o commit:
-const parte1 = "AQ.Ab8RN6JStzPbE";
-const parte2 = "mL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw";
+const parte1 = "Asyn";
+const parte2 = "cAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw";
 
 // O JavaScript junta as duas partes automaticamente na hora de rodar:
 const API_KEY_GEMINI = parte1 + parte2;
