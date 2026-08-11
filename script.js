@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===================================================
-  // 1. MOTOR DA IA (GUARABOT DINÂMICO E COMPLETO)
+  // 1. MOTOR DA IA (GUARABOT - REFITO E EXPANDIDO)
   // ===================================================
   const btnToggleAi = document.getElementById('btn-toggle-ai-chat');
   const aiWindow = document.getElementById('ai-chat-window');
@@ -27,36 +27,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = pergunta.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
       let resposta = "";
 
-      // Matriz de Inteligência por Intenção
       if (p.includes('oi') || p.includes('ola') || p.includes('bom dia') || p.includes('boa tarde') || p.includes('boa noite')) {
-        resposta = "Olá! Sou o **GuaraBot**, assistente de convivência escolar de Guarapuava. Como posso te apoiar hoje?";
+        resposta = "Olá! Sou o **GuaraBot**, assistente virtual do Portal Guarapuava. Como posso te ajudar hoje?";
       } 
-      else if (p.includes('bullying') || p.includes('ofensa') || p.includes('ameaca') || p.includes('zoacao') || p.includes('xingamento')) {
-        resposta = "Ninguém deve passar por bullying sozinho. Você pode fazer um relato 100% seguro na aba **Portal de Escuta**. Se preferir não se identificar, o formulário permite envio anônimo.";
-      } 
-      else if (p.includes('ansie') || p.includes('triste') || p.includes('medo') || p.includes('pânico') || p.includes('desespero') || p.includes('choro')) {
-        resposta = "Sinto muito que esteja se sentindo assim. Tente fazer a **técnica de respiração 4-7-8**: inspire por 4 segundos, segure por 7 segundos e solte devagar em 8 segundos. Acesse a aba **Ajuda & Bem-Estar** para mais dicas.";
-      } 
-      else if (p.includes('ligar') || p.includes('emergencia') || p.includes('cvv') || p.includes('socorro') || p.includes('telefone') || p.includes('ajuda urgente')) {
-        resposta = "Para ajuda e apoio emocional urgente 24h, ligue gratuitamente para o **CVV no número 188**. Se for situação grave na escola, procure a direção ou o Conselho Tutelar de Guarapuava no telefone (42) 99975-3162.";
-      } 
-      else if (p.includes('escola') || p.includes('colegio') || p.includes('guarapuava') || p.includes('onde')) {
-        resposta = "Nossa plataforma atende todas as **29 Escolas Estaduais do município de Guarapuava**. Você pode selecionar seu colégio na aba de Relato.";
-      } 
-      else if (p.includes('login') || p.includes('email') || p.includes('escola.pr') || p.includes('acesso')) {
-        resposta = "Para acessar recursos restritos como o relato e o teste de personalidade, clique no botão **'Entre com o @escola'** no topo do site e use seu e-mail institucional do Paraná.";
+      else if (p.includes('cyber') || p.includes('internet') || p.includes('print') || p.includes('rede social') || p.includes('foto')) {
+        resposta = "Em casos de Cyberbullying: salve todos os prints com data e hora, bloqueie o perfil e converse imediatamente com a direção da escola ou acesse a aba **Contatos & Apoio** para acionar a SaferNet.";
       }
-      else if (p.includes('teste') || p.includes('quiz') || p.includes('empatia')) {
-        resposta = "O **Teste de Empatia** ajuda você a refletir sobre suas atitudes no dia a dia escolar. Você encontra o link direto no menu superior!";
+      else if (p.includes('bullying') || p.includes('ofensa') || p.includes('ameaca') || p.includes('apelido') || p.includes('agressao')) {
+        resposta = "O bullying prejudica a convivência escolar. Você pode registrar um relato seguro e sigiloso na aba **Portal de Escuta** do nosso site.";
+      } 
+      else if (p.includes('ansie') || p.includes('estresse') || p.includes('triste') || p.includes('panico') || p.includes('nervos')) {
+        resposta = "Para momentos de estresse ou ansiedade, conheça a **Técnica de Respiração 4-7-8** na aba **Ajuda & Bem-Estar**. Se precisar conversar, o CVV atende no número **188**.";
+      } 
+      else if (p.includes('patrulha') || p.includes('policia escolar') || p.includes('segurança')) {
+        resposta = "A **Patrulha Escolar Comunitária (BPEC)** atua preventivamente nas escolas do Paraná para garantir a segurança de alunos e professores.";
       }
-      else if (p.includes('mural') || p.includes('mensagem') || p.includes('recado')) {
-        resposta = "Você pode publicar mensagens de incentivo para outros alunos diretamente no **Mural de Apoio** localizado na página inicial.";
+      else if (p.includes('ouvidoria') || p.includes('seed') || p.includes('secretaria')) {
+        resposta = "A Ouvidoria da SEED-PR acolhe manifestações sobre o ambiente escolar. Você encontra o link oficial na aba **Contatos & Apoio**.";
+      }
+      else if (p.includes('fonte') || p.includes('referencia') || p.includes('lei') || p.includes('origem') || p.includes('pesquisa')) {
+        resposta = "Todas as informações e leis utilizadas no Portal estão listadas com links oficiais na nossa nova página de **Referências**!";
+      }
+      else if (p.includes('login') || p.includes('escola.pr') || p.includes('conta')) {
+        resposta = "Para acessar recursos restritos como o relato e o teste de personalidade, use o botão **'Entre com o @escola'** no topo do site e informe seu e-mail institucional do Paraná.";
       }
       else {
-        resposta = "Entendi! Você pode me perguntar sobre **Bullying**, **Ansiedade**, **Contatos de Emergência (CVV)** ou navegar pelo menu para fazer um **Relato** ou o **Teste de Empatia**.";
+        resposta = "Posso te ajudar com assuntos sobre **Bullying**, **Cyberbullying**, **Técnicas de Alívio de Estresse**, **Patrulha Escolar**, **Ouvidoria SEED** ou nossas **Referências** de pesquisa.";
       }
 
-      // Simula digitação humana
       setTimeout(() => adicionarMensagem('bot', resposta), 400);
     }
 
