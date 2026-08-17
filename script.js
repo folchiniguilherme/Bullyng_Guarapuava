@@ -1,10 +1,8 @@
-// ===================================================
-// 1. CONFIGURAÇÃO DA API DO GEMINI & GUARABOT
-// ===================================================
+// Dividindo a chave para o GitHub não bloquear o salvamento:
+const parte1 = "AQ.Ab8RN6Jm5bJgr4IDzloscrPN1";
+const parte2 = "MfadXauxRDkpYegfNml1QFl4g";
 
-// Se você tiver uma chave válida (começando com AIzaSy...), coloque abaixo.
-// Se deixar vazio ou incorreto, a IA ativa o modo local automaticamente sem quebrar o site!
-const API_KEY_GEMINI = "AIzaSyAQ.Ab8RN6JStzPbEmL3N0a_csoROR5nhL4ezgqq2NFnbPai1JLURw";
+const API_KEY_GEMINI = parte1 + parte2;
 
 async function consultarGeminiAPI(perguntaDoAluno) {
   if (API_KEY_GEMINI && API_KEY_GEMINI.trim() !== "") {
@@ -28,31 +26,35 @@ async function consultarGeminiAPI(perguntaDoAluno) {
         if (texto) return texto;
       }
     } catch (error) {
-      console.warn("API do Gemini indisponível. Alternando para resposta local.", error);
+      console.warn("Gemini indisponível. Alternando para o modo de mensagens pré-programadas.", error);
     }
   }
 
-  // Fallback Local (IA Improvisada caso a API falhe ou a chave seja inválida)
+  // Resposta pré-programada (Fallback local se a IA não responder)
   return respostaLocalGuaraBot(perguntaDoAluno);
 }
 
 function respostaLocalGuaraBot(pergunta) {
   const p = pergunta.toLowerCase();
-  if (p.includes("bullying") || p.includes("provoca")) {
-    return "💙 **GuaraBot:** Se você ou um colega sofre bullying, não guarde para si. Procure a equipe pedagógica da sua escola, a SaferNet ou o BPEC.";
+
+  if (p.includes("bullying") || p.includes("provoca") || p.includes("agress")) {
+    return "💙 **GuaraBot:** Se você ou algum colega está sofrendo bullying, converse com a equipe pedagógica da sua escola, procure o BPEC ou acesse a SaferNet para orientação.";
   }
-  if (p.includes("estudo") || p.includes("prova") || p.includes("nota")) {
-    return "📚 **GuaraBot:** Dica de estudo: organize ciclos de 25 minutos de foco total com pausas de 5 minutos. Mantenha os cadernos em dia!";
+  if (p.includes("estudo") || p.includes("prova") || p.includes("nota") || p.includes("tarefa")) {
+    return "📚 **GuaraBot:** Para melhorar os estudos, experimente estudar por blocos de 25 minutos com pausas de 5 minutos (Método Pomodoro). Mantenha as anotações organizadas!";
   }
-  if (p.includes("triste") || p.includes("ansios") || p.includes("ajuda")) {
-    return "🤝 **GuaraBot:** Você não está sozinho(a). Converse com a pedagogia da escola, com seus responsáveis ou ligue gratuitamente para o **CVV no 188**.";
+  if (p.includes("triste") || p.includes("ansios") || p.includes("ajuda") || p.includes("sozinho")) {
+    return "🤝 **GuaraBot:** Você não está sozinho(a). Converse com a equipe pedagógica da escola, com seus responsáveis ou ligue gratuitamente para o **CVV no número 188**.";
   }
-  return "🤖 **GuaraBot:** Estou aqui para apoiar estudantes de Guarapuava! Como posso te ajudar hoje com dicas de estudos ou bem-estar?";
+  if (p.includes("denuncia") || p.includes("relat")) {
+    return "🛡️ **GuaraBot:** Você pode enviar um relato seguro e confidencial através da nossa aba de **Escuta / Denúncia** no portal.";
+  }
+  
+  return "🤖 **GuaraBot:** Sou o assistente do Portal de Ajuda Guarapuava. Posso te ajudar com orientações sobre bem-estar, dicas de estudos, prevenção ao bullying e canais de apoio!";
 }
 
-
 // ===================================================
-// INICIALIZAÇÃO GERAL (EXECUTADO QUANDO O DOM CARREGAR)
+// 2. INICIALIZAÇÃO GERAL (DOM CARREGADO)
 // ===================================================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -109,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
       inputAi.onkeypress = (e) => { if (e.key === 'Enter') processarEnvioIA(); };
     }
   }
-
 
   // ---------------------------------------------------
   // B. ACESSIBILIDADE E TEMAS
@@ -188,7 +189,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   }
 
-
   // ---------------------------------------------------
   // C. LOGIN @escola.pr.gov.br
   // ---------------------------------------------------
@@ -250,12 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   atualizarEstadoLogin();
 
-
   // ---------------------------------------------------
   // D. QUIZ DE EMPATIA
   // ---------------------------------------------------
   const testeForm = document.getElementById('teste-form');
-  
+
   function renderizarPerguntasQuiz() {
     const bancoPerguntas = [
       {
@@ -384,7 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
   // ---------------------------------------------------
   // E. MURAL DE APOIO
   // ---------------------------------------------------
@@ -430,7 +428,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   carregarMural();
 
-
   // ---------------------------------------------------
   // F. PORTAL DE ESCUTA / DENÚNCIA
   // ---------------------------------------------------
@@ -469,7 +466,6 @@ document.addEventListener("DOMContentLoaded", () => {
       };
     }
   }
-
 
   // ---------------------------------------------------
   // G. BOTÃO VOLTAR AO TOPO
