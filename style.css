@@ -1,6 +1,6 @@
 /* ===================================================
    PORTAL DE AJUDA GUARAPUAVA - ESTILOS GLOBAIS
-   COR PRINCIPAL: #00750C (VERDE GUARAPUAVA)
+   COR BASE: #00750C (VERDE GUARAPUAVA)
    =================================================== */
 
 :root {
@@ -10,11 +10,10 @@
   --secondary: #004375;
   --accent: #006875;
   
-  /* GRADIENTES - MODO PADRÃO */
-  --bg-header-gradient: linear-gradient(135deg, #00750C 0%, #005208 45%, #004375 100%);
-  --btn-gradient: linear-gradient(135deg, #00750C 0%, #006875 100%);
-  --btn-hover-gradient: linear-gradient(135deg, #005208 0%, #004375 100%);
-  --card-top-gradient: linear-gradient(90deg, #00750C 0%, #006875 100%);
+  /* DEGRADÊS FORTES FOCADOS NO VERDE #00750C */
+  --bg-header-gradient: linear-gradient(135deg, #008a0e 0%, #00750C 45%, #004d08 100%);
+  --btn-gradient: linear-gradient(135deg, #008a0e 0%, #00750C 100%);
+  --btn-hover-gradient: linear-gradient(135deg, #00750C 0%, #004d08 100%);
   
   --bg-main: #f4f7fb;
   --bg-card: #ffffff;
@@ -32,14 +31,10 @@ body.dark-mode {
   --primary: #22c55e;
   --primary-hover: #16a34a;
   --primary-light: rgba(34, 197, 94, 0.15);
-  --secondary: #1d4ed8;
-  --accent: #0284c7;
 
-  /* GRADIENTES - MODO ESCURO */
-  --bg-header-gradient: linear-gradient(135deg, #07162c 0%, #0b1e3d 50%, #004375 100%);
-  --btn-gradient: linear-gradient(135deg, #16a34a 0%, #0284c7 100%);
-  --btn-hover-gradient: linear-gradient(135deg, #15803d 0%, #1d4ed8 100%);
-  --card-top-gradient: linear-gradient(90deg, #22c55e 0%, #0284c7 100%);
+  --bg-header-gradient: linear-gradient(135deg, #16a34a 0%, #00750C 50%, #07162c 100%);
+  --btn-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  --btn-hover-gradient: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
 
   --bg-main: #0b1329;
   --bg-card: #1e293b;
@@ -53,10 +48,9 @@ body.dark-mode {
 
 /* ALTO CONTRASTE */
 body.high-contrast {
-  --bg-header-gradient: linear-gradient(135deg, #000000 0%, #111111 100%) !important;
+  --bg-header-gradient: #000000 !important;
   --btn-gradient: #000000 !important;
   --btn-hover-gradient: #1a1a1a !important;
-  --card-top-gradient: #ffff00 !important;
 
   --bg-main: #000000 !important;
   --bg-card: #000000 !important;
@@ -95,12 +89,12 @@ body {
 header {
   background: var(--bg-header-gradient);
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: var(--shadow-md);
-  border-bottom: 3px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 3px solid #004d08;
 }
 
 .top-bar {
@@ -170,18 +164,17 @@ body.high-contrast .logo-link {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: none;
   font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  transition: background 0.2s;
 }
 
 .btn-acc-circle:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .accessibility-wrapper, .login-wrapper { 
@@ -241,8 +234,7 @@ body.high-contrast .logo-link {
   font-size: 0.85rem;
   padding: 6px 14px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.15);
   transition: all 0.2s;
 }
 
@@ -338,8 +330,7 @@ body.high-contrast .logo-link {
 }
 
 .mural-card { 
-  border-top: 4px solid transparent;
-  border-image: var(--card-top-gradient) 1;
+  border-top: 3px solid var(--primary); 
 }
 
 .mural-author { 
@@ -350,8 +341,7 @@ body.high-contrast .logo-link {
 }
 
 .ref-card {
-  border-top: 4px solid transparent;
-  border-image: var(--card-top-gradient) 1;
+  border-top: 4px solid var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
