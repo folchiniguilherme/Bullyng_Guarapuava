@@ -1,6 +1,7 @@
 /* ===================================================
    PORTAL DE AJUDA GUARAPUAVA - ESTILOS GLOBAIS
    COR BASE: #00750C (VERDE GUARAPUAVA)
+   DEGRADÊ DE ALTO CONTRASTE (#10b981 -> #00750C -> #022c05)
    =================================================== */
 
 :root {
@@ -10,10 +11,11 @@
   --secondary: #004375;
   --accent: #006875;
   
-  /* DEGRADÊS FORTES FOCADOS NO VERDE #00750C */
-  --bg-header-gradient: linear-gradient(135deg, #008a0e 0%, #00750C 45%, #004d08 100%);
-  --btn-gradient: linear-gradient(135deg, #008a0e 0%, #00750C 100%);
-  --btn-hover-gradient: linear-gradient(135deg, #00750C 0%, #004d08 100%);
+  /* DEGRADÊS VISÍVEIS DE ALTO CONTRASTE */
+  --bg-header-gradient: linear-gradient(135deg, #10b981 0%, #00750C 50%, #022c05 100%);
+  --btn-gradient: linear-gradient(135deg, #10b981 0%, #00750C 100%);
+  --btn-hover-gradient: linear-gradient(135deg, #00750C 0%, #022c05 100%);
+  --card-top-gradient: linear-gradient(90deg, #10b981 0%, #00750C 100%);
   
   --bg-main: #f4f7fb;
   --bg-card: #ffffff;
@@ -35,6 +37,7 @@ body.dark-mode {
   --bg-header-gradient: linear-gradient(135deg, #16a34a 0%, #00750C 50%, #07162c 100%);
   --btn-gradient: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   --btn-hover-gradient: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  --card-top-gradient: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
 
   --bg-main: #0b1329;
   --bg-card: #1e293b;
@@ -87,14 +90,14 @@ body {
    CABEÇALHO, TOP BAR, LOGO E TÍTULO
    =================================================== */
 header {
-  background: var(--bg-header-gradient);
+  background: var(--bg-header-gradient) !important;
   color: #ffffff;
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   box-shadow: var(--shadow-md);
-  border-bottom: 3px solid #004d08;
+  border-bottom: 3px solid #022c05;
 }
 
 .top-bar {
@@ -322,6 +325,8 @@ body.high-contrast .logo-link {
   padding: 20px;
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
 
 .feature-icon { 
@@ -329,8 +334,14 @@ body.high-contrast .logo-link {
   margin-bottom: 8px; 
 }
 
-.mural-card { 
-  border-top: 3px solid var(--primary); 
+.mural-card::before, .ref-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--card-top-gradient);
 }
 
 .mural-author { 
@@ -341,7 +352,6 @@ body.high-contrast .logo-link {
 }
 
 .ref-card {
-  border-top: 4px solid var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -395,7 +405,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .btn-primary {
-  background: var(--btn-gradient);
+  background: var(--btn-gradient) !important;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -409,7 +419,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .btn-primary:hover { 
-  background: var(--btn-hover-gradient); 
+  background: var(--btn-hover-gradient) !important; 
 }
 
 .btn-secondary {
@@ -466,7 +476,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background: var(--btn-gradient);
+  background: var(--btn-gradient) !important;
   color: #ffffff;
   border: none;
   padding: 12px 20px;
@@ -480,7 +490,8 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .ai-widget-button:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
+  background: var(--btn-hover-gradient) !important;
 }
 
 .ai-chat-window {
@@ -500,7 +511,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .ai-chat-header {
-  background: var(--bg-header-gradient);
+  background: var(--bg-header-gradient) !important;
   color: #ffffff;
   padding: 12px 16px;
   display: flex;
@@ -542,7 +553,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .chat-msg.user { 
-  background: var(--btn-gradient); 
+  background: var(--btn-gradient) !important; 
   color: #ffffff; 
   align-self: flex-end; 
 }
@@ -570,7 +581,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 }
 
 .ai-chat-input-area button { 
-  background: var(--btn-gradient); 
+  background: var(--btn-gradient) !important; 
   color: #ffffff; 
   border: none; 
   padding: 8px 14px; 
@@ -631,7 +642,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
   position: fixed; 
   bottom: 85px; 
   left: 20px;
-  background: var(--btn-gradient); 
+  background: var(--btn-gradient) !important; 
   color: #ffffff; 
   border: none;
   padding: 8px 16px; 
@@ -644,7 +655,7 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
 footer {
   text-align: center;
   padding: 18px;
-  background: var(--bg-header-gradient);
+  background: var(--bg-header-gradient) !important;
   color: #ffffff;
   margin-top: auto;
   font-size: 0.82rem;
